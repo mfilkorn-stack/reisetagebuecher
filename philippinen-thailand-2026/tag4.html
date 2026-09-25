@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../style.css">
+<title>Tag 4 &ndash; Donnerstag/Freitag, 3./4. September &ndash; Moalboal & Cebu City</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="tag3.html">&larr; Vorheriger Tag</a><a href="index.html">&#8962; &Uuml;bersicht</a><a href="tag5.html">N&auml;chster Tag &rarr;</a><a class="lang-switch" href="en/day4.html" lang="en">EN</a></div>
+<h1>Tag 4 &ndash; Donnerstag/Freitag, 3./4. September &ndash; Moalboal & Cebu City</h1>
+<h2 class="map-heading">Karte</h2>
+<div id="map4" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "White Beach, Moalboal", lat: 9.99, lng: 123.385, note: "Strand", anchor: "moalboal2" },
+      { name: "Fuente Osmeña, Cebu City", lat: 10.31, lng: 123.893, note: "Abend in der Stadt", anchor: "cebu" }
+    ];
+    const map = L.map('map4').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap-Mitwirkende'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; Zum Tagebucheintrag</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="moalboal2"><strong>White Beach:</strong> Nördlich von Moalboal liegt der Basdaku White Beach, ein langer heller Sandstrand. Nachmittags Kinilaw – philippinisches Ceviche –, abends Sonnenuntergang am Strand und ein deutscher Biergarten mit Weißbier in Moalboal. Danach in die Bars an der Panagsama Road.</p>
+<img src="images/tag4/01.jpg" alt="Kinilaw in der Schale">
+<img src="images/tag4/02.jpg" alt="White Beach am Nachmittag">
+<img src="images/tag4/03.jpg" alt="Sonnenuntergang am White Beach">
+<img src="images/tag4/04.jpg" alt="Menschen am Strand im Abendlicht">
+<img src="images/tag4/05.jpg" alt="Selfie am Strand">
+<img src="images/tag4/06.jpg" alt="Biergarten in Moalboal">
+<img src="images/tag4/07.jpg" alt="Weißbier im Glas">
+<img src="images/tag4/08.jpg" alt="Abendessen mit Lumpia">
+<img src="images/tag4/09.jpg" alt="Chili Bar in Moalboal">
+<p id="cebu"><strong>Cebu City:</strong> Zurück nach Cebu City, die älteste Stadt der Philippinen: 1521 landete hier Magellan, 1565 gründeten die Spanier die erste Siedlung. Abends rund um den Kreisverkehr Fuente Osmeña – Jeepneys, Mopeds, Kirchen, Garküchen.</p>
+<p class="more-info">&#8599; <a href="https://de.wikipedia.org/wiki/Cebu_City" target="_blank" rel="noopener noreferrer">Mehr erfahren</a></p>
+<img src="images/tag4/10.jpg" alt="Blick aufs Meer aus dem Restaurant">
+<img src="images/tag4/11.jpg" alt="Philippinische Gerichte auf dem Tisch">
+<img src="images/tag4/12.jpg" alt="Straße mit Jeepney am Abend">
+<img src="images/tag4/13.jpg" alt="Kirche bei Nacht">
+
+<hr>
+
+<div class="navbar"><a href="tag3.html">&larr; Vorheriger Tag</a><a href="index.html">&#8962; &Uuml;bersicht</a><a href="tag5.html">N&auml;chster Tag &rarr;</a><a class="lang-switch" href="en/day4.html" lang="en">EN</a></div>
+</body>
+</html>

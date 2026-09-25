@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../style.css">
+<title>Day 2 &ndash; Tuesday, September 1 &ndash; Sumilon Island</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="day1.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day3.html">Next day &rarr;</a><a class="lang-switch" href="../tag2.html" lang="de">DE</a></div>
+<h1>Day 2 &ndash; Tuesday, September 1 &ndash; Sumilon Island</h1>
+<h2 class="map-heading">Map</h2>
+<div id="map2" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Bangcogon, Oslob", lat: 9.44, lng: 123.39, note: "Boat landing", anchor: "sumilon" },
+      { name: "Sumilon Island", lat: 9.433, lng: 123.39, note: "Island day", anchor: "sumilon" }
+    ];
+    const map = L.map('map2').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap contributors'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; To the diary entry</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="sumilon"><strong>Sumilon Island:</strong> By tricycle to the jetty, then a few minutes across by boat. The reef off Sumilon was declared the Philippines' first marine sanctuary in 1974. The island is small and wooded, with a sandbar that shifts with the tides. A cave bears the name of the Japanese general Yamashita – legend has it that part of the gold he hid during the Second World War lies here.</p>
+<img src="../images/tag2/01.jpg" alt="By tricycle to the jetty">
+<img src="../images/tag2/02.jpg" alt="Jetty with outrigger boat">
+<img src="../images/tag2/03.jpg" alt="Selfie with life jacket">
+<img src="../images/tag2/04.jpg" alt="Crossing to Sumilon">
+<img src="../images/tag2/05.jpg" alt="Sign about the Yamashita Cave">
+<img src="../images/tag2/06.jpg" alt="Shrine to the Virgin in the cave">
+<img src="../images/tag2/07.jpg" alt="Sumilon sandbar">
+<img src="../images/tag2/08.jpg" alt="Turquoise water at the sandbar">
+<img src="../images/tag2/09.jpg" alt="Infinity pool with a tree">
+<img src="../images/tag2/10.jpg" alt="Excursion boat off the coast">
+<img src="../images/tag2/11.jpg" alt="Clear water over the reef">
+<img src="../images/tag2/12.jpg" alt="Fisherman in a dugout">
+<img src="../images/tag2/13.jpg" alt="Sandbar in the sun">
+<img src="../images/tag2/14.jpg" alt="Dinner with sisig">
+
+<hr>
+
+<div class="navbar"><a href="day1.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day3.html">Next day &rarr;</a><a class="lang-switch" href="../tag2.html" lang="de">DE</a></div>
+</body>
+</html>

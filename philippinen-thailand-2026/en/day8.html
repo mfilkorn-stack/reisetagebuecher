@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../style.css">
+<title>Day 8 &ndash; Saturday/Sunday, September 12/13 &ndash; Koh Samui & the Journey Home</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="day7.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><span></span><a class="lang-switch" href="../tag8.html" lang="de">DE</a></div>
+<h1>Day 8 &ndash; Saturday/Sunday, September 12/13 &ndash; Koh Samui & the Journey Home</h1>
+<h2 class="map-heading">Map</h2>
+<div id="map8" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Koh Samui (Pralarn Pier)", lat: 9.55, lng: 100.06, note: "Arrival by ferry", anchor: "samui" },
+      { name: "Chaweng Beach", lat: 9.53, lng: 100.062, note: "Last evening", anchor: "samui" }
+    ];
+    const map = L.map('map8').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap contributors'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; To the diary entry</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="samui"><strong>Koh Samui:</strong> By ferry in the rain back to Koh Samui, Thailand's second-largest island. Last evening in Chaweng: Aperol by the roadside, Thai salad with orchids, posters for Muay Thai fights, crowded streets, a fire show on the beach.</p>
+<p class="more-info">&#8599; <a href="https://en.wikipedia.org/wiki/Ko_Samui" target="_blank" rel="noopener noreferrer">Learn more</a></p>
+<img src="../images/tag8/01.jpg" alt="Mango beer from the Samui brewery">
+<img src="../images/tag8/02.jpg" alt="Map of Koh Samui">
+<img src="../images/tag8/03.jpg" alt="Aperol stand">
+<img src="../images/tag8/04.jpg" alt="Thai salads with orchids">
+<img src="../images/tag8/05.jpg" alt="Muay Thai fight poster">
+<img src="../images/tag8/06.jpg" alt="Crowded street in Chaweng">
+<img src="../images/tag8/07.jpg" alt="Loungers on the beach at night">
+<img src="../images/tag8/08.jpg" alt="Fire show on the beach">
+<img src="../images/tag8/09.jpg" alt="Blue-lit passageway">
+<p><strong>Journey home:</strong> On Sunday from Samui's open-air airport via Bangkok back to Frankfurt. Two weeks, two countries, whale sharks and a wreck – and a last look at the mountains below the wing.</p>
+<img src="../images/tag8/10.jpg" alt="Garden at Samui airport">
+<img src="../images/tag8/11.jpg" alt="Dugout at sunset">
+<img src="../images/tag8/12.jpg" alt="Mountains beneath the wing">
+
+<hr>
+
+<div class="navbar"><a href="day7.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><span></span><a class="lang-switch" href="../tag8.html" lang="de">DE</a></div>
+</body>
+</html>

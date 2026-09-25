@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../style.css">
+<title>Day 5 &ndash; Saturday/Sunday, September 5/6 &ndash; To Thailand: Koh Tao</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="day4.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day6.html">Next day &rarr;</a><a class="lang-switch" href="../tag5.html" lang="de">DE</a></div>
+<h1>Day 5 &ndash; Saturday/Sunday, September 5/6 &ndash; To Thailand: Koh Tao</h1>
+<h2 class="map-heading">Map</h2>
+<div id="map5" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Koh Samui Airport", lat: 9.547, lng: 100.062, note: "Landing", anchor: "taoanreise" },
+      { name: "Koh Tao", lat: 10.095, lng: 99.838, note: "Island base", anchor: "kohtao" },
+      { name: "Sairee Beach", lat: 10.1, lng: 99.827, note: "Beach", anchor: "kohtao" }
+    ];
+    const map = L.map('map5').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap contributors'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; To the diary entry</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="taoanreise"><strong>On to Thailand:</strong> Night flight from Cebu via Singapore to Koh Samui. The airport there belongs to Bangkok Airways and consists of open, thatched pavilions. By ferry on to Koh Tao – in the evening a Luang Prabang beer on the terrace, the view across the jungle to the sea.</p>
+<img src="../images/tag5/01.jpg" alt="Boarding pass in hand">
+<img src="../images/tag5/02.jpg" alt="Entrance to Samui airport">
+<img src="../images/tag5/03.jpg" alt="Hand-drawn map of Koh Tao">
+<img src="../images/tag5/04.jpg" alt="Terrace with view over the jungle">
+<p id="kohtao"><strong>Koh Tao:</strong> The "Turtle Island" in the Gulf of Thailand covers only about 21 km² and is one of the places where most people in the world earn their diving certificate. First day: pad thai on Sairee Beach, the bay looking out to Koh Nang Yuan, bars among rocks and driftwood, sunset from the terrace and, in the evening, mu kratha, a tabletop grill with a soup moat.</p>
+<p class="more-info">&#8599; <a href="https://en.wikipedia.org/wiki/Ko_Tao" target="_blank" rel="noopener noreferrer">Learn more</a></p>
+<img src="../images/tag5/05.jpg" alt="Beach café on Sairee Beach">
+<img src="../images/tag5/06.jpg" alt="Bay with boats">
+<img src="../images/tag5/07.jpg" alt="Turquoise water off the island">
+<img src="../images/tag5/08.jpg" alt="Arms outstretched on the terrace">
+<img src="../images/tag5/09.jpg" alt="Beach bar among rocks">
+<img src="../images/tag5/10.jpg" alt="Driftwood bar on the beach">
+<img src="../images/tag5/11.jpg" alt="Selfie of two on the beach">
+<img src="../images/tag5/12.jpg" alt="Pier with pirate flag">
+<img src="../images/tag5/13.jpg" alt="Pier in the evening light">
+<img src="../images/tag5/14.jpg" alt="Sunset over the jungle">
+<img src="../images/tag5/15.jpg" alt="Mu kratha at the table">
+
+<hr>
+
+<div class="navbar"><a href="day4.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day6.html">Next day &rarr;</a><a class="lang-switch" href="../tag5.html" lang="de">DE</a></div>
+</body>
+</html>

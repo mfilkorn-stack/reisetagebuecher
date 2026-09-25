@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../style.css">
+<title>Tag 7 &ndash; Donnerstag/Freitag, 10./11. September &ndash; Tauchen am Wrack & Sairee bei Nacht</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="tag6.html">&larr; Vorheriger Tag</a><a href="index.html">&#8962; &Uuml;bersicht</a><a href="tag8.html">N&auml;chster Tag &rarr;</a><a class="lang-switch" href="en/day7.html" lang="en">EN</a></div>
+<h1>Tag 7 &ndash; Donnerstag/Freitag, 10./11. September &ndash; Tauchen am Wrack & Sairee bei Nacht</h1>
+<h2 class="map-heading">Karte</h2>
+<div id="map7" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "HTMS Sattakut", lat: 10.115, lng: 99.812, note: "Wracktauchgang", anchor: "wrack" },
+      { name: "Sairee Beach", lat: 10.1, lng: 99.827, note: "Abend", anchor: "sairee" }
+    ];
+    const map = L.map('map7').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap-Mitwirkende'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; Zum Tagebucheintrag</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="wrack"><strong>Tauchen an der HTMS Sattakut:</strong> Mit dem Tauchboot hinaus zur HTMS Sattakut, einem ehemaligen Landungsschiff der US Navy aus dem Zweiten Weltkrieg, das später bei der thailändischen Marine fuhr und 2011 vor Koh Tao als künstliches Riff versenkt wurde. Heute ist der Rumpf in rund 30 m Tiefe von Korallen bewachsen, das Geschütz am Bug ist noch zu erkennen, und rundherum ziehen riesige Fischschwärme.</p>
+<img src="images/tag7/01.jpg" alt="Auf dem Tauchboot">
+<img src="images/tag7/02.jpg" alt="Bewachsener Rumpf des Wracks">
+<img src="images/tag7/03.jpg" alt="Taucher am Geschütz des Wracks">
+<img src="images/tag7/04.jpg" alt="Fischschwarm am Riff">
+<p id="sairee"><strong>Sairee bei Nacht:</strong> Abends am Sairee Beach: Lichterketten und Laternen in den Bäumen, Tische direkt am Sand, Bars in weißen Grotten.</p>
+<img src="images/tag7/05.jpg" alt="Strandrestaurant mit Lichterketten">
+<img src="images/tag7/06.jpg" alt="Lounge unter Palmen">
+<img src="images/tag7/07.jpg" alt="Sitzecke bei Nacht">
+<img src="images/tag7/08.jpg" alt="Bar in einer weißen Grotte">
+<img src="images/tag7/09.jpg" alt="Laternen über den Tischen">
+<img src="images/tag7/10.jpg" alt="Restaurant am Strand">
+<img src="images/tag7/11.jpg" alt="Anstoßen mit Weißwein">
+<img src="images/tag7/12.jpg" alt="Andechser Weißbier auf Koh Tao">
+<img src="images/tag7/13.jpg" alt="Abendessen am letzten Abend auf Koh Tao">
+
+<hr>
+
+<div class="navbar"><a href="tag6.html">&larr; Vorheriger Tag</a><a href="index.html">&#8962; &Uuml;bersicht</a><a href="tag8.html">N&auml;chster Tag &rarr;</a><a class="lang-switch" href="en/day7.html" lang="en">EN</a></div>
+</body>
+</html>

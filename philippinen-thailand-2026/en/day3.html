@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../style.css">
+<title>Day 3 &ndash; Wednesday, September 2 &ndash; Whale Sharks in Oslob & On to Moalboal</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="day2.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day4.html">Next day &rarr;</a><a class="lang-switch" href="../tag3.html" lang="de">DE</a></div>
+<h1>Day 3 &ndash; Wednesday, September 2 &ndash; Whale Sharks in Oslob & On to Moalboal</h1>
+<h2 class="map-heading">Map</h2>
+<div id="map3" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Tan-awan, Oslob", lat: 9.479, lng: 123.379, note: "Whale sharks", anchor: "walhaie" },
+      { name: "Samboan", lat: 9.527, lng: 123.307, note: "On the way", anchor: "moalboal" },
+      { name: "Panagsama Beach, Moalboal", lat: 9.94, lng: 123.368, note: "Arrival", anchor: "moalboal" }
+    ];
+    const map = L.map('map3').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap contributors'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; To the diary entry</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="walhaie"><strong>Whale sharks in Tan-awan:</strong> Early in the morning, before the buses arrive, in the haze on the coast at Tan-awan. A few metres from shore, whale sharks – the world's largest fish, over twelve metres long, a harmless plankton feeder. With mask and snorkel they are within arm's reach. The fact that fishermen feed the animals so they stay here is controversial: marine biologists say it alters their migration.</p>
+<p class="more-info">&#8599; <a href="https://en.wikipedia.org/wiki/Whale_shark" target="_blank" rel="noopener noreferrer">Learn more</a></p>
+<img src="../images/tag3/01.jpg" alt="Jetty in the morning haze">
+<img src="../images/tag3/02.jpg" alt="In a life jacket at the shore">
+<img src="../images/tag3/03.jpg" alt="Whale shark underwater">
+<img src="../images/tag3/04.jpg" alt="Snorkeller above the whale sharks">
+<img src="../images/tag3/05.jpg" alt="Full-length whale shark">
+<img src="../images/tag3/06.jpg" alt="Whale shark from above">
+<img src="../images/tag3/07.jpg" alt="Two of us in the boat after snorkelling">
+<img src="../images/tag3/08.jpg" alt="Cross-legged above a whale shark">
+<p id="moalboal"><strong>On to Moalboal:</strong> Up the coast via Samboan to the west side of the island and Moalboal. Right off the shore at Panagsama the reef drops away steeply – home to a huge sardine run, millions of fish you can snorkel to straight from the beach. In the evening, sunset over the Tañon Strait, with Negros on the other side.</p>
+<img src="../images/tag3/09.jpg" alt="&quot;Samboan&quot; lettering">
+<img src="../images/tag3/10.jpg" alt="Menu of a beach bar">
+<img src="../images/tag3/11.jpg" alt="Painted wall on the beach">
+<img src="../images/tag3/12.jpg" alt="Selfie at sunset">
+<img src="../images/tag3/13.jpg" alt="Dugout in the evening light">
+<img src="../images/tag3/14.jpg" alt="Bar with flags on the ceiling">
+
+<hr>
+
+<div class="navbar"><a href="day2.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day4.html">Next day &rarr;</a><a class="lang-switch" href="../tag3.html" lang="de">DE</a></div>
+</body>
+</html>

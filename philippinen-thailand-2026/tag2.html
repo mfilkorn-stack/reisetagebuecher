@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../style.css">
+<title>Tag 2 &ndash; Dienstag, 1. September &ndash; Sumilon Island</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="tag1.html">&larr; Vorheriger Tag</a><a href="index.html">&#8962; &Uuml;bersicht</a><a href="tag3.html">N&auml;chster Tag &rarr;</a><a class="lang-switch" href="en/day2.html" lang="en">EN</a></div>
+<h1>Tag 2 &ndash; Dienstag, 1. September &ndash; Sumilon Island</h1>
+<h2 class="map-heading">Karte</h2>
+<div id="map2" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Bangcogon, Oslob", lat: 9.44, lng: 123.39, note: "Bootsanleger", anchor: "sumilon" },
+      { name: "Sumilon Island", lat: 9.433, lng: 123.39, note: "Inseltag", anchor: "sumilon" }
+    ];
+    const map = L.map('map2').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap-Mitwirkende'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; Zum Tagebucheintrag</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="sumilon"><strong>Sumilon Island:</strong> Mit dem Tricycle zum Anleger, dann ein paar Minuten mit dem Boot hinüber. Das Riff vor Sumilon wurde 1974 zum ersten Meeresschutzgebiet der Philippinen erklärt. Die Insel ist klein, bewaldet, mit einer Sandbank, die sich je nach Gezeiten verschiebt. Eine Höhle trägt den Namen des japanischen Generals Yamashita – der Legende nach soll hier ein Teil seines im Zweiten Weltkrieg versteckten Goldschatzes liegen.</p>
+<img src="images/tag2/01.jpg" alt="Mit dem Tricycle zum Anleger">
+<img src="images/tag2/02.jpg" alt="Steg mit Auslegerboot">
+<img src="images/tag2/03.jpg" alt="Selfie mit Schwimmweste">
+<img src="images/tag2/04.jpg" alt="Überfahrt nach Sumilon">
+<img src="images/tag2/05.jpg" alt="Infotafel zur Yamashita-Höhle">
+<img src="images/tag2/06.jpg" alt="Marienaltar in der Höhle">
+<img src="images/tag2/07.jpg" alt="Sandbank von Sumilon">
+<img src="images/tag2/08.jpg" alt="Türkises Wasser an der Sandbank">
+<img src="images/tag2/09.jpg" alt="Infinity-Pool mit Baum">
+<img src="images/tag2/10.jpg" alt="Ausflugsboot vor der Küste">
+<img src="images/tag2/11.jpg" alt="Klares Wasser über dem Riff">
+<img src="images/tag2/12.jpg" alt="Fischer im Einbaum">
+<img src="images/tag2/13.jpg" alt="Sandbank bei Sonne">
+<img src="images/tag2/14.jpg" alt="Abendessen mit Sisig">
+
+<hr>
+
+<div class="navbar"><a href="tag1.html">&larr; Vorheriger Tag</a><a href="index.html">&#8962; &Uuml;bersicht</a><a href="tag3.html">N&auml;chster Tag &rarr;</a><a class="lang-switch" href="en/day2.html" lang="en">EN</a></div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../style.css">
+<title>Day 6 &ndash; Monday–Wednesday, September 7–9 &ndash; Koh Tao: Snorkelling & Island Tour</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="day5.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day7.html">Next day &rarr;</a><a class="lang-switch" href="../tag6.html" lang="de">DE</a></div>
+<h1>Day 6 &ndash; Monday–Wednesday, September 7–9 &ndash; Koh Tao: Snorkelling & Island Tour</h1>
+<h2 class="map-heading">Map</h2>
+<div id="map6" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Koh Tao west coast", lat: 10.08, lng: 99.825, note: "Snorkelling", anchor: "inselrunde" },
+      { name: "Koh Nang Yuan", lat: 10.117, lng: 99.814, note: "Boat tour", anchor: "boot" }
+    ];
+    const map = L.map('map6').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap contributors'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; To the diary entry</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="inselrunde"><strong>Quiet days:</strong> Snorkelling in the bay – a small blacktip reef shark glides past just below the surface. Then som tam, spicy papaya salad, in an open wooden pavilion looking out to sea, and every evening the sunset from the terrace.</p>
+<img src="../images/tag6/01.jpg" alt="Small reef shark in shallow water">
+<img src="../images/tag6/02.jpg" alt="Bamboo roof of a restaurant">
+<img src="../images/tag6/03.jpg" alt="Open pavilion with sea view">
+<img src="../images/tag6/04.jpg" alt="Som tam, spicy papaya salad">
+<img src="../images/tag6/05.jpg" alt="Sunset from the terrace">
+<img src="../images/tag6/06.jpg" alt="Thai salad and pizza">
+<img src="../images/tag6/07.jpg" alt="Storm clouds over the island">
+<img src="../images/tag6/08.jpg" alt="Thai dinner">
+<p id="boot"><strong>Boat tour around the island:</strong> By boat around Koh Tao with snorkelling stops. Past Koh Nang Yuan, three small islands joined by a sandbar at low tide. On the way back, a rainbow over the jungle.</p>
+<img src="../images/tag6/09.jpg" alt="On board looking at the coast">
+<img src="../images/tag6/10.jpg" alt="Small island in the gulf">
+<img src="../images/tag6/11.jpg" alt="Backlight over the sea">
+<img src="../images/tag6/12.jpg" alt="Rainbow over the palms">
+<img src="../images/tag6/13.jpg" alt="Back to the harbour">
+
+<hr>
+
+<div class="navbar"><a href="day5.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day7.html">Next day &rarr;</a><a class="lang-switch" href="../tag6.html" lang="de">DE</a></div>
+</body>
+</html>
