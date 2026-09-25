@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../style.css">
+<title>Day 14 &ndash; Thursday, February 2 &ndash; Mérida: Pool & Pause</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="day13.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day15.html">Next day &rarr;</a><a class="lang-switch" href="../tag14.html" lang="de">DE</a></div>
+<h1>Day 14 &ndash; Thursday, February 2 &ndash; Mérida: Pool & Pause</h1>
+<h2 class="map-heading">Map</h2>
+<div id="map14" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Mérida Norte", lat: 21.0581, lng: -89.5934, note: "Pool and laptop", anchor: "pause" }
+    ];
+    const map = L.map('map14').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap contributors'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; To the diary entry</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="pause"><strong>Pause in Mérida:</strong> A day without plans: lounger by the pool, a bit of laptop time, sitting together in the evening. Exactly right after two weeks on the road.</p>
+<img src="../images/tag14/01.jpg" alt="Pool area with loungers">
+<img src="../images/tag14/02.jpg" alt="Laptop on the lounger by the pool">
+<img src="../images/tag14/03.jpg" alt="At the table in front of a wall map">
+<img src="../images/tag14/04.jpg" alt="Laughing selfie of two">
+
+<hr>
+
+<div class="navbar"><a href="day13.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day15.html">Next day &rarr;</a><a class="lang-switch" href="../tag14.html" lang="de">DE</a></div>
+</body>
+</html>

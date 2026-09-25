@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../style.css">
+<title>Day 8 &ndash; Friday, January 27 &ndash; Oaxaca → Cancún → Tulum</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="day7.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day9.html">Next day &rarr;</a><a class="lang-switch" href="../tag8.html" lang="de">DE</a></div>
+<h1>Day 8 &ndash; Friday, January 27 &ndash; Oaxaca → Cancún → Tulum</h1>
+<h2 class="map-heading">Map</h2>
+<div id="map8" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Oaxaca Airport", lat: 17.0006, lng: -96.721, note: "Departure", anchor: "weiter" },
+      { name: "Cancún Airport", lat: 21.0417, lng: -86.874, note: "Rental car", anchor: "weiter" },
+      { name: "Tulum, Aldea Zama", lat: 20.2033, lng: -87.4581, note: "Accommodation", anchor: "tulum" }
+    ];
+    const map = L.map('map8').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap contributors'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; To the diary entry</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="weiter"><strong>Travel day to the Caribbean:</strong> Goodbye to the mountains: flight from Oaxaca to Cancún on the Yucatán Peninsula. In the evening we pick up the rental car and drive about 1.5 hours down the coast to Tulum.</p>
+<img src="../images/tag8/01.jpg" alt="Runway in Oaxaca with mountains">
+<img src="../images/tag8/02.jpg" alt="Rental car at pick-up">
+<img src="../images/tag8/03.jpg" alt="Car rental at night in Cancún">
+<p id="tulum"><strong>Arrival in Tulum:</strong> Our place is in Aldea Zama, the new residential area between town and beach. After Oaxaca's colonial houses, this feels like a different country.</p>
+<img src="../images/tag8/04.jpg" alt="Modern living area in the apartment">
+
+<hr>
+
+<div class="navbar"><a href="day7.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day9.html">Next day &rarr;</a><a class="lang-switch" href="../tag8.html" lang="de">DE</a></div>
+</body>
+</html>

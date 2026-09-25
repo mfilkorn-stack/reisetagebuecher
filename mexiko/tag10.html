@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../style.css">
+<title>Tag 10 &ndash; Sonntag, 29. Januar &ndash; Tulum: Durchatmen</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="tag9.html">&larr; Vorheriger Tag</a><a href="index.html">&#8962; &Uuml;bersicht</a><a href="tag11.html">N&auml;chster Tag &rarr;</a><a class="lang-switch" href="en/day10.html" lang="en">EN</a></div>
+<h1>Tag 10 &ndash; Sonntag, 29. Januar &ndash; Tulum: Durchatmen</h1>
+<h2 class="map-heading">Karte</h2>
+<div id="map10" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Aldea Zama, Tulum", lat: 20.2033, lng: -87.4581, note: "Pool und Ruhe", anchor: "ruhe" }
+    ];
+    const map = L.map('map10').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap-Mitwirkende'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; Zum Tagebucheintrag</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="ruhe"><strong>Ruhetag:</strong> Nach dem Samstag braucht es genau das: Füße ins Meer, später in den Pool im Innenhof. Kein Programm, keine Uhr.</p>
+<img src="images/tag10/01.jpg" alt="Zu zweit im flachen Meer">
+<img src="images/tag10/02.jpg" alt="Pool im Innenhof mit Pflanzen">
+<img src="images/tag10/03.jpg" alt="Im Pool entspannen">
+
+<hr>
+
+<div class="navbar"><a href="tag9.html">&larr; Vorheriger Tag</a><a href="index.html">&#8962; &Uuml;bersicht</a><a href="tag11.html">N&auml;chster Tag &rarr;</a><a class="lang-switch" href="en/day10.html" lang="en">EN</a></div>
+</body>
+</html>

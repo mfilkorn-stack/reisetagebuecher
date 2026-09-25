@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../style.css">
+<title>Day 7 &ndash; Thursday, January 26 &ndash; Tacos, Mezcalería & the Zócalo at Night</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="day6.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day8.html">Next day &rarr;</a><a class="lang-switch" href="../tag7.html" lang="de">DE</a></div>
+<h1>Day 7 &ndash; Thursday, January 26 &ndash; Tacos, Mezcalería & the Zócalo at Night</h1>
+<h2 class="map-heading">Map</h2>
+<div id="map7" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Taquería", lat: 17.0615, lng: -96.717, note: "Tacos", anchor: "tacos" },
+      { name: "Mezcalería", lat: 17.0663, lng: -96.7247, note: "Mezcal tasting", anchor: "mezcaleria" },
+      { name: "Zócalo of Oaxaca", lat: 17.0604, lng: -96.7258, note: "Evening stroll", anchor: "zocalo" }
+    ];
+    const map = L.map('map7').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap contributors'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; To the diary entry</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="tacos"><strong>Tacos:</strong> A late taquería: grilled meat topped with onion, coriander and a battery of salsas &ndash; from mild to "careful".</p>
+<img src="../images/tag7/01.jpg" alt="Taquero at the counter">
+<img src="../images/tag7/02.jpg" alt="Laughing at the table with beer and salsas">
+<img src="../images/tag7/03.jpg" alt="Selection of salsas in metal bowls">
+<img src="../images/tag7/04.jpg" alt="Tacos on plates">
+<p id="mezcaleria"><strong>At the mezcalería:</strong> On to a mezcalería. Besides mezcal: regional craft beer and labels worth remembering.</p>
+<img src="../images/tag7/05.jpg" alt="Bottle of Matlacipa craft beer">
+<img src="../images/tag7/06.jpg" alt="Sketch of a mezcal bar on paper">
+<img src="../images/tag7/07.jpg" alt="Mezcal bottle in hand">
+<p id="zocalo"><strong>The Zócalo at night:</strong> In the evening Oaxaca's centre becomes a stage: esquites stands, costumed performers, families. Protest tents stand on the Zócalo &ndash; plantones, used for decades by groups to make their demands visible. The cathedral and arcades are warmly lit.</p>
+<p class="more-info">&#8599; <a href="https://en.wikipedia.org/wiki/Oaxaca_Cathedral" target="_blank" rel="noopener noreferrer">Learn more</a></p>
+<img src="../images/tag7/08.jpg" alt="Esquites stand in the evening">
+<img src="../images/tag7/09.jpg" alt="Protest banner on the Zócalo">
+<img src="../images/tag7/10.jpg" alt="In front of the cathedral at night">
+<img src="../images/tag7/11.jpg" alt="Illuminated arcades on the Zócalo">
+<img src="../images/tag7/12.jpg" alt="Street performer in a Predator costume">
+<p>Pop culture meets colonial backdrop: a "Predator" poses for kids' photos.</p>
+<img src="../images/tag7/13.jpg" alt="At the table with the waiter">
+<img src="../images/tag7/14.jpg" alt="&quot;Agua potable&quot; water truck in the old town">
+<p>At night the pipas roll in: Oaxaca suffers from chronic water shortages and many homes are supplied by tanker truck.</p>
+
+<hr>
+
+<div class="navbar"><a href="day6.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day8.html">Next day &rarr;</a><a class="lang-switch" href="../tag7.html" lang="de">DE</a></div>
+</body>
+</html>

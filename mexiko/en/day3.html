@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../style.css">
+<title>Day 3 &ndash; Sunday, January 22 &ndash; Centro Histórico: Revolución, Bellas Artes, Garibaldi</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="day2.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day4.html">Next day &rarr;</a><a class="lang-switch" href="../tag3.html" lang="de">DE</a></div>
+<h1>Day 3 &ndash; Sunday, January 22 &ndash; Centro Histórico: Revolución, Bellas Artes, Garibaldi</h1>
+<h2 class="map-heading">Map</h2>
+<div id="map3" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Monumento a la Revolución", lat: 19.4361, lng: -99.1547, note: "Brunch overlooking the monument", anchor: "revolucion" },
+      { name: "Alameda Central", lat: 19.4351, lng: -99.1432, note: "Sunday dancing in the park", anchor: "alameda" },
+      { name: "Palacio de Bellas Artes", lat: 19.4352, lng: -99.1412, note: "Palace of Fine Arts", anchor: "bellasartes" },
+      { name: "Calle Madero", lat: 19.4331, lng: -99.138, note: "Pedestrian street", anchor: "madero" },
+      { name: "Plaza Garibaldi", lat: 19.4409, lng: -99.139, note: "Mariachi", anchor: "garibaldi" }
+    ];
+    const map = L.map('map3').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap contributors'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; To the diary entry</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="revolucion"><strong>Monumento a la Revolución:</strong> Brunch on a rooftop terrace overlooking the Monument to the Revolution. It was originally planned as the dome of a gigantic legislative palace under Porfirio Díaz; the Revolution stopped the project and in 1938 the steel skeleton was turned into a monument. Its pillars now hold the remains of revolutionary heroes such as Madero, Carranza and Pancho Villa.</p>
+<p class="more-info">&#8599; <a href="https://en.wikipedia.org/wiki/Monumento_a_la_Revolución" target="_blank" rel="noopener noreferrer">Learn more</a></p>
+<img src="../images/tag3/01.jpg" alt="Monumento a la Revolución from above">
+<img src="../images/tag3/02.jpg" alt="On the rooftop terrace with the monument behind">
+<img src="../images/tag3/03.jpg" alt="Open kitchen of a restaurant">
+<p id="alameda"><strong>Sunday in the Alameda Central:</strong> The Alameda is the oldest public park in the Americas (1592). On Sundays it belongs to the people of the city: couples dance under the trees, folk dancers make their skirts fly.</p>
+<p class="more-info">&#8599; <a href="https://en.wikipedia.org/wiki/Alameda_Central" target="_blank" rel="noopener noreferrer">Learn more</a></p>
+<img src="../images/tag3/04.jpg" alt="Couples dancing in the park">
+<img src="../images/tag3/05.jpg" alt="Folk dancer with swirling skirt">
+<p id="bellasartes"><strong>Palacio de Bellas Artes:</strong> Art Nouveau marble façade, Art Deco interior: construction began in 1904 under Adamo Boari and was only finished in 1934, with a revolution and money problems in between. Inside hang murals by Rivera, Siqueiros and Orozco. The heavy building has been slowly sinking into the soft lakebed for decades.</p>
+<p class="more-info">&#8599; <a href="https://en.wikipedia.org/wiki/Palacio_de_Bellas_Artes" target="_blank" rel="noopener noreferrer">Learn more</a></p>
+<img src="../images/tag3/06.jpg" alt="Palacio de Bellas Artes with statue">
+<img src="../images/tag3/07.jpg" alt="Street performers as living statues in charro costume">
+<p>Living statues in gold-painted charro costume &ndash; a photo for a few pesos.</p>
+<p id="madero"><strong>Calle Madero and downtown:</strong> The pedestrian street Madero links Bellas Artes with the Zócalo and is packed on Sundays. A detour into the courtyard of a colonial palace, now full of restaurants under old trees.</p>
+<img src="../images/tag3/08.jpg" alt="Crowds on Calle Madero">
+<img src="../images/tag3/09.jpg" alt="Dancer in a white dress on the street">
+<img src="../images/tag3/10.jpg" alt="Courtyard with trees and restaurants">
+<p id="garibaldi"><strong>Plaza Garibaldi:</strong> The beating heart of mariachi music, UNESCO intangible heritage since 2011. Musicians in charro suits wait on the square for customers and play song after song for a fee in the surrounding cantinas. Bronze statues honour the great voices of ranchera music.</p>
+<p class="more-info">&#8599; <a href="https://en.wikipedia.org/wiki/Plaza_Garibaldi" target="_blank" rel="noopener noreferrer">Learn more</a></p>
+<img src="../images/tag3/11.jpg" alt="Mariachi band in a cantina">
+<img src="../images/tag3/12.jpg" alt="Mural with mariachis">
+<img src="../images/tag3/13.jpg" alt="Mariachis in white on Plaza Garibaldi">
+<img src="../images/tag3/14.jpg" alt="Statue of a singer in front of a red house">
+<img src="../images/tag3/15.jpg" alt="Lime squeezed into a beer bottle">
+<p>And finally: lime into the bottle. Salud!</p>
+
+<hr>
+
+<div class="navbar"><a href="day2.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day4.html">Next day &rarr;</a><a class="lang-switch" href="../tag3.html" lang="de">DE</a></div>
+</body>
+</html>

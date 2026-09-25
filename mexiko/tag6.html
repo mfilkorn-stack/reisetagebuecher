@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../style.css">
+<title>Tag 6 &ndash; Mittwoch, 25. Januar &ndash; Oaxaca: Comida & Mezcal</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="tag5.html">&larr; Vorheriger Tag</a><a href="index.html">&#8962; &Uuml;bersicht</a><a href="tag7.html">N&auml;chster Tag &rarr;</a><a class="lang-switch" href="en/day6.html" lang="en">EN</a></div>
+<h1>Tag 6 &ndash; Mittwoch, 25. Januar &ndash; Oaxaca: Comida & Mezcal</h1>
+<h2 class="map-heading">Karte</h2>
+<div id="map6" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Comedor im Centro", lat: 17.0624, lng: -96.7179, note: "Mittagessen & Mezcal", anchor: "comida" }
+    ];
+    const map = L.map('map6').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap-Mitwirkende'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; Zum Tagebucheintrag</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="comida"><strong>Comida im Comedor:</strong> Ein ruhiger Tag in der Stadt. Die Comida, die Hauptmahlzeit, gibt es in Mexiko am frühen Nachmittag &ndash; wir landen in einem einfachen Familienrestaurant: Quesadillas, Milanesa, dazu Salsas in allen Schärfegraden.</p>
+<img src="images/tag6/01.jpg" alt="Einfaches Restaurant mit Theke">
+<img src="images/tag6/02.jpg" alt="Schälchen mit Salsas und Limetten">
+<img src="images/tag6/03.jpg" alt="Quesadillas und Milanesa mit Salat">
+<p><strong>Mezcal:</strong> Nach dem Essen schenkt der Chef Mezcal aus der großen Flasche aus. Oaxaca produziert den Großteil des mexikanischen Mezcals, meist aus der Agave Espadín, deren Herzen in Erdöfen gegart werden &ndash; daher der rauchige Geschmack. Dazu: Orangenscheiben und Sal de gusano, Salz mit gemahlener Agavenraupe und Chili.</p>
+<p class="more-info">&#8599; <a href="https://de.wikipedia.org/wiki/Mezcal" target="_blank" rel="noopener noreferrer">Mehr erfahren</a></p>
+<img src="images/tag6/04.jpg" alt="Wirt schenkt Mezcal aus">
+<img src="images/tag6/05.jpg" alt="Theke mit Kuchen und Getränken">
+<img src="images/tag6/06.jpg" alt="Mezcal mit Orangenscheibe und Sal de gusano">
+<img src="images/tag6/07.jpg" alt="Am Tisch nach dem Essen">
+<img src="images/tag6/08.jpg" alt="Gasse mit Kakteen und Bougainvillea">
+<div class="tip"><strong>Tipp:</strong> Mezcal wird gesippt, nicht gekippt: in kleinen Schlucken, am besten aus der Jícara oder einem kleinen Glas. Die Orange mit Sal de gusano kommt danach.</div>
+
+<hr>
+
+<div class="navbar"><a href="tag5.html">&larr; Vorheriger Tag</a><a href="index.html">&#8962; &Uuml;bersicht</a><a href="tag7.html">N&auml;chster Tag &rarr;</a><a class="lang-switch" href="en/day6.html" lang="en">EN</a></div>
+</body>
+</html>

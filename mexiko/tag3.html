@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../style.css">
+<title>Tag 3 &ndash; Sonntag, 22. Januar &ndash; Centro Histórico: Revolución, Bellas Artes, Garibaldi</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="tag2.html">&larr; Vorheriger Tag</a><a href="index.html">&#8962; &Uuml;bersicht</a><a href="tag4.html">N&auml;chster Tag &rarr;</a><a class="lang-switch" href="en/day3.html" lang="en">EN</a></div>
+<h1>Tag 3 &ndash; Sonntag, 22. Januar &ndash; Centro Histórico: Revolución, Bellas Artes, Garibaldi</h1>
+<h2 class="map-heading">Karte</h2>
+<div id="map3" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Monumento a la Revolución", lat: 19.4361, lng: -99.1547, note: "Brunch mit Blick aufs Monument", anchor: "revolucion" },
+      { name: "Alameda Central", lat: 19.4351, lng: -99.1432, note: "Sonntagstanz im Park", anchor: "alameda" },
+      { name: "Palacio de Bellas Artes", lat: 19.4352, lng: -99.1412, note: "Kulturpalast", anchor: "bellasartes" },
+      { name: "Calle Madero", lat: 19.4331, lng: -99.138, note: "Fußgängerzone", anchor: "madero" },
+      { name: "Plaza Garibaldi", lat: 19.4409, lng: -99.139, note: "Mariachi", anchor: "garibaldi" }
+    ];
+    const map = L.map('map3').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap-Mitwirkende'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; Zum Tagebucheintrag</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="revolucion"><strong>Monumento a la Revolución:</strong> Brunch auf einer Dachterrasse mit Blick auf das Revolutionsdenkmal. Der Bau war ursprünglich als Kuppel eines gigantischen Parlamentspalasts unter Porfirio Díaz geplant; die Revolution stoppte das Projekt, 1938 wurde das Stahlskelett zum Denkmal umgebaut. In den Pfeilern liegen heute Helden der Revolution wie Madero, Carranza und Pancho Villa.</p>
+<p class="more-info">&#8599; <a href="https://de.wikipedia.org/wiki/Monumento_a_la_Revolución" target="_blank" rel="noopener noreferrer">Mehr erfahren</a></p>
+<img src="images/tag3/01.jpg" alt="Monumento a la Revolución von oben">
+<img src="images/tag3/02.jpg" alt="Auf der Dachterrasse mit dem Monument im Hintergrund">
+<img src="images/tag3/03.jpg" alt="Offene Küche eines Restaurants">
+<p id="alameda"><strong>Sonntag in der Alameda Central:</strong> Die Alameda ist der älteste öffentliche Park Amerikas (1592). Sonntags gehört sie den Menschen der Stadt: Paare tanzen unter den Bäumen, Folklore-Tänzerinnen lassen ihre Röcke fliegen.</p>
+<p class="more-info">&#8599; <a href="https://de.wikipedia.org/wiki/Alameda_Central" target="_blank" rel="noopener noreferrer">Mehr erfahren</a></p>
+<img src="images/tag3/04.jpg" alt="Paare tanzen im Park">
+<img src="images/tag3/05.jpg" alt="Folklore-Tänzerin mit schwingendem Rock">
+<p id="bellasartes"><strong>Palacio de Bellas Artes:</strong> Marmorfassade im Jugendstil, Innenräume im Art déco: Baubeginn 1904 unter Adamo Boari, fertig erst 1934 &ndash; dazwischen lagen Revolution und Geldnot. Innen hängen Wandbilder von Rivera, Siqueiros und Orozco. Der schwere Bau sinkt seit Jahrzehnten langsam in den weichen Seeboden.</p>
+<p class="more-info">&#8599; <a href="https://de.wikipedia.org/wiki/Palacio_de_Bellas_Artes" target="_blank" rel="noopener noreferrer">Mehr erfahren</a></p>
+<img src="images/tag3/06.jpg" alt="Palacio de Bellas Artes mit Reiterstatue">
+<img src="images/tag3/07.jpg" alt="Straßenkünstler als lebende Statuen in Charro-Tracht">
+<p>Lebende Statuen in goldbemalter Charro-Tracht &ndash; Fotomotiv gegen ein paar Pesos.</p>
+<p id="madero"><strong>Calle Madero und Downtown:</strong> Die Fußgängerzone Madero verbindet Bellas Artes mit dem Zócalo und ist sonntags brechend voll. Ein Abstecher in den Innenhof eines Kolonialpalasts, heute voller Restaurants unter alten Bäumen.</p>
+<img src="images/tag3/08.jpg" alt="Menschenmassen in der Calle Madero">
+<img src="images/tag3/09.jpg" alt="Tänzerin im weißen Kleid auf der Straße">
+<img src="images/tag3/10.jpg" alt="Innenhof mit Bäumen und Restaurants">
+<p id="garibaldi"><strong>Plaza Garibaldi:</strong> Hier schlägt das Herz der Mariachi-Musik, seit 2011 UNESCO-Kulturerbe. Die Musiker in Charro-Anzügen warten auf dem Platz auf Kundschaft und spielen in den Cantinas ringsum Lied für Lied gegen Bezahlung. Bronzestatuen erinnern an die großen Stimmen der Ranchera-Musik.</p>
+<p class="more-info">&#8599; <a href="https://de.wikipedia.org/wiki/Plaza_Garibaldi" target="_blank" rel="noopener noreferrer">Mehr erfahren</a></p>
+<img src="images/tag3/11.jpg" alt="Mariachi-Band in einer Cantina">
+<img src="images/tag3/12.jpg" alt="Wandgemälde mit Mariachis">
+<img src="images/tag3/13.jpg" alt="Mariachis in Weiß auf der Plaza Garibaldi">
+<img src="images/tag3/14.jpg" alt="Statue eines Sängers vor rotem Haus">
+<img src="images/tag3/15.jpg" alt="Limette wird in eine Bierflasche gedrückt">
+<p>Und zum Schluss: Limette in die Flasche. Salud!</p>
+
+<hr>
+
+<div class="navbar"><a href="tag2.html">&larr; Vorheriger Tag</a><a href="index.html">&#8962; &Uuml;bersicht</a><a href="tag4.html">N&auml;chster Tag &rarr;</a><a class="lang-switch" href="en/day3.html" lang="en">EN</a></div>
+</body>
+</html>

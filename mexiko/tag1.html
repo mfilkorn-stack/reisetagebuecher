@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../style.css">
+<title>Tag 1 &ndash; Freitag, 20. Januar &ndash; Anreise: Frankfurt → Mexiko-Stadt</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><span></span><a href="index.html">&#8962; &Uuml;bersicht</a><a href="tag2.html">N&auml;chster Tag &rarr;</a><a class="lang-switch" href="en/day1.html" lang="en">EN</a></div>
+<h1>Tag 1 &ndash; Freitag, 20. Januar &ndash; Anreise: Frankfurt → Mexiko-Stadt</h1>
+<h2 class="map-heading">Karte</h2>
+<div id="map1" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Flughafen Mexiko-Stadt (AICM)", lat: 19.4361, lng: -99.0719, note: "Landung am Abend", anchor: "ankunft" },
+      { name: "Roma / Condesa", lat: 19.413, lng: -99.17, note: "Erster Abend in der Stadt", anchor: "abend" }
+    ];
+    const map = L.map('map1').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap-Mitwirkende'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; Zum Tagebucheintrag</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="abflug"><strong>Abflug in Frankfurt:</strong> Der Urlaub beginnt, wo er beginnen sollte: in der Lounge, mit einem Bier in der Hand. Knapp zwölf Stunden Flug liegen vor uns, dazu sieben Stunden Zeitverschiebung &ndash; der Tag wird lang.</p>
+<img src="images/tag1/01.jpg" alt="In der Lounge am Frankfurter Flughafen">
+<img src="images/tag1/02.jpg" alt="Selfie im Flugzeug vor dem Start">
+<p>Gute Laune an Bord, bevor der Jetlag zuschlägt.</p>
+<img src="images/tag1/03.jpg" alt="Im Flugzeugsitz">
+<img src="images/tag1/04.jpg" alt="Bordmenü mit Salat und Hauptgang">
+<img src="images/tag1/05.jpg" alt="Blick aus dem Fenster auf verschneite Landschaft">
+<p>Irgendwo über dem Norden: Schneefelder und Wolken, so weit das Auge reicht.</p>
+
+<hr>
+
+<p id="ankunft"><strong>Landeanflug auf Mexiko-Stadt:</strong> Im Anflug zeigt sich das nächtliche Lichtermeer einer der größten Metropolregionen der Welt &ndash; über 20 Millionen Menschen auf rund 2.240 m Höhe in einem ehemaligen Seebecken. Die Stadt steht auf dem Grund des Texcoco-Sees, auf dem die Azteken einst Tenochtitlan gründeten.</p>
+<p class="more-info">&#8599; <a href="https://de.wikipedia.org/wiki/Mexiko-Stadt" target="_blank" rel="noopener noreferrer">Mehr erfahren</a></p>
+<img src="images/tag1/06.jpg" alt="Nächtliches Lichtermeer von Mexiko-Stadt aus dem Flugzeug">
+<img src="images/tag1/07.jpg" alt="Fahrt im Auto durch Mexiko-Stadt bei Nacht">
+<p>Mit dem Fahrer vom Flughafen in die Stadt &ndash; der erste Eindruck: Verkehr, auch um diese Uhrzeit.</p>
+<p id="abend"><strong>Erster Abend:</strong> Koffer abstellen, raus auf einen ersten Drink. Der Jetlag kann warten.</p>
+<img src="images/tag1/08.jpg" alt="Selfie beim ersten Drink am Abend">
+
+<hr>
+
+<div class="navbar"><span></span><a href="index.html">&#8962; &Uuml;bersicht</a><a href="tag2.html">N&auml;chster Tag &rarr;</a><a class="lang-switch" href="en/day1.html" lang="en">EN</a></div>
+</body>
+</html>
