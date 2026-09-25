@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../style.css">
+<title>Day 6 &ndash; Wednesday, November 19 &ndash; Fla-Flu at the Maracanã</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="day5.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day7.html">Next day &rarr;</a><a class="lang-switch" href="../tag6.html" lang="de">DE</a></div>
+<h1>Day 6 &ndash; Wednesday, November 19 &ndash; Fla-Flu at the Maracanã</h1>
+<h2 class="map-heading">Map</h2>
+<div id="map6" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Leme Beach", lat: -22.9657, lng: -43.1718, note: "Beach", anchor: "strand19" },
+      { name: "Botequim in Maracanã", lat: -22.9142, lng: -43.2336, note: "Pre-match with Flu fans", anchor: "vorher" },
+      { name: "Maracanã", lat: -22.9126, lng: -43.2297, note: "Fluminense – Flamengo 2–1", anchor: "maracana" }
+    ];
+    const map = L.map('map6').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap contributors'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; To the diary entry</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="strand19"><strong>Beach before the big game:</strong> One more morning in Leme: red flag for dangerous currents, caipirinhas in the sand.</p>
+<img src="../images/tag6/01.jpg" alt="Leme beach under blue sky">
+<img src="../images/tag6/02.jpg" alt="Selfie in front of the red warning flag">
+<img src="../images/tag6/03.jpg" alt="Two caipirinhas on the beach">
+<p id="vorher"><strong>Before the match:</strong> In the afternoon to Maracanã. In an old botequim, Fluminense fans gather in maroon, green and white – and we are right in the middle. The closer to the stadium, the denser the crowd.</p>
+<img src="../images/tag6/04.jpg" alt="Botequim full of Fluminense fans">
+<img src="../images/tag6/05.jpg" alt="Selfie at the botequim">
+<img src="../images/tag6/06.jpg" alt="Fan in a printed Fluminense shirt">
+<img src="../images/tag6/07.jpg" alt="Crowds of fans in the streets outside the stadium">
+<img src="../images/tag6/08.jpg" alt="Selfie in front of the Maracanã">
+<img src="../images/tag6/09.jpg" alt="Selfie with celebrating fans">
+<img src="../images/tag6/10.jpg" alt="Fluminense mural with fans in front">
+<p id="maracana"><strong>Fla-Flu at the Maracanã:</strong> The Maracanã was built for the 1950 World Cup; its official name is Estádio Jornalista Mário Filho, after the journalist who made the Fluminense vs Flamengo derby famous as the "Fla-Flu". The rivalry dates back to 1912. That night Fluminense win 2–1 – goals from Lucho Acosta (a stunner) and Serna. Flu's first Fla-Flu win of the year, and a setback for Flamengo in the title race.</p>
+<p class="more-info">&#8599; <a href="https://en.wikipedia.org/wiki/Fla–Flu" target="_blank" rel="noopener noreferrer">Learn more</a></p>
+<img src="../images/tag6/11.jpg" alt="Exterior of the Maracanã at night">
+<img src="../images/tag6/12.jpg" alt="View into the stadium before kick-off">
+<img src="../images/tag6/13.jpg" alt="Scoreboard and packed stands">
+<img src="../images/tag6/14.jpg" alt="Fans in the stands">
+<img src="../images/tag6/15.jpg" alt="Victory selfie with Fluminense fans">
+<div class="tip"><strong>Tip:</strong> Get tickets for the Fla-Flu early through the clubs' official member portals, and dress to match your section – maroon and green in the Flu end, red and black with Flamengo.</div>
+
+<hr>
+
+<div class="navbar"><a href="day5.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day7.html">Next day &rarr;</a><a class="lang-switch" href="../tag6.html" lang="de">DE</a></div>
+</body>
+</html>

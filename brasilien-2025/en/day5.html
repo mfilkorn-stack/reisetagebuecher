@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../style.css">
+<title>Day 5 &ndash; Tuesday, November 18 &ndash; Boat Trip to Ilha Grande</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="day4.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day6.html">Next day &rarr;</a><a class="lang-switch" href="../tag5.html" lang="de">DE</a></div>
+<h1>Day 5 &ndash; Tuesday, November 18 &ndash; Boat Trip to Ilha Grande</h1>
+<h2 class="map-heading">Map</h2>
+<div id="map5" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Mangaratiba", lat: -22.9167, lng: -43.9337, note: "Stopover", anchor: "anfahrt" },
+      { name: "Conceição de Jacareí", lat: -23.0316, lng: -44.161, note: "Boat pier", anchor: "ilhagrande" },
+      { name: "Ilha Grande", lat: -23.0887, lng: -44.2175, note: "Swimming stops", anchor: "ilhagrande" }
+    ];
+    const map = L.map('map5').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap contributors'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; To the diary entry</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="anfahrt"><strong>Along the Costa Verde:</strong> Early in the morning by tour bus from Rio down the Costa Verde, about two hours west. Coffee and coconut overlooking the bay of Mangaratiba.</p>
+<img src="../images/tag5/01.jpg" alt="View over the bay with coconut">
+<img src="../images/tag5/02.jpg" alt="Colourful tour bus">
+<p id="ilhagrande"><strong>Ilha Grande:</strong> By schooner out into the bay of Ilha Grande. The island is car-free and largely covered by Mata Atlântica, the Atlantic coastal rainforest. Until 1994 a notorious prison stood here, which long kept tourism away – today that is exactly its good fortune. Swimming stops in turquoise water, music and caipirinhas on board; on the way back dark clouds roll over the mountains.</p>
+<p class="more-info">&#8599; <a href="https://en.wikipedia.org/wiki/Ilha_Grande" target="_blank" rel="noopener noreferrer">Learn more</a></p>
+<img src="../images/tag5/03.jpg" alt="Selfie of three on board">
+<img src="../images/tag5/04.jpg" alt="Islands in the bay">
+<img src="../images/tag5/05.jpg" alt="Forested islands in the sea">
+<img src="../images/tag5/06.jpg" alt="Turquoise water off a green island">
+<img src="../images/tag5/07.jpg" alt="Motorboat at the beach">
+<img src="../images/tag5/08.jpg" alt="View from the boat to a cove">
+<img src="../images/tag5/09.jpg" alt="Party on board">
+<img src="../images/tag5/10.jpg" alt="Schooners at the pier">
+<img src="../images/tag5/11.jpg" alt="Dark clouds over the bay">
+<img src="../images/tag5/12.jpg" alt="Boats at anchor in the evening light">
+<p><strong>Back in Rio:</strong> On the way back a giant Christmas tree lights up the roadside – Advent at 30 degrees. In Leme there is still plenty going on in the evening.</p>
+<img src="../images/tag5/13.jpg" alt="Illuminated Christmas tree at night">
+<img src="../images/tag5/14.jpg" alt="Good spirits in the evening in Leme">
+
+<hr>
+
+<div class="navbar"><a href="day4.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day6.html">Next day &rarr;</a><a class="lang-switch" href="../tag5.html" lang="de">DE</a></div>
+</body>
+</html>

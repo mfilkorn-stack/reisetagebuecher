@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../style.css">
+<title>Day 2 &ndash; Friday, November 14 &ndash; Beach, Lapa & the Selarón Steps</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="day1.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day3.html">Next day &rarr;</a><a class="lang-switch" href="../tag2.html" lang="de">DE</a></div>
+<h1>Day 2 &ndash; Friday, November 14 &ndash; Beach, Lapa & the Selarón Steps</h1>
+<h2 class="map-heading">Map</h2>
+<div id="map2" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Leme Beach", lat: -22.965, lng: -43.1721, note: "Beach afternoon", anchor: "strand" },
+      { name: "Lapa Arches", lat: -22.9132, lng: -43.1805, note: "Evening in Lapa", anchor: "lapa" },
+      { name: "Selarón Steps", lat: -22.9153, lng: -43.1792, note: "Tiled staircase", anchor: "selaron" }
+    ];
+    const map = L.map('map2').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap contributors'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; To the diary entry</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="strand"><strong>Beach afternoon:</strong> Umbrella, plastic chairs, a caipirinha vendor every few minutes. At the end of the beach locals play football and footvolley in front of Morro do Leme.</p>
+<img src="../images/tag2/01.jpg" alt="Selfie of two under the beach umbrella">
+<img src="../images/tag2/02.jpg" alt="Beach chairs and umbrellas">
+<img src="../images/tag2/03.jpg" alt="Football on the beach in front of Morro do Leme">
+<p id="lapa"><strong>Lapa:</strong> In the evening to Lapa, the nightlife district. The white arches of the aqueduct, completed in 1750, once carried water into the city – since 1896 the tram to Santa Teresa has run across them. Dinner at a Peruvian place: ceviche and pisco.</p>
+<p class="more-info">&#8599; <a href="https://en.wikipedia.org/wiki/Carioca_Aqueduct" target="_blank" rel="noopener noreferrer">Learn more</a></p>
+<img src="../images/tag2/04.jpg" alt="Lapa arches at night">
+<img src="../images/tag2/05.jpg" alt="Mural with rooster and face">
+<img src="../images/tag2/06.jpg" alt="Neon sign &quot;I love Ceviche&quot;">
+<img src="../images/tag2/07.jpg" alt="Pisco drink in a glass">
+<img src="../images/tag2/08.jpg" alt="Ceviche plate on a colourful cloth">
+<img src="../images/tag2/09.jpg" alt="Busy street corner in Lapa">
+<p id="selaron"><strong>Selarón Steps:</strong> From 1990 the Chilean artist Jorge Selarón turned the 215 steps between Lapa and Santa Teresa into a mosaic of more than 2,000 tiles from over 60 countries – many of them gifts from visitors. He worked on it until his death in 2013.</p>
+<p class="more-info">&#8599; <a href="https://en.wikipedia.org/wiki/Selarón_Steps" target="_blank" rel="noopener noreferrer">Learn more</a></p>
+<img src="../images/tag2/10.jpg" alt="Sitting on the Selarón Steps">
+<img src="../images/tag2/11.jpg" alt="Tiles with the crests of Rio football clubs">
+<p>Rio's four big clubs on the tiles: Botafogo, Fluminense, Flamengo, Vasco.</p>
+<img src="../images/tag2/12.jpg" alt="Tile with the Girl with a Pearl Earring">
+<img src="../images/tag2/13.jpg" alt="View up the illuminated staircase">
+<img src="../images/tag2/14.jpg" alt="Colourful tile with cartoon figures">
+<img src="../images/tag2/15.jpg" alt="Bottle of Eisenbahn Pilsen">
+<p>To finish, an Eisenbahn – craft beer founded in 2002 in Blumenau, Brazil's most German city.</p>
+
+<hr>
+
+<div class="navbar"><a href="day1.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day3.html">Next day &rarr;</a><a class="lang-switch" href="../tag2.html" lang="de">DE</a></div>
+</body>
+</html>

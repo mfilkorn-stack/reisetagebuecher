@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../style.css">
+<title>Tag 3 &ndash; Samstag, 15. November &ndash; Copacabana & Forte de Copacabana</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="tag2.html">&larr; Vorheriger Tag</a><a href="index.html">&#8962; &Uuml;bersicht</a><a href="tag4.html">N&auml;chster Tag &rarr;</a><a class="lang-switch" href="en/day3.html" lang="en">EN</a></div>
+<h1>Tag 3 &ndash; Samstag, 15. November &ndash; Copacabana & Forte de Copacabana</h1>
+<h2 class="map-heading">Karte</h2>
+<div id="map3" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Leme", lat: -22.964, lng: -43.1727, note: "Mittag in der Bar", anchor: "mittag" },
+      { name: "Calçadão Copacabana", lat: -22.9677, lng: -43.1781, note: "Promenade", anchor: "promenade" },
+      { name: "Forte de Copacabana", lat: -22.9859, lng: -43.1873, note: "Festung am Ende des Strandes", anchor: "forte" },
+      { name: "Drummond-Statue", lat: -22.9844, lng: -43.1891, note: "Abend", anchor: "abend" }
+    ];
+    const map = L.map('map3').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap-Mitwirkende'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; Zum Tagebucheintrag</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="mittag"><strong>Mittag in Leme:</strong> Ein Botequim an der Ecke, Fußball im Fernsehen, Picanha auf dem Holzbrett. Samstagmittag in Rio.</p>
+<img src="images/tag3/01.jpg" alt="Selfie in der Bar mit Fußball im Fernsehen">
+<img src="images/tag3/02.jpg" alt="Fleisch und Beilagen auf dem Tisch">
+<p id="promenade"><strong>Auf dem Calçadão:</strong> Zu Fuß die Copacabana entlang. Das Wellenmuster des Calçadão stammt ursprünglich aus Portugal; der Landschaftsarchitekt Roberto Burle Marx gestaltete die Promenade 1970 neu. Unterwegs: eine riesige gelbe Schuh-Installation am Strand, Trikotverkäufer, Rettungsschwimmer-Posten.</p>
+<p class="more-info">&#8599; <a href="https://de.wikipedia.org/wiki/Roberto_Burle_Marx" target="_blank" rel="noopener noreferrer">Mehr erfahren</a></p>
+<img src="images/tag3/03.jpg" alt="Riesige gelbe Schuh-Skulptur am Strand">
+<img src="images/tag3/04.jpg" alt="Menschen auf der Promenade">
+<img src="images/tag3/05.jpg" alt="Trikots zum Verkauf auf dem Mosaikpflaster">
+<img src="images/tag3/06.jpg" alt="Rettungsschwimmer-Station Guarda-Vidas">
+<p id="forte"><strong>Forte de Copacabana:</strong> Am Südende der Copacabana liegt das Fort, 1914 fertiggestellt, mit schweren Krupp-Geschützen in Panzerkuppeln. 1922 begann hier der Aufstand der „18 do Forte", junger Offiziere gegen die Regierung – Auftakt der Tenentismo-Bewegung. Heute Armeemuseum mit dem vielleicht schönsten Blick zurück über die ganze Bucht bis zum Zuckerhut.</p>
+<p class="more-info">&#8599; <a href="https://de.wikipedia.org/wiki/Forte_de_Copacabana" target="_blank" rel="noopener noreferrer">Mehr erfahren</a></p>
+<img src="images/tag3/07.jpg" alt="Eingangstor des Forte de Copacabana">
+<img src="images/tag3/08.jpg" alt="Geschütz vor der Copacabana-Kulisse">
+<img src="images/tag3/09.jpg" alt="Festungsmauer und Blick zum Zuckerhut">
+<img src="images/tag3/10.jpg" alt="Brasilianische Flagge über der Festung">
+<img src="images/tag3/11.jpg" alt="Geschützrohr über der Bucht">
+<img src="images/tag3/12.jpg" alt="Copacabana in der Dämmerung vom Fort">
+<img src="images/tag3/13.jpg" alt="Drei Craft-Biere mit Blick auf die Bucht">
+<p id="abend"><strong>Carlos Drummond de Andrade:</strong> Auf dem Rückweg sitzt Brasiliens großer Dichter Carlos Drummond de Andrade als Bronzefigur auf einer Bank – seit 2002, mit Blick aufs Meer. Auf der Lehne sein Vers: „No mar estava escrita uma cidade" – im Meer stand eine Stadt geschrieben.</p>
+<p class="more-info">&#8599; <a href="https://de.wikipedia.org/wiki/Carlos_Drummond_de_Andrade" target="_blank" rel="noopener noreferrer">Mehr erfahren</a></p>
+<img src="images/tag3/14.jpg" alt="Auf der Bank neben der Drummond-Statue">
+<img src="images/tag3/15.jpg" alt="Brasilianisches Abendessen mit Reis, Bohnen und Farofa">
+
+<hr>
+
+<div class="navbar"><a href="tag2.html">&larr; Vorheriger Tag</a><a href="index.html">&#8962; &Uuml;bersicht</a><a href="tag4.html">N&auml;chster Tag &rarr;</a><a class="lang-switch" href="en/day3.html" lang="en">EN</a></div>
+</body>
+</html>

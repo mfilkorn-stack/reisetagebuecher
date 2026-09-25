@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../style.css">
+<title>Day 7 &ndash; Thursday, November 20 &ndash; Tattoo, Centro & Porto Maravilha</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="day6.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day8.html">Next day &rarr;</a><a class="lang-switch" href="../tag7.html" lang="de">DE</a></div>
+<h1>Day 7 &ndash; Thursday, November 20 &ndash; Tattoo, Centro & Porto Maravilha</h1>
+<h2 class="map-heading">Map</h2>
+<div id="map7" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Copacabana", lat: -22.9655, lng: -43.1792, note: "Tattoo studio", anchor: "tattoo" },
+      { name: "Orla Conde", lat: -22.8958, lng: -43.1794, note: "Waterfront promenade", anchor: "centro" },
+      { name: "Candelária Church", lat: -22.9002, lng: -43.1755, note: "Church", anchor: "centro" },
+      { name: "Museum of Tomorrow", lat: -22.8953, lng: -43.1798, note: "Museum", anchor: "porto" }
+    ];
+    const map = L.map('map7').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap contributors'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; To the diary entry</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="tattoo"><strong>A souvenir for life:</strong> The night after the derby was long – the Flu fans celebrated in front of their local bar until after midnight. At midday, a souvenir that lasts: Christ the Redeemer as a tattoo on the upper arm.</p>
+<img src="../images/tag7/01.jpg" alt="&quot;Flu Esquina&quot; bar with graffiti">
+<img src="../images/tag7/02.jpg" alt="Fans celebrating on the street after midnight">
+<img src="../images/tag7/03.jpg" alt="Street market with fruit and flowers">
+<img src="../images/tag7/04.jpg" alt="Tattoo studio logo">
+<img src="../images/tag7/05.jpg" alt="Fresh Christ the Redeemer tattoo on the upper arm">
+<p id="centro"><strong>Centro on a holiday:</strong> November 20 is Dia da Consciência Negra, a nationwide holiday since 2024 in memory of Zumbi dos Palmares, leader of the largest quilombo community of escaped slaves. The city centre is packed, bands play on the streets of the old town. In the evening Candelária Church glows in the dusk.</p>
+<p class="more-info">&#8599; <a href="https://en.wikipedia.org/wiki/Black_Consciousness_Day" target="_blank" rel="noopener noreferrer">Learn more</a></p>
+<img src="../images/tag7/06.jpg" alt="Colonial houses on Avenida Rio Branco">
+<img src="../images/tag7/07.jpg" alt="Museum of Tomorrow on the waterfront">
+<img src="../images/tag7/08.jpg" alt="Selfie on Guanabara Bay">
+<img src="../images/tag7/09.jpg" alt="Crowds and market stalls in Centro">
+<img src="../images/tag7/10.jpg" alt="Superhero mural">
+<img src="../images/tag7/11.jpg" alt="Live music and crowds in the old town">
+<img src="../images/tag7/12.jpg" alt="Candelária Church at dusk">
+<p id="porto"><strong>Porto Maravilha:</strong> The old port district was completely redeveloped before the 2016 Olympics. Its landmark is Santiago Calatrava's Museum of Tomorrow (2015), whose white ribbed structure juts into the bay like a skeleton. Next to it, an old "Made in Germany" harbour crane recalls the past.</p>
+<p class="more-info">&#8599; <a href="https://en.wikipedia.org/wiki/Museum_of_Tomorrow" target="_blank" rel="noopener noreferrer">Learn more</a></p>
+<img src="../images/tag7/13.jpg" alt="Waterfront promenade at dusk">
+<img src="../images/tag7/14.jpg" alt="Ribbed structure of the Museum of Tomorrow">
+<img src="../images/tag7/15.jpg" alt="Old &quot;Made in Germany&quot; harbour crane">
+
+<hr>
+
+<div class="navbar"><a href="day6.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day8.html">Next day &rarr;</a><a class="lang-switch" href="../tag7.html" lang="de">DE</a></div>
+</body>
+</html>
