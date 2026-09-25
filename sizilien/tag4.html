@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../style.css">
+<title>Tag 4 &ndash; Ostermontag, 21. – Mittwoch, 23. April &ndash; Ätna</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="tag3.html">&larr; Vorheriger Tag</a><a href="index.html">&#8962; &Uuml;bersicht</a><a href="tag5.html">N&auml;chster Tag &rarr;</a><a class="lang-switch" href="en/day4.html" lang="en">EN</a></div>
+<h1>Tag 4 &ndash; Ostermontag, 21. – Mittwoch, 23. April &ndash; Ätna</h1>
+<h2 class="map-heading">Karte</h2>
+<div id="map4" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Nicosia", lat: 37.747, lng: 14.397, note: "Abfahrt", anchor: "aetna" },
+      { name: "Ätna-Nordseite", lat: 37.79, lng: 15.04, note: "Lavafelder", anchor: "aetna" },
+      { name: "Linguaglossa", lat: 37.842, lng: 15.142, note: "Weinbar", anchor: "wein" },
+      { name: "Milo", lat: 37.723, lng: 15.116, note: "Weingut", anchor: "wein" }
+    ];
+    const map = L.map('map4').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap-Mitwirkende'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; Zum Tagebucheintrag</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="aetna"><strong>Auf den Ätna:</strong> Von Nicosia über das Inselinnere zum Ätna. Mit rund 3.300 m ist er der höchste aktive Vulkan Europas und seit 2013 UNESCO-Welterbe. Mit dem Geländebus geht es auf der Nordseite bei Linguaglossa hinauf in die Lavafelder, zwischen Kratern und Polstern aus Tragant, oben liegt noch Schnee.</p>
+<p class="more-info">&#8599; <a href="https://de.wikipedia.org/wiki/Ätna" target="_blank" rel="noopener noreferrer">Mehr erfahren</a></p>
+<img src="images/tag4/01.jpg" alt="Hügellandschaft bei Nicosia">
+<img src="images/tag4/02.jpg" alt="Geländebusse am Lavafeld">
+<img src="images/tag4/03.jpg" alt="Abstieg über schwarze Lava">
+<img src="images/tag4/04.jpg" alt="Unterwegs am Kraterrand">
+<img src="images/tag4/05.jpg" alt="Grüne Polster auf der Lava">
+<img src="images/tag4/06.jpg" alt="Schnee am Hang des Ätna">
+<p id="wein"><strong>Etna-Wein:</strong> Die Lavaböden machen den Ätna zu einer der spannendsten Weinregionen Italiens: Nerello Mascalese für Rotwein, Carricante für Weißwein, die Etna DOC gibt es seit 1968. Abends in einer Weinbar in Linguaglossa, am Mittwoch auf einem Weingut bei Milo. Dazwischen eine Riesenbank mit Blick über den Vulkanhang.</p>
+<p class="more-info">&#8599; <a href="https://de.wikipedia.org/wiki/Etna_(Weinbaugebiet)" target="_blank" rel="noopener noreferrer">Mehr erfahren</a></p>
+<img src="images/tag4/07.jpg" alt="Gasse in Linguaglossa">
+<img src="images/tag4/08.jpg" alt="Etna-Weine auf der Theke">
+<img src="images/tag4/09.jpg" alt="Rotwein wird eingeschenkt">
+<img src="images/tag4/10.jpg" alt="Zu dritt auf der roten Riesenbank">
+<img src="images/tag4/11.jpg" alt="Weinflaschen auf einem Fass">
+<img src="images/tag4/12.jpg" alt="Karte der Etna-DOC-Lagen">
+<img src="images/tag4/13.jpg" alt="Alte Weinpresse">
+<img src="images/tag4/14.jpg" alt="Probierraum des Weinguts">
+
+<hr>
+
+<div class="navbar"><a href="tag3.html">&larr; Vorheriger Tag</a><a href="index.html">&#8962; &Uuml;bersicht</a><a href="tag5.html">N&auml;chster Tag &rarr;</a><a class="lang-switch" href="en/day4.html" lang="en">EN</a></div>
+</body>
+</html>

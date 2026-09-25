@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../style.css">
+<title>Tag 13 &ndash; Freitag/Samstag, 29./30. November &ndash; Zurück nach Rio: Cristo, Sambódromo & Porto</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="tag12.html">&larr; Vorheriger Tag</a><a href="index.html">&#8962; &Uuml;bersicht</a><span></span><a class="lang-switch" href="en/day13.html" lang="en">EN</a></div>
+<h1>Tag 13 &ndash; Freitag/Samstag, 29./30. November &ndash; Zurück nach Rio: Cristo, Sambódromo & Porto</h1>
+<h2 class="map-heading">Karte</h2>
+<div id="map13" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Flughafen Santos Dumont", lat: -22.9105, lng: -43.1631, note: "Ankunft", anchor: "zurueck" },
+      { name: "Cristo Redentor", lat: -22.9519, lng: -43.2105, note: "Corcovado", anchor: "cristo" },
+      { name: "Sambódromo", lat: -22.911, lng: -43.1965, note: "Sambaschulen", anchor: "centro" },
+      { name: "Museu do Amanhã", lat: -22.8953, lng: -43.1798, note: "Hafen", anchor: "centro" }
+    ];
+    const map = L.map('map13').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap-Mitwirkende'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; Zum Tagebucheintrag</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="zurueck"><strong>Zurück nach Rio:</strong> Frühstück, dann von Florianópolis über Congonhas zum Stadtflughafen Santos Dumont, der direkt an der Guanabara-Bucht liegt. Die G20-Banner hängen noch.</p>
+<img src="images/tag13/01.jpg" alt="Frühstück mit Avocado-Toast">
+<img src="images/tag13/02.jpg" alt="Volle Halle am Flughafen Congonhas">
+<img src="images/tag13/03.jpg" alt="G20-Banner an der Straße">
+<p id="cristo"><strong>Cristo Redentor:</strong> Mit der Zahnradbahn von 1884 durch den Tijuca-Wald auf den Corcovado. Oben die Christusstatue, 1931 eingeweiht, 30 m hoch auf 8 m Sockel, seit 2007 eines der „neuen sieben Weltwunder". Von hier sieht man die ganze Stadt, bis zum Maracanã.</p>
+<p class="more-info">&#8599; <a href="https://de.wikipedia.org/wiki/Cristo_Redentor" target="_blank" rel="noopener noreferrer">Mehr erfahren</a></p>
+<img src="images/tag13/04.jpg" alt="Gleis der Zahnradbahn im Wald">
+<img src="images/tag13/05.jpg" alt="Cristo Redentor von der Seite">
+<img src="images/tag13/06.jpg" alt="Blick über Rio bis zum Maracanã">
+<img src="images/tag13/07.jpg" alt="Mit ausgebreiteten Armen vor der Statue">
+<img src="images/tag13/08.jpg" alt="Blick auf die Lagoa Rodrigo de Freitas">
+<img src="images/tag13/09.jpg" alt="Selfie zu dritt vor dem Cristo">
+<p id="centro"><strong>Sambódromo, Saara und Hafen:</strong> Nachmittags noch einmal am Sambódromo, wo in den Hallen schon an Wagen und Kostümen für den Karneval gebaut wird, dann durch die Saara, Rios größtes Einkaufsviertel unter freiem Himmel, und zum Hafen: der Nachbau eines portugiesischen Entdeckerschiffs, das Museu do Amanhã. Am Sonntag, 1. Dezember, geht es über Lissabon nach Hause.</p>
+<img src="images/tag13/10.jpg" alt="Tribünen des Sambódromo">
+<img src="images/tag13/11.jpg" alt="Riesige Baiana-Figur">
+<img src="images/tag13/12.jpg" alt="Karnevalswagen in einer Halle">
+<img src="images/tag13/13.jpg" alt="Kleiderstände in der Saara">
+<img src="images/tag13/14.jpg" alt="Nachbau eines Entdeckerschiffs im Hafen">
+<img src="images/tag13/15.jpg" alt="Museu do Amanhã">
+
+<hr>
+
+<div class="navbar"><a href="tag12.html">&larr; Vorheriger Tag</a><a href="index.html">&#8962; &Uuml;bersicht</a><span></span><a class="lang-switch" href="en/day13.html" lang="en">EN</a></div>
+</body>
+</html>

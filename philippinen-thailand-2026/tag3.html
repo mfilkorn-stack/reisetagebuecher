@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../style.css">
+<title>Tag 3 &ndash; Mittwoch, 2. September &ndash; Walhaie in Oslob & weiter nach Moalboal</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="tag2.html">&larr; Vorheriger Tag</a><a href="index.html">&#8962; &Uuml;bersicht</a><a href="tag4.html">N&auml;chster Tag &rarr;</a><a class="lang-switch" href="en/day3.html" lang="en">EN</a></div>
+<h1>Tag 3 &ndash; Mittwoch, 2. September &ndash; Walhaie in Oslob & weiter nach Moalboal</h1>
+<h2 class="map-heading">Karte</h2>
+<div id="map3" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Tan-awan, Oslob", lat: 9.479, lng: 123.379, note: "Walhaie", anchor: "walhaie" },
+      { name: "Samboan", lat: 9.527, lng: 123.307, note: "Unterwegs", anchor: "moalboal" },
+      { name: "Panagsama Beach, Moalboal", lat: 9.94, lng: 123.368, note: "Ankunft", anchor: "moalboal" }
+    ];
+    const map = L.map('map3').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap-Mitwirkende'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; Zum Tagebucheintrag</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="walhaie"><strong>Walhaie in Tan-awan:</strong> Früh am Morgen, bevor die Busse kommen, im Dunst an der Küste von Tan-awan. Ein paar Meter vom Ufer entfernt schwimmen Walhaie – der größte Fisch der Welt, bis über zwölf Meter lang, ein harmloser Planktonfresser. Mit Maske und Schnorchel sind sie zum Greifen nah. Dass die Tiere hier von Fischern gefüttert werden, damit sie bleiben, ist umstritten: Meeresbiologen kritisieren, dass es ihr Wanderverhalten verändert.</p>
+<p class="more-info">&#8599; <a href="https://de.wikipedia.org/wiki/Walhai" target="_blank" rel="noopener noreferrer">Mehr erfahren</a></p>
+<img src="images/tag3/01.jpg" alt="Steg im Morgendunst">
+<img src="images/tag3/02.jpg" alt="Mit Schwimmweste am Ufer">
+<img src="images/tag3/03.jpg" alt="Walhai unter Wasser">
+<img src="images/tag3/04.jpg" alt="Schnorchler über den Walhaien">
+<img src="images/tag3/05.jpg" alt="Walhai in voller Länge">
+<img src="images/tag3/06.jpg" alt="Walhai von oben">
+<img src="images/tag3/07.jpg" alt="Zu zweit im Boot nach dem Schnorcheln">
+<img src="images/tag3/08.jpg" alt="Im Schneidersitz über einem Walhai">
+<p id="moalboal"><strong>Weiter nach Moalboal:</strong> Die Küste hinauf über Samboan an die Westseite der Insel nach Moalboal. Direkt am Ufer von Panagsama fällt das Riff steil ab – dort zieht ein riesiger Schwarm Sardinen, Millionen Fische, die man vom Strand aus erschnorcheln kann. Abends Sonnenuntergang über der Tañon-Straße, auf der anderen Seite liegt Negros.</p>
+<img src="images/tag3/09.jpg" alt="Schriftzug „Samboan&quot;">
+<img src="images/tag3/10.jpg" alt="Speisekarte einer Strandbar">
+<img src="images/tag3/11.jpg" alt="Bemalte Wand am Strand">
+<img src="images/tag3/12.jpg" alt="Selfie bei Sonnenuntergang">
+<img src="images/tag3/13.jpg" alt="Einbaum im Abendlicht">
+<img src="images/tag3/14.jpg" alt="Bar mit Fahnen an der Decke">
+
+<hr>
+
+<div class="navbar"><a href="tag2.html">&larr; Vorheriger Tag</a><a href="index.html">&#8962; &Uuml;bersicht</a><a href="tag4.html">N&auml;chster Tag &rarr;</a><a class="lang-switch" href="en/day3.html" lang="en">EN</a></div>
+</body>
+</html>

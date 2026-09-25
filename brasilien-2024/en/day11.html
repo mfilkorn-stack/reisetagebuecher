@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../style.css">
+<title>Day 11 &ndash; Wednesday, November 27 &ndash; Campeche Island</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="day10.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day12.html">Next day &rarr;</a><a class="lang-switch" href="../tag11.html" lang="de">DE</a></div>
+<h1>Day 11 &ndash; Wednesday, November 27 &ndash; Campeche Island</h1>
+<h2 class="map-heading">Map</h2>
+<div id="map11" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Campeche Island", lat: -27.697, lng: -48.463, note: "Island trip", anchor: "campeche" },
+      { name: "Campeche Beach", lat: -27.68, lng: -48.48, note: "Evening", anchor: "campeche" }
+    ];
+    const map = L.map('map11').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap contributors'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; To the diary entry</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="campeche"><strong>Campeche Island:</strong> By boat to the small island off Campeche beach, often called "the Caribbean of Florianópolis". As an archaeological site with prehistoric rock carvings it is protected national heritage, and daily visitor numbers are limited. White sand, turquoise water – and curious coatis rummaging under the bushes for food.</p>
+<img src="../images/tag11/01.jpg" alt="Selfie before departure">
+<img src="../images/tag11/02.jpg" alt="On the boat towards the island">
+<img src="../images/tag11/03.jpg" alt="Campeche Island from the sea">
+<img src="../images/tag11/04.jpg" alt="At the bow of the boat">
+<img src="../images/tag11/05.jpg" alt="Getting off in shallow water">
+<img src="../images/tag11/06.jpg" alt="White sand beach of the island">
+<img src="../images/tag11/07.jpg" alt="Coati under a bush">
+<p>Coatis (quatis) live wild on the island – feeding them is forbidden.</p>
+<img src="../images/tag11/08.jpg" alt="Coati in the sand">
+<img src="../images/tag11/09.jpg" alt="Walking back along the jetty to the boat">
+<img src="../images/tag11/10.jpg" alt="Turquoise water off the island">
+<img src="../images/tag11/11.jpg" alt="Island with contrails">
+<img src="../images/tag11/12.jpg" alt="Rocky coast on the way back">
+<img src="../images/tag11/13.jpg" alt="Illuminated boardwalk in the evening">
+
+<hr>
+
+<div class="navbar"><a href="day10.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day12.html">Next day &rarr;</a><a class="lang-switch" href="../tag11.html" lang="de">DE</a></div>
+</body>
+</html>

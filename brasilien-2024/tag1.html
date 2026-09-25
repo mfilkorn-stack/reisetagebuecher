@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../style.css">
+<title>Tag 1 &ndash; Mittwoch/Donnerstag, 13./14. November &ndash; Ankunft in Rio: Barra, Ipanema, Copacabana</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><span></span><a href="index.html">&#8962; &Uuml;bersicht</a><a href="tag2.html">N&auml;chster Tag &rarr;</a><a class="lang-switch" href="en/day1.html" lang="en">EN</a></div>
+<h1>Tag 1 &ndash; Mittwoch/Donnerstag, 13./14. November &ndash; Ankunft in Rio: Barra, Ipanema, Copacabana</h1>
+<h2 class="map-heading">Karte</h2>
+<div id="map1" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Barra da Tijuca", lat: -23.01, lng: -43.323, note: "Erster Strandtag", anchor: "barra" },
+      { name: "Ipanema", lat: -22.987, lng: -43.205, note: "Sonnenuntergang", anchor: "ipanema" },
+      { name: "Copacabana", lat: -22.97, lng: -43.183, note: "Erster Abend", anchor: "ipanema" }
+    ];
+    const map = L.map('map1').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap-Mitwirkende'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; Zum Tagebucheintrag</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="barra"><strong>Ankunft und Barra da Tijuca:</strong> Abflug, Nachtflug, Ankunft am Abend – und direkt zur Churrascaria. Am ersten Morgen dann Barra da Tijuca: gut 18 km Strand im Westen Rios, draußen im Meer die Ilhas Tijucas. Überall hängen Plakate des G20-Gipfels, der wenige Tage später, am 18. und 19. November 2024, in Rio stattfindet.</p>
+<p class="more-info">&#8599; <a href="https://de.wikipedia.org/wiki/Barra_da_Tijuca" target="_blank" rel="noopener noreferrer">Mehr erfahren</a></p>
+<img src="images/tag1/01.jpg" alt="Selfie am Flughafen vor dem Abflug">
+<img src="images/tag1/02.jpg" alt="Churrasco-Teller mit Fleisch am ersten Abend">
+<img src="images/tag1/03.jpg" alt="Strand von Barra da Tijuca mit Inseln">
+<img src="images/tag1/04.jpg" alt="Selfie zu dritt in der Strandbar">
+<img src="images/tag1/05.jpg" alt="Rettungsschwimmer-Posten mit G20-Logo">
+<p>Rio war 2024 Gastgeber des G20-Gipfels – selbst die Strandposten tragen das Logo.</p>
+<img src="images/tag1/06.jpg" alt="Zu zweit auf einer Strandschaukel">
+<img src="images/tag1/07.jpg" alt="Gruppenselfie am Strand">
+<img src="images/tag1/08.jpg" alt="Wandbild am Fuß von Vidigal">
+<p id="ipanema"><strong>Ipanema und Copacabana:</strong> Auf dem Rückweg entlang Leblon und Ipanema: das Mosaikpflaster der Promenade, dahinter der Doppelgipfel Dois Irmãos. Abends an der Copacabana – Bier, Sandskulpturen, das volle Programm.</p>
+<p class="more-info">&#8599; <a href="https://de.wikipedia.org/wiki/Ipanema" target="_blank" rel="noopener noreferrer">Mehr erfahren</a></p>
+<img src="images/tag1/09.jpg" alt="Promenade von Ipanema mit Dois Irmãos">
+<img src="images/tag1/10.jpg" alt="Palmen am nächtlichen Strand">
+<img src="images/tag1/11.jpg" alt="Beleuchtete Strandpromenade">
+<img src="images/tag1/12.jpg" alt="Runde in einer Strandbar">
+<img src="images/tag1/13.jpg" alt="Sandskulptur „Eu ❤ Rio&quot; mit Cristo">
+<img src="images/tag1/14.jpg" alt="Brahma-Zapfsäule an der Promenade">
+<img src="images/tag1/15.jpg" alt="Gruppenselfie am ersten Abend">
+
+<hr>
+
+<div class="navbar"><span></span><a href="index.html">&#8962; &Uuml;bersicht</a><a href="tag2.html">N&auml;chster Tag &rarr;</a><a class="lang-switch" href="en/day1.html" lang="en">EN</a></div>
+</body>
+</html>

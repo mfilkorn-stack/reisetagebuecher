@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../style.css">
+<title>Tag 3 &ndash; Karsamstag, 19. April &ndash; Castel di Tusa & Castelbuono</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="tag2.html">&larr; Vorheriger Tag</a><a href="index.html">&#8962; &Uuml;bersicht</a><a href="tag4.html">N&auml;chster Tag &rarr;</a><a class="lang-switch" href="en/day3.html" lang="en">EN</a></div>
+<h1>Tag 3 &ndash; Karsamstag, 19. April &ndash; Castel di Tusa & Castelbuono</h1>
+<h2 class="map-heading">Karte</h2>
+<div id="map3" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Castel di Tusa", lat: 38.008, lng: 14.233, note: "Mittag am Meer", anchor: "tusa" },
+      { name: "Castelbuono", lat: 37.931, lng: 14.088, note: "Madonie-Städtchen", anchor: "castelbuono" }
+    ];
+    const map = L.map('map3').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap-Mitwirkende'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; Zum Tagebucheintrag</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="tusa"><strong>Castel di Tusa:</strong> Einmal quer über die Insel an die Nordküste. Mittagessen direkt am Kiesstrand von Castel di Tusa, dazu Wein vom Fass.</p>
+<img src="images/tag3/01.jpg" alt="Blick vom Restaurant auf den Strand">
+<img src="images/tag3/02.jpg" alt="Am Tisch mit Meerblick">
+<img src="images/tag3/03.jpg" alt="Weingläser in der Sonne">
+<p id="castelbuono"><strong>Castelbuono:</strong> Das Städtchen in den Madonie-Bergen entstand um die Burg der Ventimiglia, gebaut ab 1316. An der Piazza Margherita steht die Matrice Vecchia, die alte Mutterkirche aus dem 14. Jahrhundert, mit Fresken in der Krypta. Castelbuono ist außerdem bekannt für sein Gebäck und sein Eis.</p>
+<p class="more-info">&#8599; <a href="https://de.wikipedia.org/wiki/Castelbuono" target="_blank" rel="noopener noreferrer">Mehr erfahren</a></p>
+<img src="images/tag3/04.jpg" alt="Gespräch auf der Piazza">
+<img src="images/tag3/05.jpg" alt="Piazza Margherita mit Matrice Vecchia">
+<img src="images/tag3/06.jpg" alt="Eis in der Waffel">
+<img src="images/tag3/07.jpg" alt="Freskenraum in der Krypta">
+<img src="images/tag3/08.jpg" alt="Fresko mit Figuren">
+<img src="images/tag3/09.jpg" alt="Putten mit Totenschädel">
+<img src="images/tag3/10.jpg" alt="Burg der Ventimiglia">
+<img src="images/tag3/11.jpg" alt="Abendessen mit Meerblick">
+
+<hr>
+
+<div class="navbar"><a href="tag2.html">&larr; Vorheriger Tag</a><a href="index.html">&#8962; &Uuml;bersicht</a><a href="tag4.html">N&auml;chster Tag &rarr;</a><a class="lang-switch" href="en/day3.html" lang="en">EN</a></div>
+</body>
+</html>

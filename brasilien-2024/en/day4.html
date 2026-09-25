@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../style.css">
+<title>Day 4 &ndash; Sunday, November 17 &ndash; From Rio to São Paulo</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="day3.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day5.html">Next day &rarr;</a><a class="lang-switch" href="../tag4.html" lang="de">DE</a></div>
+<h1>Day 4 &ndash; Sunday, November 17 &ndash; From Rio to São Paulo</h1>
+<h2 class="map-heading">Map</h2>
+<div id="map4" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Lapa", lat: -22.913, lng: -43.179, note: "Street party", anchor: "lapa17" },
+      { name: "Linha Vermelha", lat: -22.86, lng: -43.24, note: "Departure", anchor: "fahrt" },
+      { name: "Pinheiros, São Paulo", lat: -23.56, lng: -46.69, note: "Arrival", anchor: "fahrt" }
+    ];
+    const map = L.map('map4').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap contributors'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; To the diary entry</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="lapa17"><strong>Long night in Lapa:</strong> Saturday night in Lapa means plastic chairs on the street, caipirinhas and music until morning.</p>
+<img src="../images/tag4/01.jpg" alt="Packed tables at the street party in Lapa">
+<img src="../images/tag4/02.jpg" alt="Selfie with people from the neighbourhood">
+<p id="fahrt"><strong>On to São Paulo:</strong> Luggage on the pavement, out of Rio on the Linha Vermelha and about 430 km along the Via Dutra to São Paulo. In the evening in Pinheiros: north-eastern food at Baião, named after the music style made famous by Luiz Gonzaga.</p>
+<img src="../images/tag4/03.jpg" alt="With luggage at the roadside">
+<img src="../images/tag4/04.jpg" alt="On the Linha Vermelha by Guanabara Bay">
+<img src="../images/tag4/05.jpg" alt="Wide sky over the bay">
+<img src="../images/tag4/06.jpg" alt="Neon sign of Baião restaurant">
+<img src="../images/tag4/07.jpg" alt="Wearing cowboy hats at the table">
+<img src="../images/tag4/08.jpg" alt="North-eastern food on the platter">
+
+<hr>
+
+<div class="navbar"><a href="day3.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day5.html">Next day &rarr;</a><a class="lang-switch" href="../tag4.html" lang="de">DE</a></div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../style.css">
+<title>Day 13 &ndash; Friday/Saturday, November 29/30 &ndash; Back to Rio: Christ, Sambódromo & the Port</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="day12.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><span></span><a class="lang-switch" href="../tag13.html" lang="de">DE</a></div>
+<h1>Day 13 &ndash; Friday/Saturday, November 29/30 &ndash; Back to Rio: Christ, Sambódromo & the Port</h1>
+<h2 class="map-heading">Map</h2>
+<div id="map13" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Santos Dumont Airport", lat: -22.9105, lng: -43.1631, note: "Arrival", anchor: "zurueck" },
+      { name: "Christ the Redeemer", lat: -22.9519, lng: -43.2105, note: "Corcovado", anchor: "cristo" },
+      { name: "Sambódromo", lat: -22.911, lng: -43.1965, note: "Samba schools", anchor: "centro" },
+      { name: "Museum of Tomorrow", lat: -22.8953, lng: -43.1798, note: "Port", anchor: "centro" }
+    ];
+    const map = L.map('map13').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap contributors'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; To the diary entry</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="zurueck"><strong>Back to Rio:</strong> Breakfast, then from Florianópolis via Congonhas to Santos Dumont, the city airport right on Guanabara Bay. The G20 banners are still up.</p>
+<img src="../images/tag13/01.jpg" alt="Breakfast with avocado toast">
+<img src="../images/tag13/02.jpg" alt="Crowded hall at Congonhas airport">
+<img src="../images/tag13/03.jpg" alt="G20 banner by the road">
+<p id="cristo"><strong>Christ the Redeemer:</strong> By the 1884 rack railway through the Tijuca Forest up Corcovado. At the top the statue of Christ, inaugurated in 1931, 30 m tall on an 8 m pedestal, one of the "New Seven Wonders" since 2007. From here you can see the whole city, as far as the Maracanã.</p>
+<p class="more-info">&#8599; <a href="https://en.wikipedia.org/wiki/Christ_the_Redeemer_(statue)" target="_blank" rel="noopener noreferrer">Learn more</a></p>
+<img src="../images/tag13/04.jpg" alt="Rack railway track in the forest">
+<img src="../images/tag13/05.jpg" alt="Christ the Redeemer from the side">
+<img src="../images/tag13/06.jpg" alt="View over Rio to the Maracanã">
+<img src="../images/tag13/07.jpg" alt="Arms outstretched in front of the statue">
+<img src="../images/tag13/08.jpg" alt="View of Lagoa Rodrigo de Freitas">
+<img src="../images/tag13/09.jpg" alt="Selfie of three in front of Christ">
+<p id="centro"><strong>Sambódromo, Saara and the port:</strong> In the afternoon back to the Sambódromo, where floats and costumes for Carnival are already being built in the sheds, then through Saara, Rio's largest open-air shopping district, and on to the port: a replica of a Portuguese ship of discovery, the Museum of Tomorrow. On Sunday, December 1, we fly home via Lisbon.</p>
+<img src="../images/tag13/10.jpg" alt="Stands of the Sambódromo">
+<img src="../images/tag13/11.jpg" alt="Giant Baiana figure">
+<img src="../images/tag13/12.jpg" alt="Carnival float in a shed">
+<img src="../images/tag13/13.jpg" alt="Clothing stalls in Saara">
+<img src="../images/tag13/14.jpg" alt="Replica of a ship of discovery in the port">
+<img src="../images/tag13/15.jpg" alt="Museum of Tomorrow">
+
+<hr>
+
+<div class="navbar"><a href="day12.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><span></span><a class="lang-switch" href="../tag13.html" lang="de">DE</a></div>
+</body>
+</html>

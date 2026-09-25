@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../style.css">
+<title>Day 9 &ndash; Monday, November 25 &ndash; Barra da Lagoa & Joaquina</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="day8.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day10.html">Next day &rarr;</a><a class="lang-switch" href="../tag9.html" lang="de">DE</a></div>
+<h1>Day 9 &ndash; Monday, November 25 &ndash; Barra da Lagoa & Joaquina</h1>
+<h2 class="map-heading">Map</h2>
+<div id="map9" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Barra da Lagoa", lat: -27.574, lng: -48.423, note: "Natural pools", anchor: "barra" },
+      { name: "Joaquina Beach", lat: -27.629, lng: -48.449, note: "Surf beach", anchor: "joaquina" }
+    ];
+    const map = L.map('map9').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap contributors'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; To the diary entry</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="barra"><strong>Barra da Lagoa:</strong> Move to Barra da Lagoa, a fishing village where the lagoon flows into the sea. Across the suspension bridge and along a footpath you reach the Piscinas Naturais – rock pools you can swim in when the sea is calm.</p>
+<img src="../images/tag9/01.jpg" alt="Lizard on the boardwalk">
+<img src="../images/tag9/02.jpg" alt="View of the beach from the terrace">
+<img src="../images/tag9/03.jpg" alt="Lunch at the restaurant">
+<img src="../images/tag9/04.jpg" alt="View of the bay from the trail">
+<img src="../images/tag9/05.jpg" alt="Sea and rocks">
+<img src="../images/tag9/06.jpg" alt="Cormorants on the rocks">
+<p id="joaquina"><strong>Joaquina Beach:</strong> Joaquina is the island's surf beach, backed by large sand dunes used by sandboarders. Coconut, beach stalls, and a lounge in the sand for sunset.</p>
+<img src="../images/tag9/07.jpg" alt="Rocks on Joaquina beach">
+<img src="../images/tag9/08.jpg" alt="Coconut on the beach">
+<img src="../images/tag9/09.jpg" alt="Vendor's cart on the beach">
+<img src="../images/tag9/10.jpg" alt="Lounge with sea view">
+<img src="../images/tag9/11.jpg" alt="Cocktails with strawberries">
+<img src="../images/tag9/12.jpg" alt="Dinner in Barra da Lagoa">
+<img src="../images/tag9/13.jpg" alt="Swing on the beach at night">
+
+<hr>
+
+<div class="navbar"><a href="day8.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day10.html">Next day &rarr;</a><a class="lang-switch" href="../tag9.html" lang="de">DE</a></div>
+</body>
+</html>

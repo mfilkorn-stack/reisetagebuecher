@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../style.css">
+<title>Tag 1 &ndash; Gründonnerstag, 17. April &ndash; Catania</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><span></span><a href="index.html">&#8962; &Uuml;bersicht</a><a href="tag2.html">N&auml;chster Tag &rarr;</a><a class="lang-switch" href="en/day1.html" lang="en">EN</a></div>
+<h1>Tag 1 &ndash; Gründonnerstag, 17. April &ndash; Catania</h1>
+<h2 class="map-heading">Karte</h2>
+<div id="map1" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Piazza del Duomo, Catania", lat: 37.5024, lng: 15.0873, note: "Elefantenbrunnen und Dom", anchor: "catania" },
+      { name: "Teatro Romano", lat: 37.503, lng: 15.083, note: "Antikes Theater", anchor: "teatro" },
+      { name: "Pergusa bei Enna", lat: 37.516, lng: 14.305, note: "Unterkunft", anchor: "abend" }
+    ];
+    const map = L.map('map1').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap-Mitwirkende'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; Zum Tagebucheintrag</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="catania"><strong>Catania:</strong> Landung in Catania, Siziliens zweitgrößter Stadt am Fuß des Ätna. Nach dem Erdbeben von 1693 wurde sie im Barockstil neu gebaut, oft aus schwarzem Lavastein. Auf der Piazza del Duomo steht das Wahrzeichen: „U Liotru", ein Elefant aus Lavastein mit ägyptischem Obelisken auf dem Rücken, 1736 von Giovanni Battista Vaccarini aufgestellt. Gleich daneben der Dom der Stadtpatronin Sant'Agata.</p>
+<p class="more-info">&#8599; <a href="https://de.wikipedia.org/wiki/Catania" target="_blank" rel="noopener noreferrer">Mehr erfahren</a></p>
+<img src="images/tag1/01.jpg" alt="Elefantenbrunnen mit Obelisk">
+<img src="images/tag1/02.jpg" alt="Obststand mit Zitrusfrüchten">
+<img src="images/tag1/03.jpg" alt="Einkaufswagen voller Obst auf der Straße">
+<img src="images/tag1/04.jpg" alt="Dom Sant'Agata">
+<p id="teatro"><strong>Teatro Romano:</strong> Mitten zwischen Wohnhäusern liegt das römische Theater aus dem 2. Jahrhundert, halb überbaut von der Altstadt. In den Gängen darunter sieht man den dunklen Lavastein, auf dem Catania steht.</p>
+<p class="more-info">&#8599; <a href="https://de.wikipedia.org/wiki/Römisches_Theater_(Catania)" target="_blank" rel="noopener noreferrer">Mehr erfahren</a></p>
+<img src="images/tag1/05.jpg" alt="Blick auf das römische Theater">
+<img src="images/tag1/06.jpg" alt="Gewölbegang aus Lavastein unter dem Theater">
+<img src="images/tag1/07.jpg" alt="Theater mit Häusern ringsum">
+<img src="images/tag1/08.jpg" alt="Zwei Cannoli">
+<p>Pflicht in Sizilien: Cannoli, frittierte Teigröllchen mit süßer Ricottafüllung.</p>
+<img src="images/tag1/09.jpg" alt="Blick über die Dächer von Catania">
+<img src="images/tag1/10.jpg" alt="Dächer und Kuppeln bis zum Meer">
+<img src="images/tag1/11.jpg" alt="Bemalte Kassettendecke">
+<p><strong>Fischmarkt:</strong> „A Piscaria", der Fischmarkt hinter dem Dom, ist laut, nass und voller Leben – Muscheln, Schwertfisch, Rufe der Händler. Mit einer Vespa in Tricolore-Lackierung mittendrin.</p>
+<img src="images/tag1/12.jpg" alt="Muschelstand auf dem Fischmarkt">
+<img src="images/tag1/13.jpg" alt="Vespa in Tricolore im Gedränge">
+<img src="images/tag1/14.jpg" alt="Selfie zu dritt über den Dächern">
+<p id="abend"><strong>Weiter nach Enna:</strong> Am Abend ins Landesinnere nach Pergusa am gleichnamigen See unterhalb von Enna – und zur ersten Pizza.</p>
+<img src="images/tag1/15.jpg" alt="Pizza am Abend">
+
+<hr>
+
+<div class="navbar"><span></span><a href="index.html">&#8962; &Uuml;bersicht</a><a href="tag2.html">N&auml;chster Tag &rarr;</a><a class="lang-switch" href="en/day1.html" lang="en">EN</a></div>
+</body>
+</html>

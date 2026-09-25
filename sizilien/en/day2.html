@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../style.css">
+<title>Day 2 &ndash; Good Friday, April 18 &ndash; Good Friday Procession in Enna</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="day1.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day3.html">Next day &rarr;</a><a class="lang-switch" href="../tag2.html" lang="de">DE</a></div>
+<h1>Day 2 &ndash; Good Friday, April 18 &ndash; Good Friday Procession in Enna</h1>
+<h2 class="map-heading">Map</h2>
+<div id="map2" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Torre di Federico", lat: 37.563, lng: 14.269, note: "Hohenstaufen tower", anchor: "enna" },
+      { name: "Via Roma, Enna", lat: 37.567, lng: 14.278, note: "Procession", anchor: "prozession" },
+      { name: "Enna Cathedral", lat: 37.568, lng: 14.28, note: "Cathedral", anchor: "prozession" }
+    ];
+    const map = L.map('map2').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap contributors'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; To the diary entry</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="enna"><strong>Enna:</strong> Enna sits at around 930 m and is known as the "navel of Sicily" – Italy's highest provincial capital, with views across the whole interior of the island. The octagonal Torre di Federico is attributed to Emperor Frederick II.</p>
+<p class="more-info">&#8599; <a href="https://en.wikipedia.org/wiki/Enna" target="_blank" rel="noopener noreferrer">Learn more</a></p>
+<img src="../images/tag2/01.jpg" alt="Torre di Federico">
+<img src="../images/tag2/02.jpg" alt="Brotherhood members on a balcony">
+<img src="../images/tag2/03.jpg" alt="View over the green interior">
+<p id="prozession"><strong>The Good Friday procession:</strong> Good Friday is the high point of the year in Enna. The tradition dates back to Spanish rule: thousands of members of the confraternities walk silently through the town in robes and pointed hoods, each brotherhood in its own colours. They carry the urn with the dead Christ and the statue of Our Lady of Sorrows from the cathedral along Via Roma. It is one of the most striking Holy Week processions in Italy.</p>
+<img src="../images/tag2/04.jpg" alt="Banner of the SS. Salvatore confraternity">
+<img src="../images/tag2/05.jpg" alt="Confraternity in light blue">
+<img src="../images/tag2/06.jpg" alt="Cross of flowers">
+<img src="../images/tag2/07.jpg" alt="Urn with the dead Christ">
+<img src="../images/tag2/08.jpg" alt="Brothers in red hoods">
+<img src="../images/tag2/09.jpg" alt="Wreath in the procession">
+<img src="../images/tag2/10.jpg" alt="Confraternities in every colour">
+<img src="../images/tag2/11.jpg" alt="Inside Enna Cathedral">
+<img src="../images/tag2/12.jpg" alt="Confraternities in front of the cathedral">
+<img src="../images/tag2/13.jpg" alt="The urn carried through the crowd">
+<img src="../images/tag2/14.jpg" alt="Procession in the evening sun">
+<img src="../images/tag2/15.jpg" alt="Our Lady of Sorrows">
+
+<hr>
+
+<div class="navbar"><a href="day1.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day3.html">Next day &rarr;</a><a class="lang-switch" href="../tag2.html" lang="de">DE</a></div>
+</body>
+</html>

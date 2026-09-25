@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../style.css">
+<title>Tag 2 &ndash; Freitag, 15. November &ndash; Lapa, Selarón, Kathedrale & Sambódromo</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="tag1.html">&larr; Vorheriger Tag</a><a href="index.html">&#8962; &Uuml;bersicht</a><a href="tag3.html">N&auml;chster Tag &rarr;</a><a class="lang-switch" href="en/day2.html" lang="en">EN</a></div>
+<h1>Tag 2 &ndash; Freitag, 15. November &ndash; Lapa, Selarón, Kathedrale & Sambódromo</h1>
+<h2 class="map-heading">Karte</h2>
+<div id="map2" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Rua do Lavradio", lat: -22.912, lng: -43.181, note: "Frühstück", anchor: "lapa" },
+      { name: "Escadaria Selarón", lat: -22.9153, lng: -43.1792, note: "Fliesentreppe", anchor: "lapa" },
+      { name: "Catedral Metropolitana", lat: -22.9107, lng: -43.1804, note: "Kegelkathedrale", anchor: "kathedrale" },
+      { name: "Sambódromo", lat: -22.911, lng: -43.1965, note: "Karnevalsstrecke", anchor: "sambodromo" }
+    ];
+    const map = L.map('map2').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap-Mitwirkende'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; Zum Tagebucheintrag</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="lapa"><strong>Lapa und die Escadaria Selarón:</strong> Frühstück in der Rua do Lavradio, dann zu Fuß durch Lapa: Bob-Marley-Graffiti, die Arcos da Lapa und die Escadaria Selarón – 215 Stufen, die der chilenische Künstler Jorge Selarón ab 1990 mit über 2.000 Fliesen aus mehr als 60 Ländern belegte.</p>
+<p class="more-info">&#8599; <a href="https://de.wikipedia.org/wiki/Escadaria_Selarón" target="_blank" rel="noopener noreferrer">Mehr erfahren</a></p>
+<img src="images/tag2/01.jpg" alt="Kaffee zum Frühstück">
+<img src="images/tag2/02.jpg" alt="Brasilianisches Frühstück mit Suppe und Beilagen">
+<img src="images/tag2/03.jpg" alt="Kopfsteinpflastergasse an den Arcos da Lapa">
+<img src="images/tag2/04.jpg" alt="Bob-Marley-Graffiti auf einem Rolltor">
+<img src="images/tag2/05.jpg" alt="Auf der Escadaria Selarón">
+<img src="images/tag2/06.jpg" alt="Mosaik mit brasilianischer Flagge">
+<img src="images/tag2/07.jpg" alt="Fliesen „Brasil eu te amo – Selarón&quot;">
+<p id="kathedrale"><strong>Catedral Metropolitana:</strong> Von außen ein Betonkegel, 75 m hoch, zwischen 1964 und 1979 gebaut – drinnen eine Überraschung: vier Buntglasfenster ziehen sich 64 m vom Boden bis zum Kreuz im Dach. Bis zu 20.000 Menschen finden stehend Platz.</p>
+<p class="more-info">&#8599; <a href="https://de.wikipedia.org/wiki/Kathedrale_von_Rio_de_Janeiro" target="_blank" rel="noopener noreferrer">Mehr erfahren</a></p>
+<img src="images/tag2/08.jpg" alt="Arcos da Lapa mit Hochhäusern">
+<img src="images/tag2/09.jpg" alt="Kegelförmige Kathedrale von außen">
+<img src="images/tag2/10.jpg" alt="Buntglasfenster bis zur Decke">
+<img src="images/tag2/11.jpg" alt="Buntglasfenster in Nahaufnahme">
+<p id="sambodromo"><strong>Sambódromo:</strong> Die Paradestrecke der Sambaschulen an der Rua Marquês de Sapucaí entwarf Oscar Niemeyer, eröffnet 1984. Außerhalb des Karnevals ist sie eine leere Betonachse – schwer vorzustellen, dass hier im Februar über 70.000 Menschen feiern.</p>
+<p class="more-info">&#8599; <a href="https://de.wikipedia.org/wiki/Sambódromo_da_Marquês_de_Sapucaí" target="_blank" rel="noopener noreferrer">Mehr erfahren</a></p>
+<img src="images/tag2/12.jpg" alt="Leere Tribünen des Sambódromo">
+<img src="images/tag2/13.jpg" alt="Gruppenselfie am Sambódromo">
+<img src="images/tag2/14.jpg" alt="Bunte Treppe in einer Bar in Santa Teresa">
+<img src="images/tag2/15.jpg" alt="Abends in einer Bar in Santa Teresa">
+
+<hr>
+
+<div class="navbar"><a href="tag1.html">&larr; Vorheriger Tag</a><a href="index.html">&#8962; &Uuml;bersicht</a><a href="tag3.html">N&auml;chster Tag &rarr;</a><a class="lang-switch" href="en/day2.html" lang="en">EN</a></div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../style.css">
+<title>Day 8 &ndash; Friday–Sunday, November 22–24 &ndash; Oysters in Santo Antônio de Lisboa</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="day7.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day9.html">Next day &rarr;</a><a class="lang-switch" href="../tag8.html" lang="de">DE</a></div>
+<h1>Day 8 &ndash; Friday–Sunday, November 22–24 &ndash; Oysters in Santo Antônio de Lisboa</h1>
+<h2 class="map-heading">Map</h2>
+<div id="map8" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Santo Antônio de Lisboa", lat: -27.508, lng: -48.52, note: "Azorean village", anchor: "austern" },
+      { name: "Lagoa da Conceição", lat: -27.6, lng: -48.47, note: "Nightlife", anchor: "lagoa" }
+    ];
+    const map = L.map('map8').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap contributors'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; To the diary entry</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<img src="../images/tag8/01.jpg" alt="&quot;Floripa&quot; graffiti barrel">
+<p id="austern"><strong>Santo Antônio de Lisboa:</strong> The village on the island's north-west coast was founded in the 18th century by settlers from the Azores – cobblestones, colonial houses, fishing boats. Today it is known above all for oysters: Santa Catarina supplies most of Brazil's oysters, and the baskets hang in the bay right off the shore.</p>
+<img src="../images/tag8/02.jpg" alt="Restaurant terrace in the greenery">
+<img src="../images/tag8/03.jpg" alt="Red drinks at the table">
+<img src="../images/tag8/04.jpg" alt="Starter platter to share">
+<img src="../images/tag8/05.jpg" alt="Painted utility box with portrait of a woman">
+<img src="../images/tag8/06.jpg" alt="Beach on the bay">
+<img src="../images/tag8/07.jpg" alt="Oyster baskets on the shore">
+<img src="../images/tag8/08.jpg" alt="Clouds over the bay">
+<img src="../images/tag8/09.jpg" alt="Fresh oysters in a crate">
+<img src="../images/tag8/10.jpg" alt="Oyster platter, raw and gratinated">
+<img src="../images/tag8/11.jpg" alt="Waterfront road under trees">
+<p id="lagoa"><strong>Lagoa da Conceição:</strong> The island's nightlife centres on the lagoon. The weekend gets long accordingly – and Sunday correspondingly quiet.</p>
+<img src="../images/tag8/12.jpg" alt="Mural at night">
+<img src="../images/tag8/13.jpg" alt="Partying in Lagoa">
+<img src="../images/tag8/14.jpg" alt="Selfie in the club">
+<img src="../images/tag8/15.jpg" alt="View into the garden on Sunday">
+
+<hr>
+
+<div class="navbar"><a href="day7.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day9.html">Next day &rarr;</a><a class="lang-switch" href="../tag8.html" lang="de">DE</a></div>
+</body>
+</html>

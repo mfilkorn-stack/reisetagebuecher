@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../style.css">
+<title>Day 1 &ndash; Sunday/Monday, August 30/31 &ndash; Via Hong Kong to Cebu</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><span></span><a href="index.html">&#8962; Overview</a><a href="day2.html">Next day &rarr;</a><a class="lang-switch" href="../tag1.html" lang="de">DE</a></div>
+<h1>Day 1 &ndash; Sunday/Monday, August 30/31 &ndash; Via Hong Kong to Cebu</h1>
+<h2 class="map-heading">Map</h2>
+<div id="map1" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Hong Kong Airport", lat: 22.308, lng: 113.9185, note: "Connection", anchor: "anreise" },
+      { name: "Mactan-Cebu Airport", lat: 10.3075, lng: 123.979, note: "Arrival", anchor: "anreise" },
+      { name: "Oslob, southern Cebu", lat: 9.46, lng: 123.38, note: "Seaside accommodation", anchor: "oslob" }
+    ];
+    const map = L.map('map1').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap contributors'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; To the diary entry</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="anreise"><strong>Getting there:</strong> Overnight from Frankfurt to Hong Kong, half a day changing planes in the vast terminal at Chek Lap Kok, then on to Cebu. "Dayon kamo sa Cebu!" – welcome in Cebuano, the language of the Visayas.</p>
+<img src="../images/tag1/01.jpg" alt="Waiting at the gate in Frankfurt">
+<img src="../images/tag1/02.jpg" alt="Selfie of two on the plane">
+<img src="../images/tag1/03.jpg" alt="Approach over high-rises">
+<img src="../images/tag1/04.jpg" alt="Garden with pavilion in the airport terminal">
+<img src="../images/tag1/05.jpg" alt="Moving walkway with LED underwater world">
+<img src="../images/tag1/06.jpg" alt="&quot;Dayon kamo sa Cebu&quot; welcome sign">
+<p id="oslob"><strong>Down the south coast:</strong> With a driver across the bridges to Cebu City, then some three hours down the south coast to Oslob. On the way: tricycles, motorbikes with sidecars that serve as taxis in the Philippines. In the evening cocktails, coconut and barbecue skewers at a roadside grill.</p>
+<img src="../images/tag1/07.jpg" alt="View of stilt houses from the bridge">
+<img src="../images/tag1/08.jpg" alt="Tricycle on the road">
+<img src="../images/tag1/09.jpg" alt="Tricycle driver">
+<img src="../images/tag1/10.jpg" alt="Cocktail with orange slice">
+<img src="../images/tag1/11.jpg" alt="Coconut and beer">
+<img src="../images/tag1/12.jpg" alt="Waterfront at night">
+<img src="../images/tag1/13.jpg" alt="Barbecue skewer with sauce">
+<img src="../images/tag1/14.jpg" alt="Selfie at the grill stand">
+<img src="../images/tag1/15.jpg" alt="Outrigger boat lit up at night">
+
+<hr>
+
+<div class="navbar"><span></span><a href="index.html">&#8962; Overview</a><a href="day2.html">Next day &rarr;</a><a class="lang-switch" href="../tag1.html" lang="de">DE</a></div>
+</body>
+</html>
