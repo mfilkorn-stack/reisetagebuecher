@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../style.css">
+<title>Day 6 &ndash; Tuesday, November 19 &ndash; Football Museum at the Pacaembu</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="day5.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day7.html">Next day &rarr;</a><a class="lang-switch" href="../tag6.html" lang="de">DE</a></div>
+<h1>Day 6 &ndash; Tuesday, November 19 &ndash; Football Museum at the Pacaembu</h1>
+<h2 class="map-heading">Map</h2>
+<div id="map6" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Pacaembu Stadium", lat: -23.5475, lng: -46.665, note: "Football Museum", anchor: "museu" },
+      { name: "Vila Madalena", lat: -23.553, lng: -46.69, note: "Evening", anchor: "museu" }
+    ];
+    const map = L.map('map6').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap contributors'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; To the diary entry</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="museu"><strong>Museu do Futebol:</strong> Pacaembu Stadium opened in 1940 in Art Deco style; since 2008 the Football Museum has been housed beneath its stands. Pelé, holograms, old team photos – and as Germans we naturally linger over the pictures from 1954 and 2014. The square in front is named after Charles Miller, who brought the first footballs and rules from England to Brazil in 1894.</p>
+<p class="more-info">&#8599; <a href="https://en.wikipedia.org/wiki/Museu_do_Futebol" target="_blank" rel="noopener noreferrer">Learn more</a></p>
+<img src="../images/tag6/01.jpg" alt="Art Deco façade of the Pacaembu">
+<img src="../images/tag6/02.jpg" alt="Life-size Pelé image">
+<img src="../images/tag6/03.jpg" alt="Hologram of a player">
+<img src="../images/tag6/04.jpg" alt="Two of us in the museum">
+<img src="../images/tag6/05.jpg" alt="Historic team photo in a gold frame">
+<img src="../images/tag6/06.jpg" alt="German national team on screen">
+<img src="../images/tag6/07.jpg" alt="2014 World Cup winners' selfie">
+<img src="../images/tag6/08.jpg" alt="Group photo at a game station">
+<img src="../images/tag6/09.jpg" alt="View over Praça Charles Miller">
+<img src="../images/tag6/10.jpg" alt="Exhibit on the history of the ball">
+<img src="../images/tag6/11.jpg" alt="&quot;4-4-2&quot; table football">
+<img src="../images/tag6/12.jpg" alt="Club flags hanging from the ceiling">
+<img src="../images/tag6/13.jpg" alt="Lunch in Pinheiros">
+<img src="../images/tag6/14.jpg" alt="Evening in Vila Madalena">
+
+<hr>
+
+<div class="navbar"><a href="day5.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day7.html">Next day &rarr;</a><a class="lang-switch" href="../tag6.html" lang="de">DE</a></div>
+</body>
+</html>

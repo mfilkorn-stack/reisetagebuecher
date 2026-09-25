@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../style.css">
+<title>Day 10 &ndash; Tuesday, November 26 &ndash; Boat Trip to Costa da Lagoa</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="day9.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day11.html">Next day &rarr;</a><a class="lang-switch" href="../tag10.html" lang="de">DE</a></div>
+<h1>Day 10 &ndash; Tuesday, November 26 &ndash; Boat Trip to Costa da Lagoa</h1>
+<h2 class="map-heading">Map</h2>
+<div id="map10" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Lagoa da Conceição", lat: -27.585, lng: -48.46, note: "By boat across the lagoon", anchor: "costa" },
+      { name: "Costa da Lagoa", lat: -27.57, lng: -48.49, note: "Waterfall", anchor: "costa" }
+    ];
+    const map = L.map('map10').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap contributors'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; To the diary entry</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="costa"><strong>Costa da Lagoa:</strong> The settlement on the western shore of Lagoa da Conceição can only be reached by boat or on foot along a trail. By motorboat across the lagoon, swimming stops, then the little waterfall of Costa da Lagoa. With it craft beer from Santa Catarina – the German-descended towns inland brew plenty of it.</p>
+<img src="../images/tag10/01.jpg" alt="Excursion boats at the jetty">
+<img src="../images/tag10/02.jpg" alt="Canal with boats">
+<img src="../images/tag10/03.jpg" alt="Selfie in the motorboat">
+<img src="../images/tag10/04.jpg" alt="Granite rocks on the shore">
+<img src="../images/tag10/05.jpg" alt="Selfie of two on the boat">
+<img src="../images/tag10/06.jpg" alt="Houses of Costa da Lagoa from the water">
+<img src="../images/tag10/07.jpg" alt="Doorway with coloured fanlight">
+<img src="../images/tag10/08.jpg" alt="IPA bottle on the table">
+<img src="../images/tag10/09.jpg" alt="Stream in the rainforest">
+<img src="../images/tag10/10.jpg" alt="Costa da Lagoa waterfall">
+<img src="../images/tag10/11.jpg" alt="Wooden deck on the lagoon">
+<img src="../images/tag10/12.jpg" alt="Toasting with caipirinha">
+<img src="../images/tag10/13.jpg" alt="Stone house in the greenery">
+<p><strong>Evening on the lagoon:</strong> Dinner on a pier over the water as night falls.</p>
+<img src="../images/tag10/14.jpg" alt="Pier with lights at blue hour">
+<img src="../images/tag10/15.jpg" alt="Dinner by the water">
+
+<hr>
+
+<div class="navbar"><a href="day9.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day11.html">Next day &rarr;</a><a class="lang-switch" href="../tag10.html" lang="de">DE</a></div>
+</body>
+</html>

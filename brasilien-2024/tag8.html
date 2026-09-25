@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../style.css">
+<title>Tag 8 &ndash; Freitag–Sonntag, 22.–24. November &ndash; Austern in Santo Antônio de Lisboa</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="tag7.html">&larr; Vorheriger Tag</a><a href="index.html">&#8962; &Uuml;bersicht</a><a href="tag9.html">N&auml;chster Tag &rarr;</a><a class="lang-switch" href="en/day8.html" lang="en">EN</a></div>
+<h1>Tag 8 &ndash; Freitag–Sonntag, 22.–24. November &ndash; Austern in Santo Antônio de Lisboa</h1>
+<h2 class="map-heading">Karte</h2>
+<div id="map8" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Santo Antônio de Lisboa", lat: -27.508, lng: -48.52, note: "Azoreanisches Dorf", anchor: "austern" },
+      { name: "Lagoa da Conceição", lat: -27.6, lng: -48.47, note: "Nachtleben", anchor: "lagoa" }
+    ];
+    const map = L.map('map8').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap-Mitwirkende'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; Zum Tagebucheintrag</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<img src="images/tag8/01.jpg" alt="Graffiti-Fass „Floripa&quot;">
+<p id="austern"><strong>Santo Antônio de Lisboa:</strong> Das Dorf an der Nordwestküste der Insel wurde im 18. Jahrhundert von Siedlern von den Azoren gegründet – Kopfsteinpflaster, Kolonialhäuser, Fischerboote. Heute ist es vor allem für Austern bekannt: Santa Catarina liefert den Großteil der brasilianischen Austern, die Körbe hängen direkt vor dem Ufer in der Bucht.</p>
+<img src="images/tag8/02.jpg" alt="Terrasse eines Restaurants im Grünen">
+<img src="images/tag8/03.jpg" alt="Rote Drinks am Tisch">
+<img src="images/tag8/04.jpg" alt="Vorspeisenteller zum Teilen">
+<img src="images/tag8/05.jpg" alt="Bemalter Schaltkasten mit Frauenporträt">
+<img src="images/tag8/06.jpg" alt="Strand in der Bucht">
+<img src="images/tag8/07.jpg" alt="Austernkörbe am Ufer">
+<img src="images/tag8/08.jpg" alt="Wolken über der Bucht">
+<img src="images/tag8/09.jpg" alt="Frische Austern in der Kiste">
+<img src="images/tag8/10.jpg" alt="Austernplatte, roh und überbacken">
+<img src="images/tag8/11.jpg" alt="Uferstraße unter Bäumen">
+<p id="lagoa"><strong>Lagoa da Conceição:</strong> Das Nachtleben der Insel spielt sich rund um die Lagune ab. Das Wochenende wird entsprechend lang – und der Sonntag entsprechend ruhig.</p>
+<img src="images/tag8/12.jpg" alt="Wandbild bei Nacht">
+<img src="images/tag8/13.jpg" alt="Feiern in der Lagoa">
+<img src="images/tag8/14.jpg" alt="Selfie im Club">
+<img src="images/tag8/15.jpg" alt="Blick in den Garten am Sonntag">
+
+<hr>
+
+<div class="navbar"><a href="tag7.html">&larr; Vorheriger Tag</a><a href="index.html">&#8962; &Uuml;bersicht</a><a href="tag9.html">N&auml;chster Tag &rarr;</a><a class="lang-switch" href="en/day8.html" lang="en">EN</a></div>
+</body>
+</html>

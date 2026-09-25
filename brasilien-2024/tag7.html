@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../style.css">
+<title>Tag 7 &ndash; Mittwoch/Donnerstag, 20./21. November &ndash; Flug nach Florianópolis</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="tag6.html">&larr; Vorheriger Tag</a><a href="index.html">&#8962; &Uuml;bersicht</a><a href="tag8.html">N&auml;chster Tag &rarr;</a><a class="lang-switch" href="en/day7.html" lang="en">EN</a></div>
+<h1>Tag 7 &ndash; Mittwoch/Donnerstag, 20./21. November &ndash; Flug nach Florianópolis</h1>
+<h2 class="map-heading">Karte</h2>
+<div id="map7" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Flughafen Guarulhos", lat: -23.4356, lng: -46.4731, note: "Abflug", anchor: "flug" },
+      { name: "Flughafen Florianópolis", lat: -27.67, lng: -48.547, note: "Ankunft", anchor: "flug" },
+      { name: "Praça XV de Novembro", lat: -27.596, lng: -48.549, note: "Weihnachtsbeleuchtung", anchor: "centro" }
+    ];
+    const map = L.map('map7').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap-Mitwirkende'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; Zum Tagebucheintrag</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="flug"><strong>Auf die Ilha de Santa Catarina:</strong> Von Guarulhos eine gute Stunde nach Süden. Florianópolis liegt zum größten Teil auf der Insel Santa Catarina – über 40 Strände, Lagunen, Hügel mit Atlantischem Regenwald. Unser Haus liegt in João Paulo an der Nordbucht; zum Einstand gibt es Steaks vom Grill.</p>
+<p class="more-info">&#8599; <a href="https://de.wikipedia.org/wiki/Florianópolis" target="_blank" rel="noopener noreferrer">Mehr erfahren</a></p>
+<img src="images/tag7/01.jpg" alt="Selfie im Taxi zum Flughafen">
+<img src="images/tag7/02.jpg" alt="Polvilho-Snack im Flugzeug">
+<img src="images/tag7/03.jpg" alt="Selfie am Flughafen Florianópolis">
+<img src="images/tag7/04.jpg" alt="Offene Küche im Ferienhaus">
+<img src="images/tag7/05.jpg" alt="Kochen in der Küche">
+<img src="images/tag7/06.jpg" alt="Steak wird aufgeschnitten">
+<img src="images/tag7/07.jpg" alt="Steak mit Salat">
+<p id="centro"><strong>Centro bei Nacht:</strong> Am zweiten Abend in die Innenstadt. Auf der Praça XV de Novembro steht die Figueira, ein über hundert Jahre alter Feigenbaum, dessen Äste mit Stützen gehalten werden – jetzt im November schon mit Weihnachtsbeleuchtung.</p>
+<img src="images/tag7/08.jpg" alt="Pool des Ferienhauses">
+<img src="images/tag7/09.jpg" alt="Sushi-Abendessen">
+<img src="images/tag7/10.jpg" alt="Frida-Kahlo-Kunstwerk an der Wand">
+<img src="images/tag7/11.jpg" alt="Weihnachtslichter auf der Praça XV">
+<img src="images/tag7/12.jpg" alt="Riesiger Schneemann bei 25 Grad">
+<img src="images/tag7/13.jpg" alt="Die beleuchtete Figueira">
+<img src="images/tag7/14.jpg" alt="Figueira mit blauem Licht">
+
+<hr>
+
+<div class="navbar"><a href="tag6.html">&larr; Vorheriger Tag</a><a href="index.html">&#8962; &Uuml;bersicht</a><a href="tag8.html">N&auml;chster Tag &rarr;</a><a class="lang-switch" href="en/day7.html" lang="en">EN</a></div>
+</body>
+</html>

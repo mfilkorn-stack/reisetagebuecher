@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../style.css">
+<title>Day 7 &ndash; Wednesday/Thursday, November 20/21 &ndash; Flight to Florianópolis</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="day6.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day8.html">Next day &rarr;</a><a class="lang-switch" href="../tag7.html" lang="de">DE</a></div>
+<h1>Day 7 &ndash; Wednesday/Thursday, November 20/21 &ndash; Flight to Florianópolis</h1>
+<h2 class="map-heading">Map</h2>
+<div id="map7" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Guarulhos Airport", lat: -23.4356, lng: -46.4731, note: "Departure", anchor: "flug" },
+      { name: "Florianópolis Airport", lat: -27.67, lng: -48.547, note: "Arrival", anchor: "flug" },
+      { name: "Praça XV de Novembro", lat: -27.596, lng: -48.549, note: "Christmas lights", anchor: "centro" }
+    ];
+    const map = L.map('map7').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap contributors'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; To the diary entry</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="flug"><strong>To Santa Catarina Island:</strong> From Guarulhos a good hour south. Most of Florianópolis lies on Santa Catarina Island – more than 40 beaches, lagoons and hills covered in Atlantic rainforest. Our house is in João Paulo on the northern bay; to celebrate, steaks off the grill.</p>
+<p class="more-info">&#8599; <a href="https://en.wikipedia.org/wiki/Florianópolis" target="_blank" rel="noopener noreferrer">Learn more</a></p>
+<img src="../images/tag7/01.jpg" alt="Selfie in the taxi to the airport">
+<img src="../images/tag7/02.jpg" alt="Polvilho snack on the plane">
+<img src="../images/tag7/03.jpg" alt="Selfie at Florianópolis airport">
+<img src="../images/tag7/04.jpg" alt="Open kitchen at the holiday house">
+<img src="../images/tag7/05.jpg" alt="Cooking in the kitchen">
+<img src="../images/tag7/06.jpg" alt="Steak being sliced">
+<img src="../images/tag7/07.jpg" alt="Steak with salad">
+<p id="centro"><strong>Centro at night:</strong> On the second evening into the city centre. On Praça XV de Novembro stands the Figueira, a fig tree more than a hundred years old whose branches are held up by props – already lit up for Christmas in November.</p>
+<img src="../images/tag7/08.jpg" alt="Pool at the holiday house">
+<img src="../images/tag7/09.jpg" alt="Sushi dinner">
+<img src="../images/tag7/10.jpg" alt="Frida Kahlo artwork on the wall">
+<img src="../images/tag7/11.jpg" alt="Christmas lights on Praça XV">
+<img src="../images/tag7/12.jpg" alt="Giant snowman at 25 degrees">
+<img src="../images/tag7/13.jpg" alt="The illuminated Figueira">
+<img src="../images/tag7/14.jpg" alt="The Figueira in blue light">
+
+<hr>
+
+<div class="navbar"><a href="day6.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day8.html">Next day &rarr;</a><a class="lang-switch" href="../tag7.html" lang="de">DE</a></div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../style.css">
+<title>Day 1 &ndash; Wednesday/Thursday, November 13/14 &ndash; Arrival in Rio: Barra, Ipanema, Copacabana</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><span></span><a href="index.html">&#8962; Overview</a><a href="day2.html">Next day &rarr;</a><a class="lang-switch" href="../tag1.html" lang="de">DE</a></div>
+<h1>Day 1 &ndash; Wednesday/Thursday, November 13/14 &ndash; Arrival in Rio: Barra, Ipanema, Copacabana</h1>
+<h2 class="map-heading">Map</h2>
+<div id="map1" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Barra da Tijuca", lat: -23.01, lng: -43.323, note: "First beach day", anchor: "barra" },
+      { name: "Ipanema", lat: -22.987, lng: -43.205, note: "Sunset", anchor: "ipanema" },
+      { name: "Copacabana", lat: -22.97, lng: -43.183, note: "First evening", anchor: "ipanema" }
+    ];
+    const map = L.map('map1').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap contributors'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; To the diary entry</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="barra"><strong>Arrival and Barra da Tijuca:</strong> Departure, overnight flight, arrival in the evening – and straight to a churrascaria. On the first morning Barra da Tijuca: some 18 km of beach in western Rio, the Tijucas islands offshore. G20 posters everywhere – the summit is held in Rio a few days later, on 18–19 November 2024.</p>
+<p class="more-info">&#8599; <a href="https://en.wikipedia.org/wiki/Barra_da_Tijuca" target="_blank" rel="noopener noreferrer">Learn more</a></p>
+<img src="../images/tag1/01.jpg" alt="Selfie at the airport before departure">
+<img src="../images/tag1/02.jpg" alt="Churrasco plate on the first evening">
+<img src="../images/tag1/03.jpg" alt="Barra da Tijuca beach with islands">
+<img src="../images/tag1/04.jpg" alt="Selfie of three at the beach bar">
+<img src="../images/tag1/05.jpg" alt="Lifeguard post with G20 logo">
+<p>Rio hosted the 2024 G20 summit – even the lifeguard posts carry the logo.</p>
+<img src="../images/tag1/06.jpg" alt="Two of us on a beach swing">
+<img src="../images/tag1/07.jpg" alt="Group selfie on the beach">
+<img src="../images/tag1/08.jpg" alt="Mural at the foot of Vidigal">
+<p id="ipanema"><strong>Ipanema and Copacabana:</strong> On the way back along Leblon and Ipanema: the mosaic pavement of the promenade, with the twin peaks of Dois Irmãos behind. In the evening on Copacabana – beer, sand sculptures, the full programme.</p>
+<p class="more-info">&#8599; <a href="https://en.wikipedia.org/wiki/Ipanema" target="_blank" rel="noopener noreferrer">Learn more</a></p>
+<img src="../images/tag1/09.jpg" alt="Ipanema promenade with Dois Irmãos">
+<img src="../images/tag1/10.jpg" alt="Palm trees on the beach at night">
+<img src="../images/tag1/11.jpg" alt="Illuminated beach promenade">
+<img src="../images/tag1/12.jpg" alt="Round at a beach bar">
+<img src="../images/tag1/13.jpg" alt="&quot;Eu ❤ Rio&quot; sand sculpture with Christ">
+<img src="../images/tag1/14.jpg" alt="Brahma tap stand on the promenade">
+<img src="../images/tag1/15.jpg" alt="Group selfie on the first evening">
+
+<hr>
+
+<div class="navbar"><span></span><a href="index.html">&#8962; Overview</a><a href="day2.html">Next day &rarr;</a><a class="lang-switch" href="../tag1.html" lang="de">DE</a></div>
+</body>
+</html>

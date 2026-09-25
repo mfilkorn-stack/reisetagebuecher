@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../style.css">
+<title>Tag 3 &ndash; Samstag, 16. November &ndash; Rocinha</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="tag2.html">&larr; Vorheriger Tag</a><a href="index.html">&#8962; &Uuml;bersicht</a><a href="tag4.html">N&auml;chster Tag &rarr;</a><a class="lang-switch" href="en/day3.html" lang="en">EN</a></div>
+<h1>Tag 3 &ndash; Samstag, 16. November &ndash; Rocinha</h1>
+<h2 class="map-heading">Karte</h2>
+<div id="map3" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Rocinha", lat: -22.988, lng: -43.248, note: "Favela-Tour", anchor: "rocinha" },
+      { name: "Lapa", lat: -22.9139, lng: -43.18, note: "Abendessen", anchor: "abend" }
+    ];
+    const map = L.map('map3').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap-Mitwirkende'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; Zum Tagebucheintrag</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="rocinha"><strong>Rocinha:</strong> Bei Regen hinauf nach Rocinha, einer der größten Favelas Brasiliens, am Hang zwischen Gávea und São Conrado. Rund 70.000 Menschen leben hier; das wichtigste Verkehrsmittel sind Mototaxis. Mit einem Guide aus dem Viertel geht es durch Gassen voller Street Art, zu einer Capoeira-Gruppe und zu Aussichtspunkten, von denen die Wolken über den Hügeln von Rio hängen.</p>
+<p class="more-info">&#8599; <a href="https://de.wikipedia.org/wiki/Rocinha" target="_blank" rel="noopener noreferrer">Mehr erfahren</a></p>
+<img src="images/tag3/01.jpg" alt="Zu zweit im Regenponcho">
+<img src="images/tag3/02.jpg" alt="Mototaxi-Fahrer vor einem Laden">
+<img src="images/tag3/03.jpg" alt="Wolken über den Hügeln von Rio">
+<img src="images/tag3/04.jpg" alt="Blick über Rocinha">
+<img src="images/tag3/05.jpg" alt="Capoeira-Runde mit Zuschauern">
+<p>Capoeira, die Mischung aus Kampfkunst, Tanz und Musik, steht seit 2014 auf der UNESCO-Liste des immateriellen Kulturerbes.</p>
+<img src="images/tag3/06.jpg" alt="Schriftzug „I love Rocinha&quot;">
+<img src="images/tag3/07.jpg" alt="Bemalte Restaurantfassade">
+<img src="images/tag3/08.jpg" alt="Kabelgewirr über der Hauptstraße">
+<img src="images/tag3/09.jpg" alt="Bemalter Baumstamm mit „Paz&quot;">
+<img src="images/tag3/10.jpg" alt="Bunte Leinwand in einer Galerie">
+<img src="images/tag3/11.jpg" alt="Bemalte Treppe in einer Gasse">
+<img src="images/tag3/12.jpg" alt="Tukan-Wandbild">
+<img src="images/tag3/13.jpg" alt="Sportplatz mitten im Viertel">
+<img src="images/tag3/14.jpg" alt="Kleine Kirche vor der Felswand">
+<p id="abend"><strong>Abends in Lapa:</strong> Zurück in der Stadt: Ceviche beim Peruaner in Lapa.</p>
+<img src="images/tag3/15.jpg" alt="Leuchtschrift „I love Ceviche&quot;">
+
+<hr>
+
+<div class="navbar"><a href="tag2.html">&larr; Vorheriger Tag</a><a href="index.html">&#8962; &Uuml;bersicht</a><a href="tag4.html">N&auml;chster Tag &rarr;</a><a class="lang-switch" href="en/day3.html" lang="en">EN</a></div>
+</body>
+</html>

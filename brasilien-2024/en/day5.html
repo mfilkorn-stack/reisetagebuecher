@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../style.css">
+<title>Day 5 &ndash; Monday, November 18 &ndash; São Paulo: Centro & Beco do Batman</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="day4.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day6.html">Next day &rarr;</a><a class="lang-switch" href="../tag5.html" lang="de">DE</a></div>
+<h1>Day 5 &ndash; Monday, November 18 &ndash; São Paulo: Centro & Beco do Batman</h1>
+<h2 class="map-heading">Map</h2>
+<div id="map5" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Pinheiros", lat: -23.562, lng: -46.688, note: "Barber and pool", anchor: "sp" },
+      { name: "Theatro Municipal", lat: -23.5452, lng: -46.6388, note: "Opera house", anchor: "centro" },
+      { name: "Beco do Batman", lat: -23.5566, lng: -46.6886, note: "Street art alley", anchor: "beco" },
+      { name: "Figueira Rubaiyat", lat: -23.5635, lng: -46.67, note: "Dinner", anchor: "beco" }
+    ];
+    const map = L.map('map5').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap contributors'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; To the diary entry</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="sp"><strong>São Paulo:</strong> Largest city in the southern hemisphere, over 11 million inhabitants within city limits. We start slowly: barbershop, rooftop pool.</p>
+<p class="more-info">&#8599; <a href="https://en.wikipedia.org/wiki/São_Paulo" target="_blank" rel="noopener noreferrer">Learn more</a></p>
+<img src="../images/tag5/01.jpg" alt="Facial treatment at the barber">
+<img src="../images/tag5/02.jpg" alt="In the rooftop pool">
+<p id="centro"><strong>Centro:</strong> To the centre: the Igreja da Consolação and the Theatro Municipal of 1911, venue of the 1922 Modern Art Week that launched Brazilian modernism.</p>
+<p class="more-info">&#8599; <a href="https://en.wikipedia.org/wiki/Municipal_Theatre_of_São_Paulo" target="_blank" rel="noopener noreferrer">Learn more</a></p>
+<img src="../images/tag5/03.jpg" alt="Dome of the Igreja da Consolação">
+<img src="../images/tag5/04.jpg" alt="São Paulo Municipal Theatre">
+<img src="../images/tag5/05.jpg" alt="Black ice-cream cone in hand">
+<p id="beco"><strong>Beco do Batman:</strong> The alley in Vila Madalena got its name from a Batman graffiti in the 1980s. Today every wall is painted and regularly repainted; in the evening people sit on folding chairs right in the middle. To finish, dinner at Figueira Rubaiyat, a restaurant built around a huge old fig tree.</p>
+<p class="more-info">&#8599; <a href="https://en.wikipedia.org/wiki/Beco_do_Batman" target="_blank" rel="noopener noreferrer">Learn more</a></p>
+<img src="../images/tag5/06.jpg" alt="In front of a wings mural">
+<img src="../images/tag5/07.jpg" alt="Joker graffiti">
+<img src="../images/tag5/08.jpg" alt="Three monkeys graffiti">
+<img src="../images/tag5/09.jpg" alt="Folding chairs in the painted alley">
+<img src="../images/tag5/10.jpg" alt="Colourful hummingbird mural">
+<img src="../images/tag5/11.jpg" alt="Two of us in the alley">
+<img src="../images/tag5/12.jpg" alt="Toucan mural">
+<img src="../images/tag5/13.jpg" alt="The Batman graffiti">
+<img src="../images/tag5/14.jpg" alt="Wine bottle with illustrated label">
+<img src="../images/tag5/15.jpg" alt="Dining room under the fig tree">
+
+<hr>
+
+<div class="navbar"><a href="day4.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day6.html">Next day &rarr;</a><a class="lang-switch" href="../tag5.html" lang="de">DE</a></div>
+</body>
+</html>

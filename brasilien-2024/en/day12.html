@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../style.css">
+<title>Day 12 &ndash; Thursday, November 28 &ndash; Blumenau</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="day11.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day13.html">Next day &rarr;</a><a class="lang-switch" href="../tag12.html" lang="de">DE</a></div>
+<h1>Day 12 &ndash; Thursday, November 28 &ndash; Blumenau</h1>
+<h2 class="map-heading">Map</h2>
+<div id="map12" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Parque Vila Germânica", lat: -26.915, lng: -49.084, note: "Oktoberfest grounds", anchor: "blumenau" },
+      { name: "Blumenau centre", lat: -26.919, lng: -49.066, note: "City centre", anchor: "blumenau" }
+    ];
+    const map = L.map('map12').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap contributors'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; To the diary entry</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="blumenau"><strong>Blumenau:</strong> Day trip into the Itajaí Valley. Blumenau was founded in 1850 by the German pharmacist Hermann Blumenau, and it still shows: half-timbered houses, German names in the cemetery, beer steins. The Parque Vila Germânica has hosted Oktoberfest every year since 1984, one of the largest in the world. The Eisenbahn brewery comes from here too.</p>
+<p class="more-info">&#8599; <a href="https://en.wikipedia.org/wiki/Blumenau" target="_blank" rel="noopener noreferrer">Learn more</a></p>
+<img src="../images/tag12/01.jpg" alt="Green hills in the Itajaí Valley">
+<img src="../images/tag12/02.jpg" alt="Red half-timbered house">
+<img src="../images/tag12/03.jpg" alt="Half-timbered houses in Parque Vila Germânica">
+<img src="../images/tag12/04.jpg" alt="Beer stein on the table">
+<img src="../images/tag12/05.jpg" alt="Oktoberfest stein">
+<img src="../images/tag12/06.jpg" alt="Oktoberfest poster &quot;Aqui todo mundo vira alemão&quot;">
+<p>"Everyone becomes German here" – the 2011 Oktoberfest slogan.</p>
+<img src="../images/tag12/07.jpg" alt="Decorated façade with figures">
+<img src="../images/tag12/08.jpg" alt="Baby bodysuit with lederhosen design">
+<img src="../images/tag12/09.jpg" alt="Alemão Batata choperia sign">
+<img src="../images/tag12/10.jpg" alt="Clock tower in Parque Vila Germânica">
+<img src="../images/tag12/11.jpg" alt="Eisenbahn brewery building">
+<img src="../images/tag12/12.jpg" alt="Gravestone with German names">
+<img src="../images/tag12/13.jpg" alt="Half-timbered town hall">
+<img src="../images/tag12/14.jpg" alt="Half-timbered house with terrace">
+<img src="../images/tag12/15.jpg" alt="&quot;Ich ❤ Blumenau&quot; lettering">
+
+<hr>
+
+<div class="navbar"><a href="day11.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day13.html">Next day &rarr;</a><a class="lang-switch" href="../tag12.html" lang="de">DE</a></div>
+</body>
+</html>

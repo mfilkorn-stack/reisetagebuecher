@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../style.css">
+<title>Tag 11 &ndash; Mittwoch, 27. November &ndash; Ilha do Campeche</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="tag10.html">&larr; Vorheriger Tag</a><a href="index.html">&#8962; &Uuml;bersicht</a><a href="tag12.html">N&auml;chster Tag &rarr;</a><a class="lang-switch" href="en/day11.html" lang="en">EN</a></div>
+<h1>Tag 11 &ndash; Mittwoch, 27. November &ndash; Ilha do Campeche</h1>
+<h2 class="map-heading">Karte</h2>
+<div id="map11" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Ilha do Campeche", lat: -27.697, lng: -48.463, note: "Inselausflug", anchor: "campeche" },
+      { name: "Praia do Campeche", lat: -27.68, lng: -48.48, note: "Abend", anchor: "campeche" }
+    ];
+    const map = L.map('map11').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap-Mitwirkende'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; Zum Tagebucheintrag</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="campeche"><strong>Ilha do Campeche:</strong> Mit dem Boot zur kleinen Insel vor dem Campeche-Strand, die oft „die Karibik von Florianópolis" genannt wird. Sie ist als archäologische Stätte mit prähistorischen Felsgravuren nationales Kulturerbe; die Zahl der Besucher pro Tag ist begrenzt. Weißer Sand, türkises Wasser – und neugierige Nasenbären, die unter den Büschen nach Essbarem suchen.</p>
+<img src="images/tag11/01.jpg" alt="Selfie vor der Abfahrt">
+<img src="images/tag11/02.jpg" alt="Auf dem Boot Richtung Insel">
+<img src="images/tag11/03.jpg" alt="Ilha do Campeche vom Meer">
+<img src="images/tag11/04.jpg" alt="Am Bug des Bootes">
+<img src="images/tag11/05.jpg" alt="Aussteigen im flachen Wasser">
+<img src="images/tag11/06.jpg" alt="Weißer Sandstrand der Insel">
+<img src="images/tag11/07.jpg" alt="Nasenbär unter einem Busch">
+<p>Nasenbären (Quatis) leben wild auf der Insel – füttern ist verboten.</p>
+<img src="images/tag11/08.jpg" alt="Nasenbär im Sand">
+<img src="images/tag11/09.jpg" alt="Rückweg über den Steg zum Boot">
+<img src="images/tag11/10.jpg" alt="Türkises Wasser vor der Insel">
+<img src="images/tag11/11.jpg" alt="Insel mit Kondensstreifen">
+<img src="images/tag11/12.jpg" alt="Felsküste auf der Rückfahrt">
+<img src="images/tag11/13.jpg" alt="Beleuchteter Holzsteg am Abend">
+
+<hr>
+
+<div class="navbar"><a href="tag10.html">&larr; Vorheriger Tag</a><a href="index.html">&#8962; &Uuml;bersicht</a><a href="tag12.html">N&auml;chster Tag &rarr;</a><a class="lang-switch" href="en/day11.html" lang="en">EN</a></div>
+</body>
+</html>

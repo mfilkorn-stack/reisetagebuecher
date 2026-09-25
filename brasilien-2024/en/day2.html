@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../style.css">
+<title>Day 2 &ndash; Friday, November 15 &ndash; Lapa, Selarón, Cathedral & Sambódromo</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="day1.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day3.html">Next day &rarr;</a><a class="lang-switch" href="../tag2.html" lang="de">DE</a></div>
+<h1>Day 2 &ndash; Friday, November 15 &ndash; Lapa, Selarón, Cathedral & Sambódromo</h1>
+<h2 class="map-heading">Map</h2>
+<div id="map2" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Rua do Lavradio", lat: -22.912, lng: -43.181, note: "Breakfast", anchor: "lapa" },
+      { name: "Selarón Steps", lat: -22.9153, lng: -43.1792, note: "Tiled staircase", anchor: "lapa" },
+      { name: "Metropolitan Cathedral", lat: -22.9107, lng: -43.1804, note: "Cone cathedral", anchor: "kathedrale" },
+      { name: "Sambódromo", lat: -22.911, lng: -43.1965, note: "Carnival parade ground", anchor: "sambodromo" }
+    ];
+    const map = L.map('map2').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap contributors'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; To the diary entry</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="lapa"><strong>Lapa and the Selarón Steps:</strong> Breakfast on Rua do Lavradio, then on foot through Lapa: Bob Marley graffiti, the Arcos da Lapa and the Selarón Steps – 215 steps that the Chilean artist Jorge Selarón covered from 1990 with more than 2,000 tiles from over 60 countries.</p>
+<p class="more-info">&#8599; <a href="https://en.wikipedia.org/wiki/Selarón_Steps" target="_blank" rel="noopener noreferrer">Learn more</a></p>
+<img src="../images/tag2/01.jpg" alt="Coffee at breakfast">
+<img src="../images/tag2/02.jpg" alt="Brazilian breakfast with soup and sides">
+<img src="../images/tag2/03.jpg" alt="Cobbled lane by the Arcos da Lapa">
+<img src="../images/tag2/04.jpg" alt="Bob Marley graffiti on a shutter">
+<img src="../images/tag2/05.jpg" alt="On the Selarón Steps">
+<img src="../images/tag2/06.jpg" alt="Mosaic with the Brazilian flag">
+<img src="../images/tag2/07.jpg" alt="&quot;Brasil eu te amo – Selarón&quot; tiles">
+<p id="kathedrale"><strong>Metropolitan Cathedral:</strong> From outside a concrete cone, 75 m high, built between 1964 and 1979 – inside, a surprise: four stained-glass windows rise 64 m from floor to the cross in the roof. Up to 20,000 people fit inside standing.</p>
+<p class="more-info">&#8599; <a href="https://en.wikipedia.org/wiki/Rio_de_Janeiro_Cathedral" target="_blank" rel="noopener noreferrer">Learn more</a></p>
+<img src="../images/tag2/08.jpg" alt="Arcos da Lapa with high-rises">
+<img src="../images/tag2/09.jpg" alt="Cone-shaped cathedral from outside">
+<img src="../images/tag2/10.jpg" alt="Stained-glass windows up to the ceiling">
+<img src="../images/tag2/11.jpg" alt="Stained glass close-up">
+<p id="sambodromo"><strong>Sambódromo:</strong> Oscar Niemeyer designed the samba schools' parade ground on Rua Marquês de Sapucaí, opened in 1984. Outside Carnival it is an empty concrete strip – hard to imagine more than 70,000 people partying here in February.</p>
+<p class="more-info">&#8599; <a href="https://en.wikipedia.org/wiki/Sambadrome_Marquês_de_Sapucaí" target="_blank" rel="noopener noreferrer">Learn more</a></p>
+<img src="../images/tag2/12.jpg" alt="Empty stands of the Sambódromo">
+<img src="../images/tag2/13.jpg" alt="Group selfie at the Sambódromo">
+<img src="../images/tag2/14.jpg" alt="Colourful stairs in a bar in Santa Teresa">
+<img src="../images/tag2/15.jpg" alt="Evening in a bar in Santa Teresa">
+
+<hr>
+
+<div class="navbar"><a href="day1.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day3.html">Next day &rarr;</a><a class="lang-switch" href="../tag2.html" lang="de">DE</a></div>
+</body>
+</html>
