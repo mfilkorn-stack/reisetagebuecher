@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../style.css">
+<title>Tag 17 &ndash; Sonntag, 5. Februar &ndash; Chapultepec, Anthropologie-Museum & Abschied</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="tag16.html">&larr; Vorheriger Tag</a><a href="index.html">&#8962; &Uuml;bersicht</a><span></span><a class="lang-switch" href="en/day17.html" lang="en">EN</a></div>
+<h1>Tag 17 &ndash; Sonntag, 5. Februar &ndash; Chapultepec, Anthropologie-Museum & Abschied</h1>
+<h2 class="map-heading">Karte</h2>
+<div id="map17" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Altar a la Patria", lat: 19.4215, lng: -99.179, note: "Denkmal der Niños Héroes", anchor: "chapultepec" },
+      { name: "Lago de Chapultepec", lat: 19.422, lng: -99.1848, note: "Tretboote", anchor: "chapultepec" },
+      { name: "Museo Nacional de Antropología", lat: 19.426, lng: -99.1863, note: "Museum", anchor: "museo" }
+    ];
+    const map = L.map('map17').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap-Mitwirkende'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; Zum Tagebucheintrag</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="chapultepec"><strong>Bosque de Chapultepec:</strong> Letzter voller Tag. Der Chapultepec-Park ist mit rund 680 Hektar einer der größten Stadtparks Lateinamerikas. Am Eingang das Denkmal der Niños Héroes: sechs junge Kadetten, die 1847 bei der Verteidigung der Burg Chapultepec gegen US-Truppen fielen.</p>
+<p class="more-info">&#8599; <a href="https://de.wikipedia.org/wiki/Bosque_de_Chapultepec" target="_blank" rel="noopener noreferrer">Mehr erfahren</a></p>
+<img src="images/tag17/01.jpg" alt="Denkmal der Niños Héroes">
+<img src="images/tag17/02.jpg" alt="Chapultepec-See mit Tretbooten">
+<img src="images/tag17/03.jpg" alt="CDMX-Schriftzug am See">
+<p id="museo"><strong>Museo Nacional de Antropología:</strong> Das wichtigste Museum Mexikos, 1964 von Pedro Ramírez Vázquez gebaut. Im Innenhof trägt eine einzige Säule das riesige Dach „El Paraguas", von dem Wasser herabregnet. In über 20 Sälen: von den Olmeken bis zu den Azteken, dazu die lebendigen indigenen Kulturen von heute.</p>
+<p class="more-info">&#8599; <a href="https://de.wikipedia.org/wiki/Nationalmuseum_für_Anthropologie" target="_blank" rel="noopener noreferrer">Mehr erfahren</a></p>
+<img src="images/tag17/04.jpg" alt="Säule „El Paraguas&quot; mit Wasserfall">
+<img src="images/tag17/05.jpg" alt="Bunter Lebensbaum aus Keramik">
+<p>Árbol de la vida: Keramik-Lebensbaum, typisch für Metepec.</p>
+<img src="images/tag17/06.jpg" alt="Traditionelle Trachten in einer Vitrine">
+<img src="images/tag17/07.jpg" alt="Nachbau einer Tempelfassade mit Schlangenköpfen">
+<img src="images/tag17/08.jpg" alt="Innenhof des Museums unter dem Paraguas">
+<img src="images/tag17/09.jpg" alt="Sonnenstein (Aztekenkalender)">
+<p>Der Sonnenstein: 24 Tonnen Basalt, 3,6 m Durchmesser, 1790 am Zócalo ausgegraben &ndash; das berühmteste Stück des Museums.</p>
+<img src="images/tag17/10.jpg" alt="Diorama des Marktes von Tlatelolco">
+<p>Diorama des Marktes von Tlatelolco, den die spanischen Eroberer als größer als jeden Markt Europas beschrieben.</p>
+<img src="images/tag17/11.jpg" alt="Statue der Coatlicue">
+<p>Coatlicue, Mutter der Götter, mit Rock aus Schlangen.</p>
+<img src="images/tag17/12.jpg" alt="Olmekischer Kolossalkopf">
+<p>Olmekischer Kolossalkopf &ndash; rund 3.000 Jahre alt.</p>
+<img src="images/tag17/13.jpg" alt="Keramikfigur des Regengottes Tláloc">
+<img src="images/tag17/14.jpg" alt="Figur mit Jademaske in der Maya-Abteilung">
+<img src="images/tag17/15.jpg" alt="Concheros-Tänzer mit Federkrone vor dem Museum">
+<p>Zum Abschied tanzen vor dem Museum Concheros in Federschmuck &ndash; Tradition, die bis heute lebt.</p>
+
+<hr>
+
+<p><strong>Abschied:</strong> Am nächsten Morgen, Montag, 6. Februar, geht es früh zum Flughafen und zurück nach Frankfurt. Siebzehn Tage zwischen Hauptstadt, Bergen, Karibik und Golfküste, drei Maya-Städte &ndash; und eine lange Liste an Orten, für die wir wiederkommen müssen.</p>
+
+<hr>
+
+<div class="navbar"><a href="tag16.html">&larr; Vorheriger Tag</a><a href="index.html">&#8962; &Uuml;bersicht</a><span></span><a class="lang-switch" href="en/day17.html" lang="en">EN</a></div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../style.css">
+<title>Day 9 &ndash; Saturday, January 28 &ndash; Tulum: Playa Paraíso & Beach Club</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="day8.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day10.html">Next day &rarr;</a><a class="lang-switch" href="../tag9.html" lang="de">DE</a></div>
+<h1>Day 9 &ndash; Saturday, January 28 &ndash; Tulum: Playa Paraíso & Beach Club</h1>
+<h2 class="map-heading">Map</h2>
+<div id="map9" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Playa Paraíso", lat: 20.202, lng: -87.433, note: "Beach", anchor: "strand" },
+      { name: "Tulum hotel zone", lat: 20.1586, lng: -87.455, note: "Beach club", anchor: "beachclub" }
+    ];
+    const map = L.map('map9').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap contributors'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; To the diary entry</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="strand"><strong>Playa Paraíso:</strong> White sand, turquoise water, palm trees &ndash; Playa Paraíso lies right next to the Maya ruins of Tulum and is considered one of the most beautiful beaches in Mexico. In January the weather is perfect: around 28 degrees, hardly any rain.</p>
+<p class="more-info">&#8599; <a href="https://en.wikipedia.org/wiki/Tulum" target="_blank" rel="noopener noreferrer">Learn more</a></p>
+<img src="../images/tag9/01.jpg" alt="View over the beach with palm trees">
+<img src="../images/tag9/02.jpg" alt="White sandy beach and clouds">
+<img src="../images/tag9/03.jpg" alt="On the beach in the sun">
+<img src="../images/tag9/04.jpg" alt="Selfie of three on the beach">
+<img src="../images/tag9/05.jpg" alt="Beach bar with palm roof">
+<img src="../images/tag9/06.jpg" alt="Sea view from the car window">
+<p id="beachclub"><strong>Beach club:</strong> The coast road to the south is lined with boutique hotels, restaurants and beach clubs. We end up in one of them &ndash; music, dancing, sunset. Tulum on a Saturday.</p>
+<img src="../images/tag9/07.jpg" alt="Entrance to a beach club">
+<img src="../images/tag9/08.jpg" alt="Restaurant under a palm roof">
+<img src="../images/tag9/09.jpg" alt="At the table with beer">
+<img src="../images/tag9/10.jpg" alt="Selfie with friends at the beach club">
+<img src="../images/tag9/11.jpg" alt="Group photo at the table">
+<img src="../images/tag9/12.jpg" alt="Selfie on the busy beach">
+<img src="../images/tag9/13.jpg" alt="Party at the beach club with sea view">
+<img src="../images/tag9/14.jpg" alt="Posing at the beach club">
+
+<hr>
+
+<div class="navbar"><a href="day8.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day10.html">Next day &rarr;</a><a class="lang-switch" href="../tag9.html" lang="de">DE</a></div>
+</body>
+</html>

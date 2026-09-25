@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../style.css">
+<title>Day 4 &ndash; Monday, January 23 &ndash; Flight to Oaxaca</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="day3.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day5.html">Next day &rarr;</a><a class="lang-switch" href="../tag4.html" lang="de">DE</a></div>
+<h1>Day 4 &ndash; Monday, January 23 &ndash; Flight to Oaxaca</h1>
+<h2 class="map-heading">Map</h2>
+<div id="map4" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Mexico City Airport", lat: 19.4361, lng: -99.0719, note: "Departure", anchor: "flug" },
+      { name: "Oaxaca Airport", lat: 17.0006, lng: -96.721, note: "Landing and rental car", anchor: "oaxaca" },
+      { name: "Oaxaca Centro", lat: 17.0613, lng: -96.7177, note: "Accommodation", anchor: "oaxaca" }
+    ];
+    const map = L.map('map4').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap contributors'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; To the diary entry</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="flug"><strong>Heading south:</strong> Onward flight to Oaxaca, about an hour to the south-east. Below us Mexico City as far as the eye can see, framed by volcanic mountains.</p>
+<img src="../images/tag4/01.jpg" alt="View from the plane over Mexico City">
+<img src="../images/tag4/02.jpg" alt="Landing in Oaxaca, mountains behind">
+<p id="oaxaca"><strong>Arrival in Oaxaca:</strong> The small airport lies in the valley between the mountains of the Sierra Madre del Sur. Pick up the rental car, load the bags, head to the historic centre. Oaxaca is considered Mexico's culinary capital &ndash; home of mole, mezcal and tlayudas.</p>
+<p class="more-info">&#8599; <a href="https://en.wikipedia.org/wiki/Oaxaca_City" target="_blank" rel="noopener noreferrer">Learn more</a></p>
+<img src="../images/tag4/03.jpg" alt="Oaxaca airport terminal with art installation">
+<img src="../images/tag4/04.jpg" alt="Rental car with open boot">
+<img src="../images/tag4/05.jpg" alt="Crispy pastry in hand">
+<p>First snack in Oaxaca.</p>
+
+<hr>
+
+<div class="navbar"><a href="day3.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day5.html">Next day &rarr;</a><a class="lang-switch" href="../tag4.html" lang="de">DE</a></div>
+</body>
+</html>

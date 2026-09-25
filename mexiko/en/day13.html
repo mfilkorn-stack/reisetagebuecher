@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../style.css">
+<title>Day 13 &ndash; Wednesday, February 1 &ndash; Uxmal, Mucuyché Cenotes & Mérida</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="day12.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day14.html">Next day &rarr;</a><a class="lang-switch" href="../tag13.html" lang="de">DE</a></div>
+<h1>Day 13 &ndash; Wednesday, February 1 &ndash; Uxmal, Mucuyché Cenotes & Mérida</h1>
+<h2 class="map-heading">Map</h2>
+<div id="map13" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Uxmal", lat: 20.361, lng: -89.77, note: "Puuc Maya city", anchor: "uxmal" },
+      { name: "Hacienda Mucuyché", lat: 20.6255, lng: -89.6045, note: "Cenotes", anchor: "mucuyche" },
+      { name: "Mérida", lat: 20.9691, lng: -89.6236, note: "Evening", anchor: "merida" }
+    ];
+    const map = L.map('map13').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap contributors'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; To the diary entry</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="uxmal"><strong>Uxmal:</strong> For many the most beautiful Maya site &ndash; and much quieter than Chichén Itzá. Uxmal is the masterpiece of the Puuc style: smooth lower walls topped by stone-mosaic friezes with lattice patterns and masks of the rain god Chaac. The Pyramid of the Magician has an oval base; legend says a dwarf built it in a single night. A UNESCO World Heritage Site since 1996.</p>
+<p class="more-info">&#8599; <a href="https://en.wikipedia.org/wiki/Uxmal" target="_blank" rel="noopener noreferrer">Learn more</a></p>
+<img src="../images/tag13/01.jpg" alt="Pyramid of the Magician">
+<img src="../images/tag13/02.jpg" alt="Chaac masks on a building in the Nunnery Quadrangle">
+<img src="../images/tag13/03.jpg" alt="Stone-mosaic façade in the Nunnery Quadrangle">
+<img src="../images/tag13/04.jpg" alt="Close-up of a lattice frieze">
+<img src="../images/tag13/05.jpg" alt="Building corner with meanders">
+<img src="../images/tag13/06.jpg" alt="Pyramid of the Magician between trees">
+<img src="../images/tag13/07.jpg" alt="Double-headed jaguar throne">
+<p>The double-headed jaguar throne in front of the Governor's Palace.</p>
+<img src="../images/tag13/08.jpg" alt="Selfie in front of the pyramid">
+<p id="mucuyche"><strong>Hacienda Mucuyché:</strong> On the way to Mérida: an old henequen hacienda. Sisal was made here from agave fibres, Yucatán's "green gold" around 1900. Today it draws visitors with two cenotes connected by a canal. One is named after Empress Carlota, who is said to have bathed here in 1865.</p>
+<img src="../images/tag13/09.jpg" alt="Saddle and ropes in the old hacienda">
+<img src="../images/tag13/10.jpg" alt="Beam of light in the turquoise cenote">
+<img src="../images/tag13/11.jpg" alt="Canal between the cenotes">
+<img src="../images/tag13/12.jpg" alt="Stalactites above blue water">
+<img src="../images/tag13/13.jpg" alt="Selfie in the cenote">
+<p id="merida"><strong>Arrival in Mérida:</strong> In the evening we reach Mérida, the "white city" and capital of Yucatán. Rooftop pool overlooking the city, then a drink in the old town.</p>
+<p class="more-info">&#8599; <a href="https://en.wikipedia.org/wiki/Mérida,_Yucatán" target="_blank" rel="noopener noreferrer">Learn more</a></p>
+<img src="../images/tag13/14.jpg" alt="Illuminated rooftop pool at night">
+<img src="../images/tag13/15.jpg" alt="With a blue cocktail in a bar">
+
+<hr>
+
+<div class="navbar"><a href="day12.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day14.html">Next day &rarr;</a><a class="lang-switch" href="../tag13.html" lang="de">DE</a></div>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../style.css">
+<title>Tag 13 &ndash; Mittwoch, 1. Februar &ndash; Uxmal, Cenotes Mucuyché & Mérida</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="tag12.html">&larr; Vorheriger Tag</a><a href="index.html">&#8962; &Uuml;bersicht</a><a href="tag14.html">N&auml;chster Tag &rarr;</a><a class="lang-switch" href="en/day13.html" lang="en">EN</a></div>
+<h1>Tag 13 &ndash; Mittwoch, 1. Februar &ndash; Uxmal, Cenotes Mucuyché & Mérida</h1>
+<h2 class="map-heading">Karte</h2>
+<div id="map13" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Uxmal", lat: 20.361, lng: -89.77, note: "Puuc-Maya-Stadt", anchor: "uxmal" },
+      { name: "Hacienda Mucuyché", lat: 20.6255, lng: -89.6045, note: "Cenotes", anchor: "mucuyche" },
+      { name: "Mérida", lat: 20.9691, lng: -89.6236, note: "Abend", anchor: "merida" }
+    ];
+    const map = L.map('map13').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap-Mitwirkende'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; Zum Tagebucheintrag</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="uxmal"><strong>Uxmal:</strong> Für viele die schönste Maya-Stätte &ndash; und deutlich ruhiger als Chichén Itzá. Uxmal ist Hauptwerk des Puuc-Stils: glatte Unterzonen, darüber Friese aus Steinmosaik mit Gittermustern und Masken des Regengottes Chaac. Die Pyramide des Zauberers hat einen ovalen Grundriss; der Legende nach baute sie ein Zwerg in einer einzigen Nacht. UNESCO-Welterbe seit 1996.</p>
+<p class="more-info">&#8599; <a href="https://de.wikipedia.org/wiki/Uxmal" target="_blank" rel="noopener noreferrer">Mehr erfahren</a></p>
+<img src="images/tag13/01.jpg" alt="Pyramide des Zauberers">
+<img src="images/tag13/02.jpg" alt="Chaac-Masken an einem Gebäude im Nonnenviereck">
+<img src="images/tag13/03.jpg" alt="Fassade mit Steinmosaik im Nonnenviereck">
+<img src="images/tag13/04.jpg" alt="Gittermuster-Fries in Nahaufnahme">
+<img src="images/tag13/05.jpg" alt="Gebäudeecke mit Mäandern">
+<img src="images/tag13/06.jpg" alt="Pyramide des Zauberers zwischen Bäumen">
+<img src="images/tag13/07.jpg" alt="Doppelköpfiger Jaguarthron">
+<p>Der doppelköpfige Jaguarthron vor dem Gouverneurspalast.</p>
+<img src="images/tag13/08.jpg" alt="Selfie vor der Pyramide">
+<p id="mucuyche"><strong>Hacienda Mucuyché:</strong> Auf dem Weg nach Mérida: eine alte Henequén-Hacienda. Aus den Fasern der Agave wurde hier Sisal gewonnen, Yucatáns „grünes Gold" um 1900. Heute lockt sie mit zwei Cenotes, über einen Kanal verbunden. Einer ist nach Kaiserin Carlota benannt, die hier 1865 gebadet haben soll.</p>
+<img src="images/tag13/09.jpg" alt="Sattel und Seile in der alten Hacienda">
+<img src="images/tag13/10.jpg" alt="Lichtstrahl im türkisen Cenote">
+<img src="images/tag13/11.jpg" alt="Kanal zwischen den Cenotes">
+<img src="images/tag13/12.jpg" alt="Tropfsteine über blauem Wasser">
+<img src="images/tag13/13.jpg" alt="Selfie im Cenote">
+<p id="merida"><strong>Ankunft in Mérida:</strong> Am Abend erreichen wir Mérida, die „weiße Stadt" und Hauptstadt Yucatáns. Dachpool mit Blick über die Stadt, dann ein Drink in der Altstadt.</p>
+<p class="more-info">&#8599; <a href="https://de.wikipedia.org/wiki/Mérida_(Mexiko)" target="_blank" rel="noopener noreferrer">Mehr erfahren</a></p>
+<img src="images/tag13/14.jpg" alt="Beleuchteter Dachpool bei Nacht">
+<img src="images/tag13/15.jpg" alt="Mit blauem Cocktail in einer Bar">
+
+<hr>
+
+<div class="navbar"><a href="tag12.html">&larr; Vorheriger Tag</a><a href="index.html">&#8962; &Uuml;bersicht</a><a href="tag14.html">N&auml;chster Tag &rarr;</a><a class="lang-switch" href="en/day13.html" lang="en">EN</a></div>
+</body>
+</html>

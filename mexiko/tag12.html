@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../style.css">
+<title>Tag 12 &ndash; Dienstag, 31. Januar &ndash; Campeche: Meer, Farben & Calle 59</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="tag11.html">&larr; Vorheriger Tag</a><a href="index.html">&#8962; &Uuml;bersicht</a><a href="tag13.html">N&auml;chster Tag &rarr;</a><a class="lang-switch" href="en/day12.html" lang="en">EN</a></div>
+<h1>Tag 12 &ndash; Dienstag, 31. Januar &ndash; Campeche: Meer, Farben & Calle 59</h1>
+<h2 class="map-heading">Karte</h2>
+<div id="map12" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Malecón San Román", lat: 19.8385, lng: -90.5495, note: "Mittagessen am Meer", anchor: "meer" },
+      { name: "Calle 59", lat: 19.8451, lng: -90.538, note: "Abend in der Altstadt", anchor: "calle59" }
+    ];
+    const map = L.map('map12').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap-Mitwirkende'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; Zum Tagebucheintrag</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="meer"><strong>Mittag am Meer:</strong> Ein langsamer Tag: Mittagessen mit Blick auf den Golf, danach durch das Viertel San Román. An jeder Ecke steht ein Oldtimer &ndash; darunter ein Vocho, der klassische VW Käfer, der in Puebla noch bis 2003 vom Band lief.</p>
+<img src="images/tag12/01.jpg" alt="Restaurant mit Blick aufs Meer durch einen Torbogen">
+<img src="images/tag12/02.jpg" alt="Tacos und Burger mit Bier">
+<img src="images/tag12/03.jpg" alt="Mintgrüner VW Käfer">
+<img src="images/tag12/04.jpg" alt="Alter Abschleppwagen vor bunter Hauswand">
+<p id="calle59"><strong>Calle 59:</strong> Abends wird die Calle 59 zur Fußgängerzone mit Tischen auf der Straße und Lichterketten über den Köpfen. Papel picado, das gestanzte Seidenpapier, hängt hier sogar im Fenster.</p>
+<img src="images/tag12/05.jpg" alt="Restaurants mit Tischen auf der Calle 59">
+<img src="images/tag12/06.jpg" alt="Fenster mit buntem Papel picado">
+<img src="images/tag12/07.jpg" alt="Bartische unter Lichterketten">
+<img src="images/tag12/08.jpg" alt="Geschichteter Cocktail in Grün und Rot">
+<p>Farben wie die Flagge.</p>
+<img src="images/tag12/09.jpg" alt="Queso fundido mit Tortillas">
+<img src="images/tag12/10.jpg" alt="Am Holztisch in einer Bar">
+<img src="images/tag12/11.jpg" alt="Bronzefigur einer Frau mit Korb auf dem Kopf">
+<img src="images/tag12/12.jpg" alt="Verziertes altes Auto mit Hörnern und Totenkopf">
+<p>Und zum Abschluss: Campeches wohl eigenwilligstes Auto.</p>
+
+<hr>
+
+<div class="navbar"><a href="tag11.html">&larr; Vorheriger Tag</a><a href="index.html">&#8962; &Uuml;bersicht</a><a href="tag13.html">N&auml;chster Tag &rarr;</a><a class="lang-switch" href="en/day12.html" lang="en">EN</a></div>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../style.css">
+<title>Tag 11 &ndash; Montag, 30. Januar &ndash; Chichén Itzá & Ankunft in Campeche</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="tag10.html">&larr; Vorheriger Tag</a><a href="index.html">&#8962; &Uuml;bersicht</a><a href="tag12.html">N&auml;chster Tag &rarr;</a><a class="lang-switch" href="en/day11.html" lang="en">EN</a></div>
+<h1>Tag 11 &ndash; Montag, 30. Januar &ndash; Chichén Itzá & Ankunft in Campeche</h1>
+<h2 class="map-heading">Karte</h2>
+<div id="map11" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Chichén Itzá", lat: 20.6843, lng: -88.5678, note: "Maya-Metropole", anchor: "chichen" },
+      { name: "Cenote Sagrado", lat: 20.6875, lng: -88.5676, note: "Opferbrunnen", anchor: "cenote" },
+      { name: "Malecón Campeche", lat: 19.8395, lng: -90.5487, note: "Sonnenuntergang", anchor: "campeche" },
+      { name: "Parque Principal Campeche", lat: 19.8463, lng: -90.5369, note: "Kathedrale bei Nacht", anchor: "campeche" }
+    ];
+    const map = L.map('map11').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap-Mitwirkende'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; Zum Tagebucheintrag</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p><strong>Aufbruch:</strong> Frühstück unter Palmdach auf bunten Tischdecken, dann quer über die Halbinsel ins Landesinnere.</p>
+<img src="images/tag11/01.jpg" alt="Frühstück an bunt gedecktem Tisch">
+<p id="chichen"><strong>Chichén Itzá:</strong> Die bekannteste Maya-Stätte Mexikos, Blütezeit etwa 900&ndash;1200 n. Chr., seit 1988 UNESCO-Welterbe und seit 2007 eines der „neuen sieben Weltwunder". Die Pyramide des Kukulcán (El Castillo) ist ein steinerner Kalender: 4 &times; 91 Stufen plus Plattform ergeben 365. Zur Tag-und-Nacht-Gleiche kriecht ein Schattenband wie eine Schlange die Treppe hinab. Besteigen ist seit 2008 verboten.</p>
+<p class="more-info">&#8599; <a href="https://de.wikipedia.org/wiki/Chichén_Itzá" target="_blank" rel="noopener noreferrer">Mehr erfahren</a></p>
+<img src="images/tag11/02.jpg" alt="Pyramide des Kukulcán (El Castillo)">
+<img src="images/tag11/03.jpg" alt="Tempel der Krieger und Säulenhalle">
+<p>Der Tempel der Krieger mit der „Gruppe der tausend Säulen" davor &ndash; einst trugen die Säulen ein Dach.</p>
+<img src="images/tag11/04.jpg" alt="Säulen mit Kriegerreliefs">
+<img src="images/tag11/05.jpg" alt="Selfie vor El Castillo">
+<img src="images/tag11/06.jpg" alt="Souvenirstand mit bunten Masken und Tellern">
+<img src="images/tag11/07.jpg" alt="El Castillo vor blauem Himmel">
+<p id="cenote"><strong>Cenote Sagrado und Ballspielplatz:</strong> Der Heilige Cenote war ein Opferbrunnen: Anfang des 20. Jahrhunderts holte man Gold, Jade, Keramik und menschliche Knochen vom Grund. Der große Ballspielplatz ist mit 168 m Länge der größte Mesoamerikas; die Reliefs an den Wänden zeigen die Enthauptung eines Spielers.</p>
+<img src="images/tag11/08.jpg" alt="Grünes Wasser im Cenote Sagrado">
+<img src="images/tag11/09.jpg" alt="Tempel des bärtigen Mannes am Ballspielplatz">
+<img src="images/tag11/10.jpg" alt="Reliefs am Ballspielplatz">
+
+<hr>
+
+<p id="campeche"><strong>Campeche:</strong> Weiter an die Golfküste nach Campeche, rechtzeitig zum Sonnenuntergang am Malecón. Die Stadt wurde ab Ende des 17. Jahrhunderts nach wiederholten Piratenüberfällen mit einer Mauer und Bastionen befestigt; die farbenfrohe Altstadt ist seit 1999 UNESCO-Welterbe.</p>
+<p class="more-info">&#8599; <a href="https://de.wikipedia.org/wiki/San_Francisco_de_Campeche" target="_blank" rel="noopener noreferrer">Mehr erfahren</a></p>
+<img src="images/tag11/11.jpg" alt="Marienschrein mit bunten Lichtern">
+<img src="images/tag11/12.jpg" alt="Sonnenuntergang am Malecón von Campeche">
+<img src="images/tag11/13.jpg" alt="Kathedrale von Campeche bei Nacht">
+<img src="images/tag11/14.jpg" alt="Beleuchtete Gasse mit Lichterketten">
+<img src="images/tag11/15.jpg" alt="Instituto Campechano bei Nacht">
+
+<hr>
+
+<div class="navbar"><a href="tag10.html">&larr; Vorheriger Tag</a><a href="index.html">&#8962; &Uuml;bersicht</a><a href="tag12.html">N&auml;chster Tag &rarr;</a><a class="lang-switch" href="en/day11.html" lang="en">EN</a></div>
+</body>
+</html>

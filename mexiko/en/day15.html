@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../style.css">
+<title>Day 15 &ndash; Friday, February 3 &ndash; Back to Mexico City</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="day14.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day16.html">Next day &rarr;</a><a class="lang-switch" href="../tag15.html" lang="de">DE</a></div>
+<h1>Day 15 &ndash; Friday, February 3 &ndash; Back to Mexico City</h1>
+<h2 class="map-heading">Map</h2>
+<div id="map15" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Felipe Ángeles Airport (AIFA)", lat: 19.7334, lng: -99.0256, note: "Landing", anchor: "zurueck" },
+      { name: "Condesa", lat: 19.4185, lng: -99.1763, note: "Evening", anchor: "condesa2" }
+    ];
+    const map = L.map('map15').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap contributors'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; To the diary entry</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="zurueck"><strong>Back to the capital:</strong> Return the car, fly back to the capital &ndash; this time into the new Felipe Ángeles Airport (AIFA), opened in 2022 on a military base about 45 km north of the city. On the wall, an illustrated map of the peninsula we just left behind.</p>
+<p class="more-info">&#8599; <a href="https://en.wikipedia.org/wiki/Felipe_Ángeles_International_Airport" target="_blank" rel="noopener noreferrer">Learn more</a></p>
+<img src="../images/tag15/01.jpg" alt="Toll station on the highway">
+<img src="../images/tag15/02.jpg" alt="Illustrated map of the Yucatán Peninsula">
+<p id="condesa2"><strong>Evening in Condesa:</strong> Back in our neighbourhood: craft beer at a little stand, then dinner with salsas and Mexican home cooking.</p>
+<img src="../images/tag15/03.jpg" alt="Small bar on the street corner">
+<img src="../images/tag15/04.jpg" alt="Toasting with craft beer">
+<img src="../images/tag15/05.jpg" alt="Snacks on the wooden table">
+<img src="../images/tag15/06.jpg" alt="Trio of salsas on a wooden board">
+<img src="../images/tag15/07.jpg" alt="Dinner with plates and bowls">
+
+<hr>
+
+<div class="navbar"><a href="day14.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day16.html">Next day &rarr;</a><a class="lang-switch" href="../tag15.html" lang="de">DE</a></div>
+</body>
+</html>

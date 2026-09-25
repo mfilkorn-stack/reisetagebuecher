@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../style.css">
+<title>Day 2 &ndash; Saturday, January 21 &ndash; Chapultepec, Polanco, Condesa & a Barbecue in Lomas</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="day1.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day3.html">Next day &rarr;</a><a class="lang-switch" href="../tag2.html" lang="de">DE</a></div>
+<h1>Day 2 &ndash; Saturday, January 21 &ndash; Chapultepec, Polanco, Condesa & a Barbecue in Lomas</h1>
+<h2 class="map-heading">Map</h2>
+<div id="map2" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Avenida Chapultepec", lat: 19.4204, lng: -99.1766, note: "Morning walk", anchor: "morgen" },
+      { name: "Tláloc monolith", lat: 19.425, lng: -99.1852, note: "In front of the Anthropology Museum", anchor: "tlaloc" },
+      { name: "Parque Lincoln, Polanco", lat: 19.4291, lng: -99.1941, note: "Market and breakfast", anchor: "polanco" },
+      { name: "Parque México", lat: 19.4112, lng: -99.1689, note: "Afternoon in Condesa", anchor: "condesa" },
+      { name: "Lomas", lat: 19.3965, lng: -99.2404, note: "Barbecue with friends", anchor: "lomas" }
+    ];
+    const map = L.map('map2').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap contributors'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; To the diary entry</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="morgen"><strong>Morning walk along Avenida Chapultepec:</strong> Up early, on foot through Roma Norte towards Chapultepec. Street stands sell cut fruit in cups &ndash; mango, papaya, pineapple, with lime and Tajín (chili salt). Above it all rise the glass towers along Paseo de la Reforma.</p>
+<img src="../images/tag2/01.jpg" alt="Glass towers on Paseo de la Reforma">
+<img src="../images/tag2/02.jpg" alt="Fruit stand with fruit cups">
+<p>Breakfast to go: fruit cups with chili and lime.</p>
+<img src="../images/tag2/03.jpg" alt="Murals along a main road">
+<p id="tlaloc"><strong>Tláloc monolith:</strong> In front of the National Museum of Anthropology stands the rain god Tláloc &ndash; a stone giant of around 168 tonnes. It was moved into the city from Coatlinchan in 1964; legend has it that a downpour broke out in the middle of the dry season when it arrived.</p>
+<p class="more-info">&#8599; <a href="https://en.wikipedia.org/wiki/Monolith_of_Tlaloc" target="_blank" rel="noopener noreferrer">Learn more</a></p>
+<img src="../images/tag2/04.jpg" alt="Monolith of the rain god Tláloc">
+<p id="polanco"><strong>Polanco: market and breakfast:</strong> On Saturdays a tianguis (street market) sets up in Parque Lincoln in Polanco: mountains of limes, mangos and bananas. Then breakfast in a restaurant with a beautifully carved doorway &ndash; chilaquiles with a fried egg, the classic cure after a long night.</p>
+<img src="../images/tag2/05.jpg" alt="Market stall with limes, mangos and bananas">
+<img src="../images/tag2/06.jpg" alt="Waiter in the carved doorway of a restaurant">
+<img src="../images/tag2/07.jpg" alt="Chilaquiles with fried egg">
+<p id="condesa"><strong>Condesa in the afternoon:</strong> Parque México is the green heart of Condesa &ndash; laid out on a former horse-racing track, which explains the oval shape of the neighbourhood (Hipódromo). The fountain with the water-jug bearer at Foro Lindbergh is a landmark of the park, surrounded by Art Deco houses and busy terraces.</p>
+<p class="more-info">&#8599; <a href="https://en.wikipedia.org/wiki/Parque_México" target="_blank" rel="noopener noreferrer">Learn more</a></p>
+<img src="../images/tag2/08.jpg" alt="Fountain at Foro Lindbergh in Parque México">
+<img src="../images/tag2/09.jpg" alt="Street cafés and musicians in Condesa">
+<p id="lomas"><strong>Barbecue in Lomas:</strong> In the afternoon, an invitation to friends in Lomas: grill on, carne asada, a long table in the garden. Still the best way to get to know a city is at the table of its people.</p>
+<img src="../images/tag2/10.jpg" alt="Meat on the grill in the garden">
+<img src="../images/tag2/11.jpg" alt="Guests chatting in the garden">
+<img src="../images/tag2/12.jpg" alt="Selfie at the barbecue">
+<img src="../images/tag2/13.jpg" alt="Long table with guests in the garden">
+<img src="../images/tag2/14.jpg" alt="Busy bar in Roma Norte at night">
+<p>To finish, a bar in Roma Norte on Avenida Álvaro Obregón.</p>
+
+<hr>
+
+<div class="navbar"><a href="day1.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day3.html">Next day &rarr;</a><a class="lang-switch" href="../tag2.html" lang="de">DE</a></div>
+</body>
+</html>

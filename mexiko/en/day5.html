@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../style.css">
+<title>Day 5 &ndash; Tuesday, January 24 &ndash; Monte Albán & Santo Domingo</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="day4.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day6.html">Next day &rarr;</a><a class="lang-switch" href="../tag5.html" lang="de">DE</a></div>
+<h1>Day 5 &ndash; Tuesday, January 24 &ndash; Monte Albán & Santo Domingo</h1>
+<h2 class="map-heading">Map</h2>
+<div id="map5" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Monte Albán", lat: 17.0438, lng: -96.7677, note: "Zapotec ruined city", anchor: "montealban" },
+      { name: "Templo de Santo Domingo", lat: 17.0658, lng: -96.7231, note: "Baroque church", anchor: "santodomingo" },
+      { name: "Calle Macedonio Alcalá", lat: 17.0652, lng: -96.7242, note: "Dinner", anchor: "essen" }
+    ];
+    const map = L.map('map5').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap contributors'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; To the diary entry</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="montealban"><strong>Monte Albán:</strong> In the morning we leave town and drive up the mountain. Around 500 BC the Zapotecs began levelling the summit, some 400 m above the valley, to build their capital &ndash; the political centre of the Oaxaca Valley for over 1,000 years. The Gran Plaza is enormous, the 360° view over the three valleys even more so. A UNESCO World Heritage Site since 1987, together with Oaxaca's old town.</p>
+<p class="more-info">&#8599; <a href="https://en.wikipedia.org/wiki/Monte_Albán" target="_blank" rel="noopener noreferrer">Learn more</a></p>
+<img src="../images/tag5/01.jpg" alt="Colourful houses in Oaxaca from the car">
+<img src="../images/tag5/02.jpg" alt="At the Monte Albán car park">
+<img src="../images/tag5/03.jpg" alt="Pyramid platform at Monte Albán">
+<img src="../images/tag5/04.jpg" alt="Danzante relief">
+<p>The "Danzantes": more than 300 stone slabs with contorted figures. Once read as dancers, today mostly interpreted as defeated, sacrificed captives.</p>
+<img src="../images/tag5/05.jpg" alt="View over the Gran Plaza">
+<img src="../images/tag5/06.jpg" alt="Selfie above the Gran Plaza">
+<img src="../images/tag5/07.jpg" alt="Stela on the south platform">
+<img src="../images/tag5/08.jpg" alt="View from the south platform over the site and valley">
+<img src="../images/tag5/09.jpg" alt="Zapotec ceramic urn with headdress">
+<p>In the site museum: Zapotec funerary urns, often showing deities such as the rain god Cocijo.</p>
+<img src="../images/tag5/10.jpg" alt="Seated figure with feather crown">
+<p id="santodomingo"><strong>Evening: Santo Domingo:</strong> Back in town along the Macedonio Alcalá pedestrian street to the Templo de Santo Domingo. Plain and massive outside &ndash; built to withstand earthquakes &ndash; while inside the Baroque explodes: gilded altars, stucco up to the ceiling.</p>
+<p class="more-info">&#8599; <a href="https://en.wikipedia.org/wiki/Church_of_Santo_Domingo_de_Guzmán_(Oaxaca)" target="_blank" rel="noopener noreferrer">Learn more</a></p>
+<img src="../images/tag5/11.jpg" alt="Santo Domingo at night">
+<img src="../images/tag5/12.jpg" alt="Gilded main altar in Santo Domingo">
+<img src="../images/tag5/13.jpg" alt="Santo Domingo seen from a rooftop terrace">
+<p id="essen"><strong>Dinner:</strong> Oaxacan cooking lives on corn, chili and patience: blue-corn tortillas, salsas freshly ground at the table in a molcajete (stone mortar).</p>
+<img src="../images/tag5/14.jpg" alt="Dish with blue-corn tortilla">
+<img src="../images/tag5/15.jpg" alt="Waiter preparing salsa at the table">
+
+<hr>
+
+<div class="navbar"><a href="day4.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day6.html">Next day &rarr;</a><a class="lang-switch" href="../tag5.html" lang="de">DE</a></div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../style.css">
+<title>Day 10 &ndash; Sunday, January 29 &ndash; Tulum: Taking a Breather</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="day9.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day11.html">Next day &rarr;</a><a class="lang-switch" href="../tag10.html" lang="de">DE</a></div>
+<h1>Day 10 &ndash; Sunday, January 29 &ndash; Tulum: Taking a Breather</h1>
+<h2 class="map-heading">Map</h2>
+<div id="map10" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Aldea Zama, Tulum", lat: 20.2033, lng: -87.4581, note: "Pool and rest", anchor: "ruhe" }
+    ];
+    const map = L.map('map10').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap contributors'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; To the diary entry</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="ruhe"><strong>Day of rest:</strong> After Saturday, this is exactly what's needed: feet in the sea, later into the courtyard pool. No plans, no clock.</p>
+<img src="../images/tag10/01.jpg" alt="Two of us in the shallow sea">
+<img src="../images/tag10/02.jpg" alt="Courtyard pool with plants">
+<img src="../images/tag10/03.jpg" alt="Relaxing in the pool">
+
+<hr>
+
+<div class="navbar"><a href="day9.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day11.html">Next day &rarr;</a><a class="lang-switch" href="../tag10.html" lang="de">DE</a></div>
+</body>
+</html>

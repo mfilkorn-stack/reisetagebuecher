@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../style.css">
+<title>Day 16 &ndash; Saturday, February 4 &ndash; Xochimilco</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="day15.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day17.html">Next day &rarr;</a><a class="lang-switch" href="../tag16.html" lang="de">DE</a></div>
+<h1>Day 16 &ndash; Saturday, February 4 &ndash; Xochimilco</h1>
+<h2 class="map-heading">Map</h2>
+<div id="map16" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Cuemanco landing", lat: 19.288, lng: -99.102, note: "Trajinera tour", anchor: "xochimilco" },
+      { name: "Lake Xochimilco", lat: 19.2809, lng: -99.1023, note: "Canals", anchor: "xochimilco" },
+      { name: "Hipódromo", lat: 19.4095, lng: -99.1731, note: "Dinner", anchor: "abend16" }
+    ];
+    const map = L.map('map16').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap contributors'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; To the diary entry</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="xochimilco"><strong>Xochimilco:</strong> The canals of Xochimilco are the last remnant of the lake system the Aztecs lived on. Between them lie chinampas, artificially built-up "floating gardens", a farming method more than 1,000 years old &ndash; UNESCO World Heritage since 1987. You rent a trajinera, a brightly painted flat boat that a boatman punts through the canals with a long pole.</p>
+<p class="more-info">&#8599; <a href="https://en.wikipedia.org/wiki/Xochimilco" target="_blank" rel="noopener noreferrer">Learn more</a></p>
+<img src="../images/tag16/01.jpg" alt="Colourful trajineras at the landing">
+<img src="../images/tag16/02.jpg" alt="Altar of the Virgin of Guadalupe with flowers">
+<img src="../images/tag16/03.jpg" alt="Michelada in a cup with chili rim">
+<p>Essential on board: a michelada.</p>
+<img src="../images/tag16/04.jpg" alt="Boarding the trajinera">
+<img src="../images/tag16/05.jpg" alt="Trajineras on the canal">
+<img src="../images/tag16/06.jpg" alt="Boatman punting the trajinera">
+<img src="../images/tag16/07.jpg" alt="At the bow of the trajinera on the lake">
+<img src="../images/tag16/08.jpg" alt="Vendor in a canoe with textiles">
+<p>Floating vendors: snacks, flowers, blankets and entire mariachi bands pull up alongside by boat.</p>
+<img src="../images/tag16/09.jpg" alt="Boatman with a long pole">
+<img src="../images/tag16/10.jpg" alt="Another trajinera full of guests">
+<img src="../images/tag16/11.jpg" alt="Selfie on the water">
+<img src="../images/tag16/12.jpg" alt="Pelicans on the canal">
+<p>Surprise: pelicans. American white pelicans spend the winter in Xochimilco.</p>
+<img src="../images/tag16/13.jpg" alt="Several trajineras with musicians">
+<img src="../images/tag16/14.jpg" alt="Selfie in front of colourful boats">
+<p id="abend16"><strong>Dinner:</strong> Back in town: dinner at a restaurant in Hipódromo, modern Mexican cuisine on the plate.</p>
+<img src="../images/tag16/15.jpg" alt="Plated dish with herbs and sauce">
+
+<hr>
+
+<div class="navbar"><a href="day15.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day17.html">Next day &rarr;</a><a class="lang-switch" href="../tag16.html" lang="de">DE</a></div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../style.css">
+<title>Tag 7 &ndash; Donnerstag, 26. Januar &ndash; Tacos, Mezcalería & Zócalo bei Nacht</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="tag6.html">&larr; Vorheriger Tag</a><a href="index.html">&#8962; &Uuml;bersicht</a><a href="tag8.html">N&auml;chster Tag &rarr;</a><a class="lang-switch" href="en/day7.html" lang="en">EN</a></div>
+<h1>Tag 7 &ndash; Donnerstag, 26. Januar &ndash; Tacos, Mezcalería & Zócalo bei Nacht</h1>
+<h2 class="map-heading">Karte</h2>
+<div id="map7" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Taquería", lat: 17.0615, lng: -96.717, note: "Tacos", anchor: "tacos" },
+      { name: "Mezcalería", lat: 17.0663, lng: -96.7247, note: "Mezcal-Verkostung", anchor: "mezcaleria" },
+      { name: "Zócalo de Oaxaca", lat: 17.0604, lng: -96.7258, note: "Abendspaziergang", anchor: "zocalo" }
+    ];
+    const map = L.map('map7').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap-Mitwirkende'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; Zum Tagebucheintrag</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="tacos"><strong>Tacos:</strong> Späte Taquería: Fleisch vom Grill, darauf Zwiebeln, Koriander und eine Batterie Salsas &ndash; von mild bis „Vorsicht".</p>
+<img src="images/tag7/01.jpg" alt="Taquero an der Theke">
+<img src="images/tag7/02.jpg" alt="Lachen am Tisch mit Bier und Salsas">
+<img src="images/tag7/03.jpg" alt="Salsa-Auswahl in Metallschälchen">
+<img src="images/tag7/04.jpg" alt="Tacos auf Tellern">
+<p id="mezcaleria"><strong>In der Mezcalería:</strong> Weiter in eine Mezcalería. Neben Mezcal: Craft-Bier aus der Region und Etiketten, die man sich merken will.</p>
+<img src="images/tag7/05.jpg" alt="Flasche Craft-Bier Matlacipa">
+<img src="images/tag7/06.jpg" alt="Skizze einer Mezcal-Bar auf Papier">
+<img src="images/tag7/07.jpg" alt="Mezcal-Flasche in der Hand">
+<p id="zocalo"><strong>Zócalo bei Nacht:</strong> Das Zentrum von Oaxaca wird abends zur Bühne: Esquites-Stände, Kostümierte, Familien. Auf dem Zócalo stehen Protestzelte &ndash; Plantones, mit denen Gruppen seit Jahrzehnten ihre Forderungen sichtbar machen. Die Kathedrale und die Arkaden sind warm angestrahlt.</p>
+<p class="more-info">&#8599; <a href="https://de.wikipedia.org/wiki/Kathedrale_von_Oaxaca" target="_blank" rel="noopener noreferrer">Mehr erfahren</a></p>
+<img src="images/tag7/08.jpg" alt="Esquites-Stand am Abend">
+<img src="images/tag7/09.jpg" alt="Protestbanner auf dem Zócalo">
+<img src="images/tag7/10.jpg" alt="Vor der Kathedrale bei Nacht">
+<img src="images/tag7/11.jpg" alt="Beleuchtete Arkaden am Zócalo">
+<img src="images/tag7/12.jpg" alt="Straßenkünstler im Predator-Kostüm">
+<p>Popkultur trifft Kolonialkulisse: ein „Predator" posiert für Kinderfotos.</p>
+<img src="images/tag7/13.jpg" alt="Am Tisch mit dem Kellner">
+<img src="images/tag7/14.jpg" alt="Wassertanker „Agua potable&quot; in der Altstadt">
+<p>Nachts rollen die Pipas: Oaxaca leidet unter chronischem Wassermangel, viele Häuser werden per Tankwagen beliefert.</p>
+
+<hr>
+
+<div class="navbar"><a href="tag6.html">&larr; Vorheriger Tag</a><a href="index.html">&#8962; &Uuml;bersicht</a><a href="tag8.html">N&auml;chster Tag &rarr;</a><a class="lang-switch" href="en/day7.html" lang="en">EN</a></div>
+</body>
+</html>
