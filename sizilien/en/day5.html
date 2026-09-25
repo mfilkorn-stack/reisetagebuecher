@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../style.css">
+<title>Day 5 &ndash; Wednesday, April 23 &ndash; Syracuse & Ortigia</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="day4.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day6.html">Next day &rarr;</a><a class="lang-switch" href="../tag5.html" lang="de">DE</a></div>
+<h1>Day 5 &ndash; Wednesday, April 23 &ndash; Syracuse & Ortigia</h1>
+<h2 class="map-heading">Map</h2>
+<div id="map5" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Neapolis, Syracuse", lat: 37.075, lng: 15.275, note: "Archaeological park", anchor: "syrakus" },
+      { name: "Ortigia", lat: 37.06, lng: 15.293, note: "Old-town island", anchor: "ortigia" }
+    ];
+    const map = L.map('map5').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap contributors'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; To the diary entry</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="syrakus"><strong>Syracuse:</strong> Founded around 734 BC by Greeks from Corinth, Syracuse was once one of the most powerful cities of the ancient world and home of Archimedes. The Neapolis archaeological park holds the Greek theatre and the Latomia del Paradiso, a vast ancient quarry.</p>
+<p class="more-info">&#8599; <a href="https://en.wikipedia.org/wiki/Syracuse,_Sicily" target="_blank" rel="noopener noreferrer">Learn more</a></p>
+<img src="../images/tag5/01.jpg" alt="Latomia del Paradiso">
+<img src="../images/tag5/02.jpg" alt="Ruins in Ortigia">
+<p id="ortigia"><strong>Ortigia and the cathedral:</strong> The old-town island of Ortigia is linked to the mainland by two bridges. The cathedral is a palimpsest: behind the 1728 Baroque façade stand the Doric columns of the 5th-century-BC temple of Athena – you can still see them in the walls inside. UNESCO World Heritage since 2005.</p>
+<p class="more-info">&#8599; <a href="https://en.wikipedia.org/wiki/Cathedral_of_Syracuse" target="_blank" rel="noopener noreferrer">Learn more</a></p>
+<img src="../images/tag5/03.jpg" alt="Baroque façade in Ortigia">
+<img src="../images/tag5/04.jpg" alt="Syracuse Cathedral on Piazza Duomo">
+<img src="../images/tag5/05.jpg" alt="Doric columns in the side aisle">
+<img src="../images/tag5/06.jpg" alt="Vaults in the cathedral">
+<img src="../images/tag5/07.jpg" alt="Gilded statue of a saint">
+<img src="../images/tag5/08.jpg" alt="Historic library">
+
+<hr>
+
+<div class="navbar"><a href="day4.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day6.html">Next day &rarr;</a><a class="lang-switch" href="../tag5.html" lang="de">DE</a></div>
+</body>
+</html>

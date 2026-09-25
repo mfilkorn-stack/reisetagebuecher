@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../style.css">
+<title>Tag 2 &ndash; Karfreitag, 18. April &ndash; Karfreitagsprozession in Enna</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="tag1.html">&larr; Vorheriger Tag</a><a href="index.html">&#8962; &Uuml;bersicht</a><a href="tag3.html">N&auml;chster Tag &rarr;</a><a class="lang-switch" href="en/day2.html" lang="en">EN</a></div>
+<h1>Tag 2 &ndash; Karfreitag, 18. April &ndash; Karfreitagsprozession in Enna</h1>
+<h2 class="map-heading">Karte</h2>
+<div id="map2" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Torre di Federico", lat: 37.563, lng: 14.269, note: "Stauferturm", anchor: "enna" },
+      { name: "Via Roma, Enna", lat: 37.567, lng: 14.278, note: "Prozession", anchor: "prozession" },
+      { name: "Dom von Enna", lat: 37.568, lng: 14.28, note: "Dom", anchor: "prozession" }
+    ];
+    const map = L.map('map2').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap-Mitwirkende'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; Zum Tagebucheintrag</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="enna"><strong>Enna:</strong> Enna liegt auf rund 930 m und gilt als „Nabel Siziliens" – die höchstgelegene Provinzhauptstadt Italiens mit Blick über das ganze Inselinnere. Der achteckige Torre di Federico wird Kaiser Friedrich II. zugeschrieben.</p>
+<p class="more-info">&#8599; <a href="https://de.wikipedia.org/wiki/Enna" target="_blank" rel="noopener noreferrer">Mehr erfahren</a></p>
+<img src="images/tag2/01.jpg" alt="Torre di Federico">
+<img src="images/tag2/02.jpg" alt="Bruderschaftsmitglieder auf einem Balkon">
+<img src="images/tag2/03.jpg" alt="Blick über das grüne Inselinnere">
+<p id="prozession"><strong>Die Karfreitagsprozession:</strong> Der Karfreitag ist in Enna der Höhepunkt des Jahres. Die Tradition geht auf die spanische Herrschaft zurück: Tausende Mitglieder der Bruderschaften ziehen in Kutten und spitzen Kapuzen, jede Bruderschaft in eigenen Farben, schweigend durch die Stadt. Sie tragen die Urne mit dem toten Christus und die Figur der Madonna Addolorata vom Dom durch die Via Roma. Es ist eine der eindrucksvollsten Karwochen-Prozessionen Italiens.</p>
+<img src="images/tag2/04.jpg" alt="Banner der Bruderschaft SS. Salvatore">
+<img src="images/tag2/05.jpg" alt="Bruderschaft in Hellblau">
+<img src="images/tag2/06.jpg" alt="Kreuz aus Blumen">
+<img src="images/tag2/07.jpg" alt="Urne mit dem toten Christus">
+<img src="images/tag2/08.jpg" alt="Brüder in Rot mit Kapuzen">
+<img src="images/tag2/09.jpg" alt="Kranz in der Prozession">
+<img src="images/tag2/10.jpg" alt="Bruderschaften in allen Farben">
+<img src="images/tag2/11.jpg" alt="Im Dom von Enna">
+<img src="images/tag2/12.jpg" alt="Bruderschaften vor dem Dom">
+<img src="images/tag2/13.jpg" alt="Die Urne wird durch die Menge getragen">
+<img src="images/tag2/14.jpg" alt="Prozession in der Abendsonne">
+<img src="images/tag2/15.jpg" alt="Madonna Addolorata">
+
+<hr>
+
+<div class="navbar"><a href="tag1.html">&larr; Vorheriger Tag</a><a href="index.html">&#8962; &Uuml;bersicht</a><a href="tag3.html">N&auml;chster Tag &rarr;</a><a class="lang-switch" href="en/day2.html" lang="en">EN</a></div>
+</body>
+</html>

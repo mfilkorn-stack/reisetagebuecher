@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../style.css">
+<title>Day 7 &ndash; Friday, April 25 &ndash; Villa Romana del Casale & Caltagirone</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="day6.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><span></span><a class="lang-switch" href="../tag7.html" lang="de">DE</a></div>
+<h1>Day 7 &ndash; Friday, April 25 &ndash; Villa Romana del Casale & Caltagirone</h1>
+<h2 class="map-heading">Map</h2>
+<div id="map7" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Villa Romana del Casale", lat: 37.365, lng: 14.334, note: "Roman mosaics", anchor: "villa" },
+      { name: "Caltagirone", lat: 37.237, lng: 14.512, note: "Ceramics town", anchor: "caltagirone" }
+    ];
+    const map = L.map('map7').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap contributors'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; To the diary entry</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="villa"><strong>Villa Romana del Casale:</strong> Near Piazza Armerina lies the villa of a wealthy Roman from the early 4th century, buried for centuries under a landslide. That preserved some 3,500 m² of floor mosaics, the largest such collection in the Roman world: hunting scenes, animals shipped from Africa and the famous "bikini girls" doing sport. UNESCO World Heritage since 1997.</p>
+<p class="more-info">&#8599; <a href="https://en.wikipedia.org/wiki/Villa_Romana_del_Casale" target="_blank" rel="noopener noreferrer">Learn more</a></p>
+<img src="../images/tag7/01.jpg" alt="Wall remains with column">
+<img src="../images/tag7/02.jpg" alt="Mosaic hall">
+<img src="../images/tag7/03.jpg" alt="Mosaic with rowers">
+<img src="../images/tag7/04.jpg" alt="Hunting scene in mosaic">
+<img src="../images/tag7/05.jpg" alt="Ship with animals in mosaic">
+<img src="../images/tag7/06.jpg" alt="Athletes in the bikini mosaic">
+<img src="../images/tag7/07.jpg" alt="Bikini girls playing ball">
+<img src="../images/tag7/08.jpg" alt="Figures in mosaic">
+<p id="caltagirone"><strong>Caltagirone:</strong> The ceramics town of Caltagirone is also part of the Val di Noto. Its landmark is the Scala di Santa Maria del Monte: 142 steps, each riser covered in hand-painted majolica tiles. In one church stands a large nativity landscape – crib-making has a long tradition here.</p>
+<p class="more-info">&#8599; <a href="https://en.wikipedia.org/wiki/Caltagirone" target="_blank" rel="noopener noreferrer">Learn more</a></p>
+<img src="../images/tag7/09.jpg" alt="Majolica staircase from below">
+<img src="../images/tag7/10.jpg" alt="Palazzo with ornate balconies">
+<img src="../images/tag7/11.jpg" alt="Dome from inside">
+<img src="../images/tag7/12.jpg" alt="Nativity figure in a hut">
+<img src="../images/tag7/13.jpg" alt="Nativity landscape">
+<img src="../images/tag7/14.jpg" alt="On the majolica staircase">
+<img src="../images/tag7/15.jpg" alt="Break on a wall">
+<p><strong>Farewell:</strong> On Saturday, April 26, we fly home from Catania.</p>
+
+<hr>
+
+<div class="navbar"><a href="day6.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><span></span><a class="lang-switch" href="../tag7.html" lang="de">DE</a></div>
+</body>
+</html>

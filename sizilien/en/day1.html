@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../style.css">
+<title>Day 1 &ndash; Maundy Thursday, April 17 &ndash; Catania</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><span></span><a href="index.html">&#8962; Overview</a><a href="day2.html">Next day &rarr;</a><a class="lang-switch" href="../tag1.html" lang="de">DE</a></div>
+<h1>Day 1 &ndash; Maundy Thursday, April 17 &ndash; Catania</h1>
+<h2 class="map-heading">Map</h2>
+<div id="map1" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Piazza del Duomo, Catania", lat: 37.5024, lng: 15.0873, note: "Elephant fountain and cathedral", anchor: "catania" },
+      { name: "Roman Theatre", lat: 37.503, lng: 15.083, note: "Ancient theatre", anchor: "teatro" },
+      { name: "Pergusa near Enna", lat: 37.516, lng: 14.305, note: "Accommodation", anchor: "abend" }
+    ];
+    const map = L.map('map1').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap contributors'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; To the diary entry</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="catania"><strong>Catania:</strong> Landing in Catania, Sicily's second city at the foot of Etna. After the 1693 earthquake it was rebuilt in Baroque style, often in black lava stone. Its landmark stands on Piazza del Duomo: "U Liotru", a lava-stone elephant carrying an Egyptian obelisk, set up in 1736 by Giovanni Battista Vaccarini. Right next to it, the cathedral of the city's patron saint, Sant'Agata.</p>
+<p class="more-info">&#8599; <a href="https://en.wikipedia.org/wiki/Catania" target="_blank" rel="noopener noreferrer">Learn more</a></p>
+<img src="../images/tag1/01.jpg" alt="Elephant fountain with obelisk">
+<img src="../images/tag1/02.jpg" alt="Fruit cart with citrus">
+<img src="../images/tag1/03.jpg" alt="Shopping trolley full of fruit on the street">
+<img src="../images/tag1/04.jpg" alt="Cathedral of Sant'Agata">
+<p id="teatro"><strong>Roman Theatre:</strong> Right among the houses lies the Roman theatre from the 2nd century, partly built over by the old town. In the passages beneath it you can see the dark lava rock Catania stands on.</p>
+<p class="more-info">&#8599; <a href="https://en.wikipedia.org/wiki/Roman_Theatre_(Catania)" target="_blank" rel="noopener noreferrer">Learn more</a></p>
+<img src="../images/tag1/05.jpg" alt="View of the Roman theatre">
+<img src="../images/tag1/06.jpg" alt="Lava-stone passage under the theatre">
+<img src="../images/tag1/07.jpg" alt="Theatre surrounded by houses">
+<img src="../images/tag1/08.jpg" alt="Two cannoli">
+<p>A must in Sicily: cannoli, fried pastry tubes filled with sweet ricotta.</p>
+<img src="../images/tag1/09.jpg" alt="View over the rooftops of Catania">
+<img src="../images/tag1/10.jpg" alt="Roofs and domes down to the sea">
+<img src="../images/tag1/11.jpg" alt="Painted coffered ceiling">
+<p><strong>Fish market:</strong> "A Piscaria", the fish market behind the cathedral, is loud, wet and full of life – mussels, swordfish, the calls of the traders. With a Vespa in tricolore paint right in the middle.</p>
+<img src="../images/tag1/12.jpg" alt="Mussel stall at the fish market">
+<img src="../images/tag1/13.jpg" alt="Tricolore Vespa in the crowd">
+<img src="../images/tag1/14.jpg" alt="Selfie of three above the rooftops">
+<p id="abend"><strong>On to Enna:</strong> In the evening inland to Pergusa on the lake of the same name below Enna – and the first pizza.</p>
+<img src="../images/tag1/15.jpg" alt="Pizza in the evening">
+
+<hr>
+
+<div class="navbar"><span></span><a href="index.html">&#8962; Overview</a><a href="day2.html">Next day &rarr;</a><a class="lang-switch" href="../tag1.html" lang="de">DE</a></div>
+</body>
+</html>

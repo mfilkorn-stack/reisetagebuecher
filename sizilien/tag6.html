@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../style.css">
+<title>Tag 6 &ndash; Donnerstag, 24. April &ndash; Modica & Ragusa Ibla</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="tag5.html">&larr; Vorheriger Tag</a><a href="index.html">&#8962; &Uuml;bersicht</a><a href="tag7.html">N&auml;chster Tag &rarr;</a><a class="lang-switch" href="en/day6.html" lang="en">EN</a></div>
+<h1>Tag 6 &ndash; Donnerstag, 24. April &ndash; Modica & Ragusa Ibla</h1>
+<h2 class="map-heading">Karte</h2>
+<div id="map6" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Modica", lat: 36.859, lng: 14.761, note: "Barockstadt", anchor: "modica" },
+      { name: "Ragusa Ibla", lat: 36.927, lng: 14.74, note: "Altstadt", anchor: "ragusa" }
+    ];
+    const map = L.map('map6').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap-Mitwirkende'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; Zum Tagebucheintrag</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="modica"><strong>Modica:</strong> Modica und Ragusa gehören zu den acht Städten des Val di Noto, die nach dem Erdbeben von 1693 im spätbarocken Stil wieder aufgebaut wurden – seit 2002 gemeinsam UNESCO-Welterbe. Modica ist außerdem berühmt für seine Schokolade, die nach aztekischem Vorbild kalt verarbeitet wird und deshalb körnig bleibt.</p>
+<p class="more-info">&#8599; <a href="https://de.wikipedia.org/wiki/Spätbarocke_Städte_des_Val_di_Noto" target="_blank" rel="noopener noreferrer">Mehr erfahren</a></p>
+<img src="images/tag6/01.jpg" alt="Kirche in Modica am Abend">
+<img src="images/tag6/02.jpg" alt="Fotobuch „Barbieri di Sicilia&quot;">
+<p id="ragusa"><strong>Ragusa Ibla:</strong> Nach dem Erdbeben baute ein Teil der Bewohner die Oberstadt neu, die anderen blieben im alten Ibla auf dem Felssporn – zwei Städte, die erst 1926 wieder vereint wurden. Von der Chiesa di Santa Maria delle Scale sieht man über die ganze Altstadt, deren Häuser sich den Hang hinunterstaffeln.</p>
+<p class="more-info">&#8599; <a href="https://de.wikipedia.org/wiki/Ragusa" target="_blank" rel="noopener noreferrer">Mehr erfahren</a></p>
+<img src="images/tag6/03.jpg" alt="Verfallener Palazzo">
+<img src="images/tag6/04.jpg" alt="Blick über Ragusa Ibla">
+<img src="images/tag6/05.jpg" alt="Gotisches Portal in Santa Maria delle Scale">
+<img src="images/tag6/06.jpg" alt="Terrakotta-Relief">
+<img src="images/tag6/07.jpg" alt="Steinfigur eines Tieres">
+<img src="images/tag6/08.jpg" alt="Barocker Palazzo mit Balkon">
+<img src="images/tag6/09.jpg" alt="Etna Bianco zum Abendessen">
+<img src="images/tag6/10.jpg" alt="Antipasti-Teller mit Fisch">
+<img src="images/tag6/11.jpg" alt="Ragusa Ibla bei Nacht">
+
+<hr>
+
+<div class="navbar"><a href="tag5.html">&larr; Vorheriger Tag</a><a href="index.html">&#8962; &Uuml;bersicht</a><a href="tag7.html">N&auml;chster Tag &rarr;</a><a class="lang-switch" href="en/day6.html" lang="en">EN</a></div>
+</body>
+</html>

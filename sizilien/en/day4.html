@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../style.css">
+<title>Day 4 &ndash; Easter Monday, April 21 – Wednesday, April 23 &ndash; Mount Etna</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="day3.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day5.html">Next day &rarr;</a><a class="lang-switch" href="../tag4.html" lang="de">DE</a></div>
+<h1>Day 4 &ndash; Easter Monday, April 21 – Wednesday, April 23 &ndash; Mount Etna</h1>
+<h2 class="map-heading">Map</h2>
+<div id="map4" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Nicosia", lat: 37.747, lng: 14.397, note: "Departure", anchor: "aetna" },
+      { name: "Etna north side", lat: 37.79, lng: 15.04, note: "Lava fields", anchor: "aetna" },
+      { name: "Linguaglossa", lat: 37.842, lng: 15.142, note: "Wine bar", anchor: "wein" },
+      { name: "Milo", lat: 37.723, lng: 15.116, note: "Winery", anchor: "wein" }
+    ];
+    const map = L.map('map4').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap contributors'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; To the diary entry</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="aetna"><strong>Up Mount Etna:</strong> From Nicosia across the interior to Etna. At around 3,300 m it is Europe's highest active volcano and a UNESCO World Heritage Site since 2013. An off-road bus takes us up the north side near Linguaglossa into the lava fields, between craters and cushions of milk-vetch, with snow still lying higher up.</p>
+<p class="more-info">&#8599; <a href="https://en.wikipedia.org/wiki/Mount_Etna" target="_blank" rel="noopener noreferrer">Learn more</a></p>
+<img src="../images/tag4/01.jpg" alt="Hills near Nicosia">
+<img src="../images/tag4/02.jpg" alt="Off-road buses at the lava field">
+<img src="../images/tag4/03.jpg" alt="Descending over black lava">
+<img src="../images/tag4/04.jpg" alt="Walking along the crater rim">
+<img src="../images/tag4/05.jpg" alt="Green cushions on the lava">
+<img src="../images/tag4/06.jpg" alt="Snow on Etna's slopes">
+<p id="wein"><strong>Etna wine:</strong> The lava soils make Etna one of Italy's most exciting wine regions: Nerello Mascalese for red, Carricante for white; Etna DOC has existed since 1968. In the evening at a wine bar in Linguaglossa, on Wednesday at a winery near Milo. In between, a giant bench with a view over the volcanic slope.</p>
+<p class="more-info">&#8599; <a href="https://en.wikipedia.org/wiki/Etna_DOC" target="_blank" rel="noopener noreferrer">Learn more</a></p>
+<img src="../images/tag4/07.jpg" alt="Lane in Linguaglossa">
+<img src="../images/tag4/08.jpg" alt="Etna wines on the bar">
+<img src="../images/tag4/09.jpg" alt="Red wine being poured">
+<img src="../images/tag4/10.jpg" alt="Three of us on the giant red bench">
+<img src="../images/tag4/11.jpg" alt="Wine bottles on a barrel">
+<img src="../images/tag4/12.jpg" alt="Map of the Etna DOC vineyards">
+<img src="../images/tag4/13.jpg" alt="Old wine press">
+<img src="../images/tag4/14.jpg" alt="Winery tasting room">
+
+<hr>
+
+<div class="navbar"><a href="day3.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day5.html">Next day &rarr;</a><a class="lang-switch" href="../tag4.html" lang="de">DE</a></div>
+</body>
+</html>
