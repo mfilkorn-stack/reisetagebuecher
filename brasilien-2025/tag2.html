@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../style.css">
+<title>Tag 2 &ndash; Freitag, 14. November &ndash; Strand, Lapa & Escadaria Selarón</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="tag1.html">&larr; Vorheriger Tag</a><a href="index.html">&#8962; &Uuml;bersicht</a><a href="tag3.html">N&auml;chster Tag &rarr;</a><a class="lang-switch" href="en/day2.html" lang="en">EN</a></div>
+<h1>Tag 2 &ndash; Freitag, 14. November &ndash; Strand, Lapa & Escadaria Selarón</h1>
+<h2 class="map-heading">Karte</h2>
+<div id="map2" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Praia do Leme", lat: -22.965, lng: -43.1721, note: "Strandnachmittag", anchor: "strand" },
+      { name: "Arcos da Lapa", lat: -22.9132, lng: -43.1805, note: "Abend in Lapa", anchor: "lapa" },
+      { name: "Escadaria Selarón", lat: -22.9153, lng: -43.1792, note: "Fliesentreppe", anchor: "selaron" }
+    ];
+    const map = L.map('map2').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap-Mitwirkende'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; Zum Tagebucheintrag</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="strand"><strong>Strandnachmittag:</strong> Sonnenschirm, Plastikstühle, Caipirinha-Verkäufer im Minutentakt. Am Ende des Strandes spielen Einheimische Fußball und Futevôlei vor dem Morro do Leme.</p>
+<img src="images/tag2/01.jpg" alt="Selfie zu zweit unter dem Sonnenschirm">
+<img src="images/tag2/02.jpg" alt="Strandstühle und Sonnenschirme">
+<img src="images/tag2/03.jpg" alt="Fußball am Strand vor dem Morro do Leme">
+<p id="lapa"><strong>Lapa:</strong> Abends ins Ausgehviertel Lapa. Die weißen Bögen des Aquädukts, fertiggestellt 1750, trugen einst Wasser in die Stadt – seit 1896 fährt die Straßenbahn nach Santa Teresa darüber. Abendessen beim Peruaner: Ceviche und Pisco.</p>
+<p class="more-info">&#8599; <a href="https://de.wikipedia.org/wiki/Arcos_da_Lapa" target="_blank" rel="noopener noreferrer">Mehr erfahren</a></p>
+<img src="images/tag2/04.jpg" alt="Arcos da Lapa bei Nacht">
+<img src="images/tag2/05.jpg" alt="Wandbild mit Hahn und Gesicht">
+<img src="images/tag2/06.jpg" alt="Leuchtschrift „I love Ceviche&quot;">
+<img src="images/tag2/07.jpg" alt="Pisco-Drink im Glas">
+<img src="images/tag2/08.jpg" alt="Ceviche-Teller auf bunter Decke">
+<img src="images/tag2/09.jpg" alt="Belebte Straßenecke in Lapa">
+<p id="selaron"><strong>Escadaria Selarón:</strong> Die 215 Stufen zwischen Lapa und Santa Teresa verwandelte der chilenische Künstler Jorge Selarón ab 1990 in ein Mosaik aus über 2.000 Fliesen aus mehr als 60 Ländern – viele davon Geschenke von Besuchern. Er arbeitete bis zu seinem Tod 2013 daran.</p>
+<p class="more-info">&#8599; <a href="https://de.wikipedia.org/wiki/Escadaria_Selarón" target="_blank" rel="noopener noreferrer">Mehr erfahren</a></p>
+<img src="images/tag2/10.jpg" alt="Auf der Escadaria Selarón sitzend">
+<img src="images/tag2/11.jpg" alt="Fliesen mit Wappen der Rio-Fußballclubs">
+<p>Die vier großen Clubs Rios auf einer Fliese: Botafogo, Fluminense, Flamengo, Vasco.</p>
+<img src="images/tag2/12.jpg" alt="Fliese mit dem Mädchen mit dem Perlenohrring">
+<img src="images/tag2/13.jpg" alt="Blick die beleuchtete Treppe hinauf">
+<img src="images/tag2/14.jpg" alt="Bunte Fliese mit Comicfiguren">
+<img src="images/tag2/15.jpg" alt="Flasche Eisenbahn Pilsen">
+<p>Zum Abschluss ein Eisenbahn – Craft-Bier, 2002 in Blumenau gegründet, der deutschesten Stadt Brasiliens.</p>
+
+<hr>
+
+<div class="navbar"><a href="tag1.html">&larr; Vorheriger Tag</a><a href="index.html">&#8962; &Uuml;bersicht</a><a href="tag3.html">N&auml;chster Tag &rarr;</a><a class="lang-switch" href="en/day2.html" lang="en">EN</a></div>
+</body>
+</html>

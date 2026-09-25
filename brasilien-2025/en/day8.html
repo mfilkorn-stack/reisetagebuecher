@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../style.css">
+<title>Day 8 &ndash; Friday, November 21 &ndash; Petrópolis, the Imperial City</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="day7.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><span></span><a class="lang-switch" href="../tag8.html" lang="de">DE</a></div>
+<h1>Day 8 &ndash; Friday, November 21 &ndash; Petrópolis, the Imperial City</h1>
+<h2 class="map-heading">Map</h2>
+<div id="map8" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Casa do Alemão", lat: -22.6949, lng: -43.288, note: "Stopover", anchor: "petropolis" },
+      { name: "Palácio Quitandinha", lat: -22.5296, lng: -43.213, note: "Former casino hotel", anchor: "petropolis" },
+      { name: "Imperial Museum", lat: -22.5077, lng: -43.1756, note: "Summer palace", anchor: "museu" },
+      { name: "São Pedro de Alcântara Cathedral", lat: -22.5058, lng: -43.1793, note: "Neo-Gothic cathedral", anchor: "kathedrale" },
+      { name: "Crystal Palace", lat: -22.5052, lng: -43.1833, note: "Glass palace", anchor: "kathedrale" }
+    ];
+    const map = L.map('map8').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap contributors'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; To the diary entry</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="petropolis"><strong>Into the mountains:</strong> Early in the morning one last look at Ipanema, then up into the Serra dos Órgãos. Petrópolis lies a good 800 m up and was the summer residence of Brazil's Emperor Pedro II, who had the town founded in 1843; German immigrants settled here from 1845. A stop at Casa do Alemão, a roadside bakery selling bread and apple strudel since 1945. First stop is Palácio Quitandinha: opened in 1944 as South America's largest casino hotel – two years later gambling was banned in Brazil.</p>
+<p class="more-info">&#8599; <a href="https://en.wikipedia.org/wiki/Petrópolis" target="_blank" rel="noopener noreferrer">Learn more</a></p>
+<img src="../images/tag8/01.jpg" alt="Palm trees on the Ipanema promenade in the morning">
+<img src="../images/tag8/02.jpg" alt="Casa do Alemão sign">
+<img src="../images/tag8/03.jpg" alt="Palácio Quitandinha with lake">
+<img src="../images/tag8/04.jpg" alt="Selfie in the park in front of Quitandinha">
+<p id="museu"><strong>Imperial Museum:</strong> Pedro II's pink summer palace is now one of Brazil's most visited museums: furniture, paintings and the imperial crown set with 639 diamonds. Afterwards an Eisenbahn beer in the sun – the town is Brazil's beer capital anyway; the country's oldest brewery, Bohemia, was founded here in 1853.</p>
+<p class="more-info">&#8599; <a href="https://en.wikipedia.org/wiki/Imperial_Museum_of_Brazil" target="_blank" rel="noopener noreferrer">Learn more</a></p>
+<img src="../images/tag8/05.jpg" alt="Imperial Museum exterior">
+<img src="../images/tag8/06.jpg" alt="Salon in the Imperial Museum">
+<img src="../images/tag8/07.jpg" alt="Two bottles of Eisenbahn beer">
+<p id="kathedrale"><strong>Cathedral and Crystal Palace:</strong> The neo-Gothic cathedral of São Pedro de Alcântara was begun in 1884 and only completed in the 20th century; Emperor Pedro II and Empress Teresa Cristina rest in its funeral chapel. A few streets away stands the Palácio de Cristal, a glass palace prefabricated in France in 1884. And fittingly, to round things off: a beer garden.</p>
+<p class="more-info">&#8599; <a href="https://en.wikipedia.org/wiki/Cathedral_of_Saint_Peter_of_Alcantara" target="_blank" rel="noopener noreferrer">Learn more</a></p>
+<img src="../images/tag8/08.jpg" alt="Façade of São Pedro de Alcântara Cathedral">
+<img src="../images/tag8/09.jpg" alt="Stained-glass windows in the cathedral">
+<img src="../images/tag8/10.jpg" alt="Cathedral interior">
+<img src="../images/tag8/11.jpg" alt="Crystal Palace">
+<img src="../images/tag8/12.jpg" alt="Selfie in the beer garden">
+<img src="../images/tag8/13.jpg" alt="Replica of the 14-Bis aircraft">
+<p>Petrópolis was the adopted home of Alberto Santos-Dumont, whose 14-Bis took off in Paris in 1906 – for Brazilians the first true powered flight.</p>
+<p><strong>Last evening:</strong> Back on Copacabana: farewell dinner on Avenida Atlântica. On Saturday we fly back to Cologne via Rome.</p>
+<img src="../images/tag8/14.jpg" alt="Sushi platter for the farewell">
+<img src="../images/tag8/15.jpg" alt="Beer and caipirinhas for the farewell">
+
+<hr>
+
+<div class="navbar"><a href="day7.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><span></span><a class="lang-switch" href="../tag8.html" lang="de">DE</a></div>
+</body>
+</html>

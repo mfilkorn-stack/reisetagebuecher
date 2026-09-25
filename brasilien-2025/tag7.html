@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../style.css">
+<title>Tag 7 &ndash; Donnerstag, 20. November &ndash; Tattoo, Centro & Porto Maravilha</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="tag6.html">&larr; Vorheriger Tag</a><a href="index.html">&#8962; &Uuml;bersicht</a><a href="tag8.html">N&auml;chster Tag &rarr;</a><a class="lang-switch" href="en/day7.html" lang="en">EN</a></div>
+<h1>Tag 7 &ndash; Donnerstag, 20. November &ndash; Tattoo, Centro & Porto Maravilha</h1>
+<h2 class="map-heading">Karte</h2>
+<div id="map7" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Copacabana", lat: -22.9655, lng: -43.1792, note: "Tattoo-Studio", anchor: "tattoo" },
+      { name: "Orla Conde", lat: -22.8958, lng: -43.1794, note: "Uferpromenade", anchor: "centro" },
+      { name: "Igreja da Candelária", lat: -22.9002, lng: -43.1755, note: "Kirche", anchor: "centro" },
+      { name: "Museu do Amanhã", lat: -22.8953, lng: -43.1798, note: "Museum", anchor: "porto" }
+    ];
+    const map = L.map('map7').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap-Mitwirkende'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; Zum Tagebucheintrag</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="tattoo"><strong>Ein Souvenir fürs Leben:</strong> Die Nacht nach dem Derby war lang – die Flu-Fans feierten bis nach Mitternacht vor ihrer Stammkneipe. Mittags dann ein Souvenir, das bleibt: ein Cristo Redentor als Tattoo auf dem Oberarm.</p>
+<img src="images/tag7/01.jpg" alt="Bar „Flu Esquina&quot; mit Graffiti">
+<img src="images/tag7/02.jpg" alt="Feiernde Fans nach Mitternacht auf der Straße">
+<img src="images/tag7/03.jpg" alt="Straßenmarkt mit Obst und Blumen">
+<img src="images/tag7/04.jpg" alt="Logo eines Tattoo-Studios">
+<img src="images/tag7/05.jpg" alt="Frisches Cristo-Redentor-Tattoo am Oberarm">
+<p id="centro"><strong>Centro am Feiertag:</strong> Der 20. November ist der Dia da Consciência Negra, seit 2024 landesweiter Feiertag in Erinnerung an Zumbi dos Palmares, Anführer der größten Quilombo-Gemeinschaft entflohener Sklaven. Die Innenstadt ist voller Menschen, in der Altstadt spielen Bands auf der Straße. Am Abend leuchtet die Igreja da Candelária in der Dämmerung.</p>
+<p class="more-info">&#8599; <a href="https://de.wikipedia.org/wiki/Dia_da_Consciência_Negra" target="_blank" rel="noopener noreferrer">Mehr erfahren</a></p>
+<img src="images/tag7/06.jpg" alt="Kolonialhäuser an der Avenida Rio Branco">
+<img src="images/tag7/07.jpg" alt="Museu do Amanhã an der Uferpromenade">
+<img src="images/tag7/08.jpg" alt="Selfie an der Guanabara-Bucht">
+<img src="images/tag7/09.jpg" alt="Menschenmenge und Marktstände im Centro">
+<img src="images/tag7/10.jpg" alt="Superhelden-Wandbild">
+<img src="images/tag7/11.jpg" alt="Livemusik und Menschenmenge in der Altstadt">
+<img src="images/tag7/12.jpg" alt="Igreja da Candelária in der Abenddämmerung">
+<p id="porto"><strong>Porto Maravilha:</strong> Das alte Hafenviertel wurde vor den Olympischen Spielen 2016 komplett umgebaut. Wahrzeichen ist das Museu do Amanhã von Santiago Calatrava (2015), dessen weiße Rippenkonstruktion wie ein Skelett in die Bucht ragt. Daneben erinnert ein alter Hafenkran „Made in Germany" an die Vergangenheit.</p>
+<p class="more-info">&#8599; <a href="https://de.wikipedia.org/wiki/Museu_do_Amanhã" target="_blank" rel="noopener noreferrer">Mehr erfahren</a></p>
+<img src="images/tag7/13.jpg" alt="Uferpromenade in der Dämmerung">
+<img src="images/tag7/14.jpg" alt="Rippenkonstruktion des Museu do Amanhã">
+<img src="images/tag7/15.jpg" alt="Alter Hafenkran „Made in Germany&quot;">
+
+<hr>
+
+<div class="navbar"><a href="tag6.html">&larr; Vorheriger Tag</a><a href="index.html">&#8962; &Uuml;bersicht</a><a href="tag8.html">N&auml;chster Tag &rarr;</a><a class="lang-switch" href="en/day7.html" lang="en">EN</a></div>
+</body>
+</html>

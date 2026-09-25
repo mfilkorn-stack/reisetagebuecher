@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../style.css">
+<title>Day 3 &ndash; Saturday, November 15 &ndash; Copacabana & Fort Copacabana</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="day2.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day4.html">Next day &rarr;</a><a class="lang-switch" href="../tag3.html" lang="de">DE</a></div>
+<h1>Day 3 &ndash; Saturday, November 15 &ndash; Copacabana & Fort Copacabana</h1>
+<h2 class="map-heading">Map</h2>
+<div id="map3" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Leme", lat: -22.964, lng: -43.1727, note: "Lunch at the bar", anchor: "mittag" },
+      { name: "Copacabana promenade", lat: -22.9677, lng: -43.1781, note: "Promenade", anchor: "promenade" },
+      { name: "Fort Copacabana", lat: -22.9859, lng: -43.1873, note: "Fort at the end of the beach", anchor: "forte" },
+      { name: "Drummond statue", lat: -22.9844, lng: -43.1891, note: "Evening", anchor: "abend" }
+    ];
+    const map = L.map('map3').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap contributors'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; To the diary entry</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="mittag"><strong>Lunch in Leme:</strong> A corner botequim, football on TV, picanha on a wooden board. Saturday lunch in Rio.</p>
+<img src="../images/tag3/01.jpg" alt="Selfie in the bar with football on TV">
+<img src="../images/tag3/02.jpg" alt="Meat and sides on the table">
+<p id="promenade"><strong>On the Calçadão:</strong> On foot along Copacabana. The wave pattern of the Calçadão originally came from Portugal; landscape architect Roberto Burle Marx redesigned the promenade in 1970. Along the way: a giant yellow shoe installation on the beach, jersey vendors, lifeguard posts.</p>
+<p class="more-info">&#8599; <a href="https://en.wikipedia.org/wiki/Roberto_Burle_Marx" target="_blank" rel="noopener noreferrer">Learn more</a></p>
+<img src="../images/tag3/03.jpg" alt="Giant yellow shoe sculpture on the beach">
+<img src="../images/tag3/04.jpg" alt="People on the promenade">
+<img src="../images/tag3/05.jpg" alt="Jerseys for sale on the mosaic pavement">
+<img src="../images/tag3/06.jpg" alt="Guarda-Vidas lifeguard station">
+<p id="forte"><strong>Fort Copacabana:</strong> At the southern end of Copacabana lies the fort, completed in 1914, with heavy Krupp guns in armoured turrets. In 1922 the revolt of the "18 of the Fort", young officers against the government, started here – the prelude to the tenentismo movement. Today an army museum with perhaps the best view back across the whole bay to Sugarloaf Mountain.</p>
+<p class="more-info">&#8599; <a href="https://en.wikipedia.org/wiki/Fort_Copacabana" target="_blank" rel="noopener noreferrer">Learn more</a></p>
+<img src="../images/tag3/07.jpg" alt="Entrance gate of Fort Copacabana">
+<img src="../images/tag3/08.jpg" alt="Artillery piece against the Copacabana backdrop">
+<img src="../images/tag3/09.jpg" alt="Fort wall and view to Sugarloaf">
+<img src="../images/tag3/10.jpg" alt="Brazilian flag above the fort">
+<img src="../images/tag3/11.jpg" alt="Gun barrel over the bay">
+<img src="../images/tag3/12.jpg" alt="Copacabana at dusk from the fort">
+<img src="../images/tag3/13.jpg" alt="Three craft beers overlooking the bay">
+<p id="abend"><strong>Carlos Drummond de Andrade:</strong> On the way back, Brazil's great poet Carlos Drummond de Andrade sits on a bench in bronze – since 2002, looking out to sea. On the backrest his line: "No mar estava escrita uma cidade" – a city was written in the sea.</p>
+<p class="more-info">&#8599; <a href="https://en.wikipedia.org/wiki/Carlos_Drummond_de_Andrade" target="_blank" rel="noopener noreferrer">Learn more</a></p>
+<img src="../images/tag3/14.jpg" alt="On the bench next to the Drummond statue">
+<img src="../images/tag3/15.jpg" alt="Brazilian dinner with rice, beans and farofa">
+
+<hr>
+
+<div class="navbar"><a href="day2.html">&larr; Previous day</a><a href="index.html">&#8962; Overview</a><a href="day4.html">Next day &rarr;</a><a class="lang-switch" href="../tag3.html" lang="de">DE</a></div>
+</body>
+</html>

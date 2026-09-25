@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../style.css">
+<title>Day 1 &ndash; Wednesday/Thursday, November 12/13 &ndash; Arrival & First Day on Copacabana</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><span></span><a href="index.html">&#8962; Overview</a><a href="day2.html">Next day &rarr;</a><a class="lang-switch" href="../tag1.html" lang="de">DE</a></div>
+<h1>Day 1 &ndash; Wednesday/Thursday, November 12/13 &ndash; Arrival & First Day on Copacabana</h1>
+<h2 class="map-heading">Map</h2>
+<div id="map1" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Rome Fiumicino Airport", lat: 41.7954, lng: 12.2556, note: "Connection", anchor: "anreise" },
+      { name: "Rio Galeão Airport", lat: -22.8155, lng: -43.2466, note: "Morning arrival", anchor: "anreise" },
+      { name: "Leme / Copacabana", lat: -22.9649, lng: -43.1721, note: "First beach day", anchor: "copacabana" }
+    ];
+    const map = L.map('map1').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap contributors'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; To the diary entry</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="anreise"><strong>Via Rome:</strong> From Cologne via Rome to Rio: lounge in Fiumicino, then overnight across the Atlantic. Early in the morning we land at Galeão, Rio's international airport on Ilha do Governador, and join the immigration queue.</p>
+<img src="../images/tag1/01.jpg" alt="Entrance of an airport lounge in Rome">
+<img src="../images/tag1/02.jpg" alt="Selfie of two on the way">
+<img src="../images/tag1/03.jpg" alt="Immigration queue in Rio">
+<p id="copacabana"><strong>Leme and Copacabana:</strong> Our apartment is in Leme, the quieter eastern end of Copacabana below Morro do Leme. First stop: the beach. A coconut for a few reais, feet in the sand, the silhouette of the hills behind us.</p>
+<p class="more-info">&#8599; <a href="https://en.wikipedia.org/wiki/Copacabana,_Rio_de_Janeiro" target="_blank" rel="noopener noreferrer">Learn more</a></p>
+<img src="../images/tag1/04.jpg" alt="View from the apartment to the beach">
+<img src="../images/tag1/05.jpg" alt="Beach promenade with palm trees in Leme">
+<img src="../images/tag1/06.jpg" alt="Price sign for coconuts and water">
+<p>"Coco gelado": ice-cold coconut, the beach staple.</p>
+<img src="../images/tag1/07.jpg" alt="Coconut with straw on the beach">
+<img src="../images/tag1/08.jpg" alt="Selfie on Leme beach">
+<img src="../images/tag1/09.jpg" alt="Collection basket for empty coconuts">
+<img src="../images/tag1/10.jpg" alt="Wall of licence plates in a bar">
+<img src="../images/tag1/11.jpg" alt="Beer bottle on the counter">
+<img src="../images/tag1/12.jpg" alt="Wall of Havaianas flip-flops">
+<p>Havaianas, Brazil's most famous flip-flops, have been around since 1962 – here in every colour.</p>
+<img src="../images/tag1/13.jpg" alt="Copacabana at night under floodlights">
+<img src="../images/tag1/14.jpg" alt="Restaurant overlooking Avenida Atlântica">
+<img src="../images/tag1/15.jpg" alt="With fresh juice in the evening">
+<p>To finish, a fresh juice – Rio's sucos are in a class of their own.</p>
+
+<hr>
+
+<div class="navbar"><span></span><a href="index.html">&#8962; Overview</a><a href="day2.html">Next day &rarr;</a><a class="lang-switch" href="../tag1.html" lang="de">DE</a></div>
+</body>
+</html>

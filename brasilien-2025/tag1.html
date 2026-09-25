@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../style.css">
+<title>Tag 1 &ndash; Mittwoch/Donnerstag, 12./13. November &ndash; Anreise & erster Tag an der Copacabana</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><span></span><a href="index.html">&#8962; &Uuml;bersicht</a><a href="tag2.html">N&auml;chster Tag &rarr;</a><a class="lang-switch" href="en/day1.html" lang="en">EN</a></div>
+<h1>Tag 1 &ndash; Mittwoch/Donnerstag, 12./13. November &ndash; Anreise & erster Tag an der Copacabana</h1>
+<h2 class="map-heading">Karte</h2>
+<div id="map1" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Flughafen Rom-Fiumicino", lat: 41.7954, lng: 12.2556, note: "Umstieg", anchor: "anreise" },
+      { name: "Flughafen Rio-Galeão", lat: -22.8155, lng: -43.2466, note: "Ankunft am Morgen", anchor: "anreise" },
+      { name: "Leme / Copacabana", lat: -22.9649, lng: -43.1721, note: "Erster Strandtag", anchor: "copacabana" }
+    ];
+    const map = L.map('map1').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap-Mitwirkende'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; Zum Tagebucheintrag</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="anreise"><strong>Anreise über Rom:</strong> Von Köln über Rom nach Rio: Lounge in Fiumicino, dann über Nacht über den Atlantik. Am frühen Morgen landen wir in Galeão, dem internationalen Flughafen Rios auf der Ilha do Governador, und stehen erst einmal in der Schlange bei der Einreise.</p>
+<img src="images/tag1/01.jpg" alt="Eingang einer Flughafen-Lounge in Rom">
+<img src="images/tag1/02.jpg" alt="Selfie zu zweit unterwegs">
+<img src="images/tag1/03.jpg" alt="Warteschlange bei der Einreise in Rio">
+<p id="copacabana"><strong>Leme und Copacabana:</strong> Unsere Wohnung liegt in Leme, dem ruhigeren Ostende der Copacabana unter dem Morro do Leme. Erster Weg: an den Strand. Kokosnuss für ein paar Reais, Füße in den Sand, Zuckerhut-Silhouette im Rücken.</p>
+<p class="more-info">&#8599; <a href="https://de.wikipedia.org/wiki/Copacabana_(Rio_de_Janeiro)" target="_blank" rel="noopener noreferrer">Mehr erfahren</a></p>
+<img src="images/tag1/04.jpg" alt="Blick aus der Wohnung auf den Strand">
+<img src="images/tag1/05.jpg" alt="Strandpromenade mit Palmen in Leme">
+<img src="images/tag1/06.jpg" alt="Preisschild für Kokosnüsse und Wasser">
+<p>„Coco gelado": eiskalte Kokosnuss, das Grundnahrungsmittel am Strand.</p>
+<img src="images/tag1/07.jpg" alt="Kokosnuss mit Strohhalm am Strand">
+<img src="images/tag1/08.jpg" alt="Selfie zu zweit am Strand von Leme">
+<img src="images/tag1/09.jpg" alt="Sammelkorb für leere Kokosnüsse">
+<img src="images/tag1/10.jpg" alt="Wand voller Nummernschilder in einer Bar">
+<img src="images/tag1/11.jpg" alt="Bierflasche auf dem Tresen">
+<img src="images/tag1/12.jpg" alt="Wand voller Havaianas-Flipflops">
+<p>Havaianas, Brasiliens berühmteste Flipflops, gibt es seit 1962 – hier in allen Farben.</p>
+<img src="images/tag1/13.jpg" alt="Copacabana bei Nacht mit Flutlicht">
+<img src="images/tag1/14.jpg" alt="Restaurant mit Blick auf die Avenida Atlântica">
+<img src="images/tag1/15.jpg" alt="Mit frischem Saft am Abend">
+<p>Zum Abschluss ein frischer Saft – die Sucos in Rio sind eine Klasse für sich.</p>
+
+<hr>
+
+<div class="navbar"><span></span><a href="index.html">&#8962; &Uuml;bersicht</a><a href="tag2.html">N&auml;chster Tag &rarr;</a><a class="lang-switch" href="en/day1.html" lang="en">EN</a></div>
+</body>
+</html>

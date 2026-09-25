@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../style.css">
+<title>Tag 8 &ndash; Freitag, 21. November &ndash; Petrópolis, die Kaiserstadt</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="tag7.html">&larr; Vorheriger Tag</a><a href="index.html">&#8962; &Uuml;bersicht</a><span></span><a class="lang-switch" href="en/day8.html" lang="en">EN</a></div>
+<h1>Tag 8 &ndash; Freitag, 21. November &ndash; Petrópolis, die Kaiserstadt</h1>
+<h2 class="map-heading">Karte</h2>
+<div id="map8" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Casa do Alemão", lat: -22.6949, lng: -43.288, note: "Zwischenstopp", anchor: "petropolis" },
+      { name: "Palácio Quitandinha", lat: -22.5296, lng: -43.213, note: "Ehemaliges Casino-Hotel", anchor: "petropolis" },
+      { name: "Museu Imperial", lat: -22.5077, lng: -43.1756, note: "Sommerpalast", anchor: "museu" },
+      { name: "Kathedrale São Pedro de Alcântara", lat: -22.5058, lng: -43.1793, note: "Neugotische Kathedrale", anchor: "kathedrale" },
+      { name: "Palácio de Cristal", lat: -22.5052, lng: -43.1833, note: "Glaspalast", anchor: "kathedrale" }
+    ];
+    const map = L.map('map8').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap-Mitwirkende'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; Zum Tagebucheintrag</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="petropolis"><strong>In die Berge:</strong> Früh am Morgen noch ein Blick auf Ipanema, dann hinauf in die Serra dos Órgãos. Petrópolis liegt gut 800 m hoch und war die Sommerresidenz des brasilianischen Kaisers Pedro II., der die Stadt 1843 gründen ließ; ab 1845 siedelten hier deutsche Einwanderer. Zwischenstopp in der Casa do Alemão, einer Bäckerei an der Straße, die seit 1945 Brot und Apfelstrudel verkauft. Erstes Ziel ist der Palácio Quitandinha: 1944 als größtes Casino-Hotel Südamerikas eröffnet, zwei Jahre später wurde das Glücksspiel in Brasilien verboten.</p>
+<p class="more-info">&#8599; <a href="https://de.wikipedia.org/wiki/Petrópolis" target="_blank" rel="noopener noreferrer">Mehr erfahren</a></p>
+<img src="images/tag8/01.jpg" alt="Palmen an der Strandpromenade von Ipanema am Morgen">
+<img src="images/tag8/02.jpg" alt="Schild der Casa do Alemão">
+<img src="images/tag8/03.jpg" alt="Palácio Quitandinha mit See">
+<img src="images/tag8/04.jpg" alt="Selfie im Park vor dem Quitandinha">
+<p id="museu"><strong>Museu Imperial:</strong> Der rosafarbene Sommerpalast Pedros II. ist heute eines der meistbesuchten Museen Brasiliens: Möbel, Gemälde und die Kaiserkrone mit 639 Diamanten. Danach ein Eisenbahn-Bier in der Sonne – die Stadt ist ohnehin Brasiliens Bier-Hochburg, die älteste Brauerei des Landes, Bohemia, wurde 1853 hier gegründet.</p>
+<p class="more-info">&#8599; <a href="https://de.wikipedia.org/wiki/Museu_Imperial" target="_blank" rel="noopener noreferrer">Mehr erfahren</a></p>
+<img src="images/tag8/05.jpg" alt="Museu Imperial von außen">
+<img src="images/tag8/06.jpg" alt="Salon im Museu Imperial">
+<img src="images/tag8/07.jpg" alt="Zwei Flaschen Eisenbahn-Bier">
+<p id="kathedrale"><strong>Kathedrale und Palácio de Cristal:</strong> Die neugotische Kathedrale São Pedro de Alcântara wurde 1884 begonnen und erst im 20. Jahrhundert vollendet; in ihrer Grabkapelle ruhen Kaiser Pedro II. und Kaiserin Teresa Cristina. Ein paar Straßen weiter steht der Palácio de Cristal, ein 1884 in Frankreich vorgefertigter Glaspalast. Und zum Abschluss sehr passend: ein Biergarten.</p>
+<p class="more-info">&#8599; <a href="https://de.wikipedia.org/wiki/Kathedrale_von_Petrópolis" target="_blank" rel="noopener noreferrer">Mehr erfahren</a></p>
+<img src="images/tag8/08.jpg" alt="Fassade der Kathedrale São Pedro de Alcântara">
+<img src="images/tag8/09.jpg" alt="Bunte Glasfenster in der Kathedrale">
+<img src="images/tag8/10.jpg" alt="Innenraum der Kathedrale">
+<img src="images/tag8/11.jpg" alt="Palácio de Cristal">
+<img src="images/tag8/12.jpg" alt="Selfie im Biergarten">
+<img src="images/tag8/13.jpg" alt="Nachbau des Flugzeugs 14-Bis">
+<p>Petrópolis war die Wahlheimat von Alberto Santos-Dumont, dessen 14-Bis 1906 in Paris abhob – für Brasilianer der erste echte Motorflug.</p>
+<p><strong>Letzter Abend:</strong> Zurück an der Copacabana: Abschiedsessen an der Avenida Atlântica. Am Samstag geht es über Rom zurück nach Köln.</p>
+<img src="images/tag8/14.jpg" alt="Sushi-Platte zum Abschied">
+<img src="images/tag8/15.jpg" alt="Bier und Caipirinhas zum Abschied">
+
+<hr>
+
+<div class="navbar"><a href="tag7.html">&larr; Vorheriger Tag</a><a href="index.html">&#8962; &Uuml;bersicht</a><span></span><a class="lang-switch" href="en/day8.html" lang="en">EN</a></div>
+</body>
+</html>

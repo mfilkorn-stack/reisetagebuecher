@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../style.css">
+<title>Tag 6 &ndash; Mittwoch, 19. November &ndash; Fla-Flu im Maracanã</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body>
+<div class="navbar"><a href="tag5.html">&larr; Vorheriger Tag</a><a href="index.html">&#8962; &Uuml;bersicht</a><a href="tag7.html">N&auml;chster Tag &rarr;</a><a class="lang-switch" href="en/day6.html" lang="en">EN</a></div>
+<h1>Tag 6 &ndash; Mittwoch, 19. November &ndash; Fla-Flu im Maracanã</h1>
+<h2 class="map-heading">Karte</h2>
+<div id="map6" class="map"></div>
+<script>
+  (function() {
+    const stops = [
+      { name: "Praia do Leme", lat: -22.9657, lng: -43.1718, note: "Strand", anchor: "strand19" },
+      { name: "Botequim in Maracanã", lat: -22.9142, lng: -43.2336, note: "Vorglühen mit Flu-Fans", anchor: "vorher" },
+      { name: "Maracanã", lat: -22.9126, lng: -43.2297, note: "Fluminense – Flamengo 2:1", anchor: "maracana" }
+    ];
+    const map = L.map('map6').setView([stops[0].lat, stops[0].lng], 11);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, USGS, Intermap, NRCan, METI, Esri China (Hong Kong), Esri Korea, Esri (Thailand), NGCC, &copy; OpenStreetMap-Mitwirkende'
+    }).addTo(map);
+    const latlngs = [];
+    stops.forEach(function(stop) {
+      const marker = L.marker([stop.lat, stop.lng]).addTo(map);
+      marker.bindPopup('<strong>' + stop.name + '</strong><br>' + stop.note + '<br><a href="#' + stop.anchor + '">&#8595; Zum Tagebucheintrag</a>');
+      latlngs.push([stop.lat, stop.lng]);
+    });
+    if (latlngs.length > 1) { L.polyline(latlngs, { color: '#a33', weight: 3, dashArray: '6 6' }).addTo(map); map.fitBounds(latlngs, { padding: [30, 30] }); }
+  })();
+</script>
+
+<p id="strand19"><strong>Strand vor dem großen Spiel:</strong> Vormittags noch einmal Leme: rote Flagge für gefährliche Strömung, Caipirinhas im Sand.</p>
+<img src="images/tag6/01.jpg" alt="Strand von Leme bei blauem Himmel">
+<img src="images/tag6/02.jpg" alt="Selfie vor der roten Warnflagge">
+<img src="images/tag6/03.jpg" alt="Zwei Caipirinhas am Strand">
+<p id="vorher"><strong>Vor dem Spiel:</strong> Nachmittags nach Maracanã. In einem alten Botequim sammeln sich die Fans von Fluminense in Weinrot, Grün und Weiß – wir mittendrin. Je näher das Stadion, desto dichter die Menge.</p>
+<img src="images/tag6/04.jpg" alt="Botequim voller Fluminense-Fans">
+<img src="images/tag6/05.jpg" alt="Selfie zu zweit im Botequim">
+<img src="images/tag6/06.jpg" alt="Fan mit bedrucktem Fluminense-Trikot">
+<img src="images/tag6/07.jpg" alt="Fanmassen in den Straßen vor dem Stadion">
+<img src="images/tag6/08.jpg" alt="Selfie vor dem Maracanã">
+<img src="images/tag6/09.jpg" alt="Selfie mit feiernden Fans">
+<img src="images/tag6/10.jpg" alt="Fluminense-Wandbild mit Fans davor">
+<p id="maracana"><strong>Fla-Flu im Maracanã:</strong> Das Maracanã wurde für die WM 1950 gebaut; offiziell heißt es Estádio Jornalista Mário Filho, nach dem Journalisten, der das Derby Fluminense gegen Flamengo als „Fla-Flu" berühmt machte. Seit 1912 gibt es dieses Duell. An diesem Abend gewinnt Fluminense 2:1 – Tore von Lucho Acosta (ein Traumtor) und Serna. Der erste Fla-Flu-Sieg des Jahres für Flu, und ein Rückschlag für Flamengo im Titelrennen.</p>
+<p class="more-info">&#8599; <a href="https://de.wikipedia.org/wiki/Fla-Flu" target="_blank" rel="noopener noreferrer">Mehr erfahren</a></p>
+<img src="images/tag6/11.jpg" alt="Außenansicht des Maracanã bei Nacht">
+<img src="images/tag6/12.jpg" alt="Blick ins Stadion vor dem Anpfiff">
+<img src="images/tag6/13.jpg" alt="Anzeigetafel und volle Ränge">
+<img src="images/tag6/14.jpg" alt="Fans auf den Rängen">
+<img src="images/tag6/15.jpg" alt="Siegesselfie mit Fluminense-Fans">
+<div class="tip"><strong>Tipp:</strong> Für den Fla-Flu frühzeitig Tickets über die offiziellen Mitgliederportale der Clubs besorgen und sich im Fanblock der eigenen Wahl passend kleiden – Weinrot-Grün im Flu-Sektor, Rot-Schwarz bei Flamengo.</div>
+
+<hr>
+
+<div class="navbar"><a href="tag5.html">&larr; Vorheriger Tag</a><a href="index.html">&#8962; &Uuml;bersicht</a><a href="tag7.html">N&auml;chster Tag &rarr;</a><a class="lang-switch" href="en/day6.html" lang="en">EN</a></div>
+</body>
+</html>
