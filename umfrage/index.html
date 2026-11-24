@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KI-Niveau-Check Silingia</title>
+<style>
+:root{--bg:#f4f2ec;--surface:#fff;--ink:#1b2433;--muted:#5d6676;--line:#d9d5c9;--accent:#1f4e8c;--accent-ink:#fff;--amber:#b9791f;--bad:#b3402f}
+@media (prefers-color-scheme:dark){:root{--bg:#131822;--surface:#1c2330;--ink:#e8eaf0;--muted:#a0a9ba;--line:#323b4c;--accent:#7fb0f0;--accent-ink:#0f1722;--amber:#e0a24a;--bad:#ee8b79;color-scheme:dark}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+.wrap{max-width:680px;margin:0 auto;padding:28px 16px 64px}
+.kicker{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--amber);font-weight:600;margin:0 0 6px}
+h1{font-size:clamp(28px,7vw,36px);line-height:1.1;margin:0 0 10px}
+.lead{color:var(--muted);margin:0 0 22px}
+fieldset{border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:16px 16px 12px;margin:0 0 14px;min-width:0}
+fieldset.invalid{border-color:var(--bad)}
+legend{font-weight:600;padding:0 6px;margin-left:-6px}
+legend b{color:var(--amber);margin-right:6px}
+.hint{color:var(--muted);font-size:14px;margin:0 0 6px}
+label.opt{display:flex;gap:10px;align-items:flex-start;padding:8px 6px;border-radius:8px;cursor:pointer}
+label.opt input{margin-top:5px;width:18px;height:18px;accent-color:var(--accent);flex:none}
+textarea{width:100%;min-height:84px;font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:10px}
+.err{color:var(--bad);font-size:14px;margin:4px 0 0;min-height:1em}
+button{font:inherit;font-weight:600;background:var(--accent);color:var(--accent-ink);border:0;border-radius:10px;padding:12px 22px;cursor:pointer;width:100%}
+button[disabled]{opacity:.6}
+button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+.thanks{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px}
+.hidden{display:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="kicker">Silingia · 25. November</p>
+  <h1>KI-Niveau-Check</h1>
+  <p class="lead">Sieben kurze Fragen, etwa zwei Minuten. Damit der Vortrag zu dem passt, was ihr schon könnt. Anonym, ohne Anmeldung.</p>
+  <form id="form" novalidate></form>
+  <div id="thanks" class="thanks hidden">
+    <h2 style="margin:0 0 8px">Danke, deine Antworten sind angekommen.</h2>
+    <p id="verdict" style="margin:0"></p>
+  </div>
+</div>
+<script>
+// === Konfiguration: Supabase-Projekt-URL und Publishable/Anon-Key ===
+var SUPABASE_URL = "https://hrkhqarcvyuxjaotgpwv.supabase.co";
+var SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imhya2hxYXJjdnl1eGphb3RncHd2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODY4ODMzMjcsImV4cCI6MjEwMjQ1OTMyN30.H_m1klAe3V4UjZIHihZk78GKL1Xymlv2FhmcR0f1gic";
+
+var Q = [
+ {id:"q1",t:"single",x:"Wie oft nutzt du KI?",o:["Noch nie","Selten","Mehrmals im Monat","Mehrmals pro Woche","Täglich"]},
+ {id:"q2",t:"multi",x:"Welche Tools nutzt du?",h:"Mehrfachauswahl",o:["ChatGPT","Claude","Gemini","Microsoft Copilot","Perplexity","Andere","Keines"]},
+ {id:"q3",t:"multi",x:"Wofür nutzt du KI?",h:"Mehrfachauswahl",o:["Studium und Lernen","Schreiben und Texte","Recherche","Programmieren","Organisation und Planung","Bilder","Übersetzung","Noch gar nicht"]},
+ {id:"q4",t:"single",x:"Welche Aussage trifft am ehesten auf dich zu?",o:["Ich habe KI noch nie ausprobiert.","Ich stelle einfache Fragen, wie bei Google.","Ich gebe KI Dokumente und Kontext und lasse sie Aufgaben erledigen.","Ich nutze eigene Anweisungen, Projekte oder Verbindungen zu Apps (Mail, Kalender, Drive).","Ich baue eigene Anwendungen oder Automatisierungen."]},
+ {id:"q5",t:"single",x:"Eine KI nennt dir eine Studie mit Autor und Jahr. Was tust du?",o:["Ich übernehme es, die KI weiß das.","Ich prüfe die Quelle selbst nach.","Ich frage dieselbe KI, ob es stimmt.","Ich frage eine zweite KI und vertraue, wenn beide dasselbe sagen."]},
+ {id:"q6",t:"single",x:"Was hält dich am meisten davon ab, KI stärker zu nutzen?",o:["Ich weiß nicht, was alles möglich ist.","Ich weiß nicht, wie ich gute Anweisungen schreibe.","Datenschutz","Ergebnisse sind mir zu unzuverlässig.","Keine Zeit, mich damit zu beschäftigen.","Ich sehe keinen großen Nutzen."]},
+ {id:"q7",t:"text",x:"Was soll ich dir heute Abend unbedingt zeigen?",h:"Optional"}
+];
+var f=document.getElementById("form");
+function el(t,a,s){var e=document.createElement(t);for(var k in a||{})e.setAttribute(k,a[k]);if(s!=null)e.textContent=s;return e}
+Q.forEach(function(q,i){
+  var fs=el("fieldset",{id:"fs-"+q.id}),lg=el("legend");
+  lg.appendChild(el("b",null,(i+1)+"."));lg.appendChild(document.createTextNode(q.x));fs.appendChild(lg);
+  if(q.h)fs.appendChild(el("p",{"class":"hint"},q.h));
+  if(q.t==="text")fs.appendChild(el("textarea",{id:q.id,maxlength:"400","aria-label":q.x}));
+  else q.o.forEach(function(o,j){var id=q.id+"-"+j,l=el("label",{"class":"opt","for":id});
+    l.appendChild(el("input",{id:id,type:q.t==="single"?"radio":"checkbox",name:q.id,value:String(j)}));
+    l.appendChild(el("span",null,o));fs.appendChild(l)});
+  fs.appendChild(el("p",{"class":"err",id:"err-"+q.id}));f.appendChild(fs);
+});
+var btn=el("button",{type:"submit"},"Abschicken");f.appendChild(btn);
+var fe=el("p",{"class":"err",role:"alert"});f.appendChild(fe);
+
+f.addEventListener("submit",function(ev){
+  ev.preventDefault();fe.textContent="";
+  var d={},miss=[];
+  Q.forEach(function(q){
+    var fs=document.getElementById("fs-"+q.id);fs.classList.remove("invalid");document.getElementById("err-"+q.id).textContent="";
+    if(q.t==="text"){d[q.id]=document.getElementById(q.id).value.trim().slice(0,400)||null;return}
+    var v=[].slice.call(f.querySelectorAll('input[name="'+q.id+'"]:checked')).map(function(i){return +i.value});
+    if(!v.length){miss.push(q);fs.classList.add("invalid");document.getElementById("err-"+q.id).textContent="Bitte wähle eine Antwort aus.";return}
+    d[q.id]=q.t==="single"?v[0]:v;
+  });
+  if(miss.length){document.getElementById("fs-"+miss[0].id).scrollIntoView({behavior:"smooth",block:"center"});fe.textContent="Es fehlen noch "+miss.length+" Antwort(en).";return}
+  btn.disabled=true;btn.textContent="Wird gesendet …";
+  fetch(SUPABASE_URL+"/rest/v1/niveau_check",{method:"POST",headers:{"apikey":SUPABASE_KEY,"Authorization":"Bearer "+SUPABASE_KEY,"Content-Type":"application/json","Prefer":"return=minimal"},body:JSON.stringify(d)})
+  .then(function(r){if(!r.ok)throw new Error(r.status);
+    document.getElementById("verdict").textContent=d.q5===1
+      ?"Frage 5: richtig. Eine genannte Quelle prüft man selbst nach, denn KI erfindet gelegentlich Studien."
+      :"Frage 5: Richtig wäre „Ich prüfe die Quelle selbst nach.“ KI erfindet gelegentlich Studien, auch eine zweite KI ist kein Beweis.";
+    f.classList.add("hidden");document.getElementById("thanks").classList.remove("hidden");window.scrollTo(0,0)})
+  .catch(function(){fe.textContent="Das Abschicken hat nicht geklappt. Bitte versuche es noch einmal.";btn.disabled=false;btn.textContent="Abschicken"});
+});
+</script>
+</body>
+</html>
